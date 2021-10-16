@@ -23,7 +23,7 @@ class Landing extends React.Component {
           <div className="col-md-2 col-12 text-center mx-auto text-center h-100">
             <div class="row pb-5 justify-content-center">
               <div class="col mx-auto">
-                <img src="/images/home-bunny1.png" className="img-fluid"></img>
+                <img src="/images/home-cat.png" className="img-fluid"></img>
               </div>
             </div>
             <div class="row pb-5 justify-content-center">
