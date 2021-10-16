@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { withRouter, NavLink, Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap';
 
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
