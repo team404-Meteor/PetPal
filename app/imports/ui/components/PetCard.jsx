@@ -1,14 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Card, Image } from 'semantic-ui-react';
 
 function PetCard({
-  pet: { name, breed, age, description, photos, status, type },
+  pet: { name, breed, age, photoUrl },
 }) {
 
   return (
-    <div>
-      <h1>{name}</h1>
-    </div>
+    <Card className="pet-card">
+      <Card.Content>
+        <div className="pet-image">
+          <Image size="medium" circular src={photoUrl}/>
+        </div>
+        <div className="pet-overview">
+          <h2>{name}</h2>
+          <h3>{breed}</h3>
+          <h3>{age}</h3>
+        </div>
+      </Card.Content>
+    </Card>
   );
 }
 
@@ -17,23 +27,7 @@ PetCard.propTypes = {
     name: PropTypes.string,
     breed: PropTypes.string,
     age: PropTypes.string,
-    description: PropTypes.string,
-    photos: PropTypes.array,
-    status: PropTypes.string,
-    type: PropTypes.string,
+    photoUrl: PropTypes.string,
   }).isRequired,
 };
 export default PetCard;
-
-/*
-Name (for search view)
-Breed (for search view)
-Age (for search view)
-Description (for profile)
-Personality traits (for profile)
-Photos (for profile)
-Videos (for profile)
-Status (for profile)
-Type (for filter view)
-
-*/
