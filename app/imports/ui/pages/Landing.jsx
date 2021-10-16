@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap';
 
 /** A simple static component to render some text for the landing page. */
@@ -15,7 +16,7 @@ class Landing extends React.Component {
             </div>
             <div class="row pb-5 justify-content-center">
               <div class="col mb-5 text-center">
-              <a href="#" class="stretched-link">VIEW PETS</a>
+              <Link to="#" class="stretched-link">VIEW PETS</Link>
               </div>
             </div>
           </div>
@@ -28,7 +29,7 @@ class Landing extends React.Component {
             </div>
             <div class="row pb-5 justify-content-center">
               <div class="col mb-5 text-center">
-              <a href="#" class="stretched-link">LIST A PET</a>
+              <Link to="/add" class="stretched-link">LIST A PET</Link>
               </div>
             </div>
           </div>
@@ -41,7 +42,7 @@ class Landing extends React.Component {
             </div>
             <div class="row pb-5 justify-content-center">
               <div class="col text-center">
-              <a href="#" class="stretched-link">LEARN MORE</a>
+              <Link to="#" class="stretched-link">LEARN MORE</Link>
               </div>
             </div>
           </div>
