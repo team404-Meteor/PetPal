@@ -6,42 +6,42 @@ class Landing extends React.Component {
   render() {
     return (
       <div className="container py-2 my-5">
-        <div className="row px-kg-5 py-lg-5 my-lg-5">
-          <div className="col-md-2 col-12 text-center mx-auto text-center h-100">
-            <div class="row pb-5 justify-content-center">
+        <div className="row px-kg-5 px-lg-5 py-lg-5 my-lg-5">
+          <div className="col-md-3 col-8 text-center mx-auto text-center h-100 position-relative">
+            <div class="row pb-3 justify-content-center">
               <div class="col mx-auto">
                 <img src="/images/home-dog.png" className="img-fluid"></img>
               </div>
             </div>
             <div class="row pb-5 justify-content-center">
-              <div class="col text-center">
-                VIEW PETS
+              <div class="col mb-5 text-center">
+              <a href="#" class="stretched-link">VIEW PETS</a>
               </div>
             </div>
           </div>
           
-          <div className="col-md-2 col-12 text-center mx-auto text-center h-100">
-            <div class="row pb-5 justify-content-center">
+          <div className="col-md-3 col-7 text-center mx-auto text-center h-100 position-relative">
+            <div class="row pb-3 justify-content-center">
               <div class="col mx-auto">
                 <img src="/images/home-cat.png" className="img-fluid"></img>
               </div>
             </div>
             <div class="row pb-5 justify-content-center">
-              <div class="col text-center">
-                LIST A PET
+              <div class="col mb-5 text-center">
+              <a href="#" class="stretched-link">LIST A PET</a>
               </div>
             </div>
           </div>
           
-          <div className="col-md-2 col-12 text-center mx-auto text-center h-100">
-            <div class="row pb-5 justify-content-center">
+          <div className="col-md-3 col-8 text-center mx-auto text-center h-100 position-relative">
+            <div class="row pb-3 justify-content-center">
               <div class="col mx-auto">
-                <img src="/images/home-bunny.png" className="img-fluid"></img>
+                <img src="/images/home-other.png" className="img-fluid"></img>
               </div>
             </div>
             <div class="row pb-5 justify-content-center">
               <div class="col text-center">
-                LEARN MORE
+              <a href="#" class="stretched-link">LEARN MORE</a>
               </div>
             </div>
           </div>
