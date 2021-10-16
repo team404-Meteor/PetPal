@@ -2,13 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { withRouter, NavLink, Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap';
 
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
 class NavBar extends React.Component {
   render() {
-    const menuStyle = { marginBottom: '10px' };
     const navStyle = { border: '0', boxShadow: 'none' };
     return (
       <nav className="navbar navbar-light bg-white shadow py-3 sticky-top">
@@ -32,9 +31,6 @@ class NavBar extends React.Component {
               <Link to="/signout" className="side-link" to="/signout">Sign Out</Link>
             </li>
           </ul>]
-        ) : ''}
-
-
         {this.props.currentUser === '' ? ([<ul className="navbar-side" id="navbarSide">
           <li className="navbar-side-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-door-open" viewBox="0 0 16 16" color="#5f5f5f">
