@@ -34,7 +34,7 @@ html {
   }
   
     .navbar-side-item {
-      padding: 1.5rem 0 4rem 0;
+      padding: 1.5rem 0 4rem 1.5rem;
     }
   
     @media (min-width: 320px) and (max-width: 484px) {
