@@ -5,12 +5,16 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
 import { Menu, Dropdown, Header } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
+import 'bootstrap/dist/css/bootstrap';
 
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
 class NavBar extends React.Component {
   render() {
     const menuStyle = { marginBottom: '10px' };
+    const navStyle = { border: '0', boxShadow: 'none'};
     return (
+
+      /*
       <Menu style={menuStyle} attached="top" borderless inverted>
         <Menu.Item as={NavLink} activeClassName="" exact to="/">
           <Header inverted as='h1'>meteor-application-template</Header>
@@ -38,7 +42,16 @@ class NavBar extends React.Component {
             </Dropdown>
           )}
         </Menu.Item>
-      </Menu>
+      </Menu>*/
+
+      <nav className="navbar navbar-light bg-white shadow py-3">
+        <a className="navbar-brand" href="#">
+          <img className="mx-4" src="/images/logo.png" width="auto" height="auto" alt="logo" />
+        </a>
+          <button style={navStyle} className="navbar-toggler mx-4" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <img src="/images/hamburger-icon.png" width="30" height="30"/>
+          </button>
+      </nav>
     );
   }
 }
