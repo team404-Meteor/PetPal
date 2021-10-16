@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap';
 class NavBar extends React.Component {
   render() {
     const menuStyle = { marginBottom: '10px' };
-    const navStyle = { border: '0', boxShadow: 'none'};
+    const navStyle = { border: '0', boxShadow: 'none' };
     return (
 
       /*
@@ -48,9 +48,21 @@ class NavBar extends React.Component {
         <a className="navbar-brand" href="#">
           <img className="mx-4" src="/images/logo.png" width="auto" height="auto" alt="logo" />
         </a>
-          <button style={navStyle} className="navbar-toggler mx-4" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <img src="/images/hamburger-icon.png" width="30" height="30"/>
-          </button>
+
+        <ul className="navbar-side" id="navbarSide">
+          <li className="navbar-side-item">
+            <a href="#" className="side-link">Sign In</a>
+          </li>
+          <li className="navbar-side-item">
+            <a href="#" className="side-link">Sign Up</a>
+          </li>
+        </ul>
+
+        <div className="overlay"></div>
+
+        <button style={navStyle} className="navbar-toggler pull-xs-right mx-4" type="button" id="navbarSideButton">
+          <img src="/images/hamburger-icon.png" width="30" height="30" />
+        </button>
       </nav>
     );
   }
