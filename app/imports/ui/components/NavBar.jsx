@@ -31,7 +31,10 @@ class NavBar extends React.Component {
               <Link to="/signout" className="side-link" to="/signout">Sign Out</Link>
             </li>
           </ul>]
-        {this.props.currentUser === '' ? ([<ul className="navbar-side" id="navbarSide">
+        ) : ''}
+
+        {this.props.currentUser === '' ? ([
+        <ul className="navbar-side" id="navbarSide">
           <li className="navbar-side-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-door-open" viewBox="0 0 16 16" color="#5f5f5f">
               <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />
