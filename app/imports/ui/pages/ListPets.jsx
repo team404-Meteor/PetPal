@@ -118,8 +118,8 @@ function ListPets() {
           </Segment>
         </TransitionablePortal>
       </nav>
-      <div className='container pet-listing'>
-        <div className='row'>
+      <div className='container pet-listing px-3'>
+        <div className='row px-5 py-5'>
           {
             petArray.map((value, index) => (
               <div key={index} className='col-sm-6 col-md-4 pb-3 card-style' align='center'>
