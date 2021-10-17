@@ -9,7 +9,7 @@ class Learn extends React.Component {
     const colStyle3 = { backgroundColor: '#dcedc1' };
     const colStyle4 = { backgroundColor: '#ffaaa5' };
     return (
-      <div className="container-fluid">
+      <div className="container-fluid h-100">
         <div className="row pt-5 justify-content-center">
           <div className="col-lg-9 col-11 pb-5">
             <div className="row justify-content-center">

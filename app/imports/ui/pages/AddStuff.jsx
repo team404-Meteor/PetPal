@@ -208,9 +208,11 @@ class AddStuff extends React.Component {
                   </div>
                 </div>
 
-                <div class="row pt-3">
+                <div class="row pt-3 justify-content-center">
                   <label>Add Photo for Listing</label>
+                  <div class="col-12 py-1">
                   <hr/>
+                  </div>
                   <div class="col-12">
                     <div class="row">
                       <div class="col-lg-3 col-6">
