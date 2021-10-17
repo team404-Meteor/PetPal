@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
-import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import { Container, Form, Grid, Header, Message, Segment, Button } from 'semantic-ui-react';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -40,17 +40,19 @@ export default class Signin extends React.Component {
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
     }
+    const square = { width: 360, height: 360 };
     // Otherwise return the Login form.
     return (
       <Container id="signin-page">
-        <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
+        <Grid textAlign="center" verticalAlign="middle" centered columns={3}>
           <Grid.Column>
             <Header as="h2" textAlign="center">
-              Login to your account
+                Login to your account
             </Header>
-            <Form onSubmit={this.submit}>
-              <Segment stacked>
+            <Form onSubmit={this.submit} >
+              <Segment id={'signin-background'} textAlign="center" style={square} circular>
                 <Form.Input
+                  size={'huge'}
                   label="Email"
                   id="signin-form-email"
                   icon="user"
@@ -61,6 +63,7 @@ export default class Signin extends React.Component {
                   onChange={this.handleChange}
                 />
                 <Form.Input
+                  size={'huge'}
                   label="Password"
                   id="signin-form-password"
                   icon="lock"
@@ -70,12 +73,13 @@ export default class Signin extends React.Component {
                   type="password"
                   onChange={this.handleChange}
                 />
-                <Form.Button id="signin-form-submit" content="Submit"/>
+                <Button className={'btn-custom'}>Submit</Button>
+                <p className={'paragraph'}>
+                  Click <Link id={'salmon-pink-text'} to="/signup"><u>HERE</u></Link> to Register
+                </p>
               </Segment>
             </Form>
-            <Message>
-              <Link to="/signup">Click here to Register</Link>
-            </Message>
+
             {this.state.error === '' ? (
               ''
             ) : (

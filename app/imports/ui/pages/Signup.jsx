@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
-import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import { Container, Form, Grid, Header, Message, Segment, Button } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
 
 /**
@@ -38,16 +38,18 @@ class Signup extends React.Component {
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
     }
+    const square = { width: 360, height: 360 };
     return (
       <Container id="signup-page">
-        <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
-          <Grid.Column>
+        <Grid centered columns={3}>
+          <Grid.Column >
             <Header as="h2" textAlign="center">
-              Register your account
+                Register your account
             </Header>
             <Form onSubmit={this.submit}>
-              <Segment stacked>
+              <Segment circular centered fluid style={square} textAlign={'center'} id={'signup-background'}>
                 <Form.Input
+                  size={'huge'}
                   label="Email"
                   id="signup-form-email"
                   icon="user"
@@ -58,6 +60,7 @@ class Signup extends React.Component {
                   onChange={this.handleChange}
                 />
                 <Form.Input
+                  size={'huge'}
                   label="Password"
                   id="signup-form-password"
                   icon="lock"
@@ -67,12 +70,12 @@ class Signup extends React.Component {
                   type="password"
                   onChange={this.handleChange}
                 />
-                <Form.Button id="signup-form-submit" content="Submit"/>
+                <Button className={'btn-custom'} id="signup-form-submit" content="Submit"/>
+                <p className={'paragraph'}>
+                    Already have an account? Login <Link to="/signin" id={'salmon-pink-text'}>HERE</Link>
+                </p>
               </Segment>
             </Form>
-            <Message>
-              Already have an account? Login <Link to="/signin">here</Link>
-            </Message>
             {this.state.error === '' ? (
               ''
             ) : (

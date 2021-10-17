@@ -137,7 +137,6 @@ a {
         height: calc( 100vh - 250px);
         overflow-y: scroll;
     }
-    ;
 }
 
 /************************************
@@ -161,5 +160,20 @@ a {
         height: calc( 100vh - 400px);
         overflow-y: scroll;
     }
-    ;
+}
+
+#salmon-pink-text{
+  color: #ffaaa5 !important;
+}
+
+#signin-background{
+  background-color: #dcedc1 !important;
+}
+
+#signup-background{
+  background-color: #ffd3b6;
+}
+
+.paragraph{
+  margin-top: 38px;
 }
