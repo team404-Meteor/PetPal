@@ -10,7 +10,7 @@ class NavBar extends React.Component {
   render() {
     const navStyle = { border: '0', boxShadow: 'none' };
     return (
-      <nav className="navbar navbar-light bg-white shadow py-3 sticky-top">
+      <nav className="navbar navbar-light bg-white shadow py-3 sticky-top navbar-top">
         <a className="navbar-brand" href="#">
           <img className="mx-4" src="/images/logo.png" width="auto" height="auto" alt="logo"/>
         </a>
