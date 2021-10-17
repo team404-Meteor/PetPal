@@ -29,11 +29,11 @@ function ListPets() {
 
   const filterStyle = {
     position: 'fixed',
-    marginTop:'-275px',
+    marginTop:'-270px',
     marginRight:'auto',
     marginBottom:'0',
-    marginLeft:'-195px',
-    width: '400px',
+    marginLeft:'-190px',
+    width: '380px',
     top: '50%',
     left: '50%',
     zIndex: '2000',
@@ -122,7 +122,7 @@ function ListPets() {
         <div className='row px-5 py-5'>
           {
             petArray.map((value, index) => (
-              <div key={index} className='col-sm-6 col-md-4 pb-3 card-style' align='center'>
+              <div key={index} className='col-sm-6 col-md-4 col-10 pb-3 card-style text-center' align='center'>
                 <PetCard pet={{ name: value.name, breed: value.breed, age: value.age, photoUrl: value.photoUrl }}/>
               </div>
             ))

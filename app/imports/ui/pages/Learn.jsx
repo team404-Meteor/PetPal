@@ -11,9 +11,10 @@ class Learn extends React.Component {
     const colStyle4 = { backgroundColor: '#ffaaa5' };
     const rowStyle = { backgroundColor: '#e7e7e7', width: '100%', top: '88px', zIndex: '1' };
     const rowStyle2 = { zIndex: '-10' };
-    const containerStyle = { marginTop: '-20px', zIndex: '-1' };
+    const containerStyle = { marginTop: '-20px', zIndex: '-1', overflowX: 'hidden'};
     return (
       <div className="container-fluid px-0 mx-0" style={containerStyle}>
+        {/*}
         <div className="row pt-4 px-0 mx-0 w-100 justify content-center sticky-top" style={rowStyle}>
           <div className="col-md-3 col-12 pb-4 text-center">
             <Link to="#petHomelessness">Pet Homelessness</Link>
@@ -27,9 +28,9 @@ class Learn extends React.Component {
           <div className="col-md-3 col-12 pb-4 text-center">
             <Link to="#" id="theSolutionClick" replace>The Solultion</Link>
           </div>
-        </div>
+    </div>*/}
         <div className="row pt-5 justify-content-center" style={rowStyle2}>
-          <div className="col-lg-9 col-8 pb-5">
+          <div className="col-lg-9 col-11 pb-5">
             <div className="row justify-content-center">
               <div className="col-lg-4 col-12 mx-5 my-auto text-center">
                 <img src="/images/pet-facts-1.png" className="img-responsive img-circle" />
@@ -49,7 +50,7 @@ class Learn extends React.Component {
             </div>
           </div>
 
-          <div className="col-lg-9 col-8 pb-5">
+          <div className="col-lg-9 col-11 pb-5">
             <div className="row justify-content-center">
               <div className="col-lg-4 col-12 mx-5 my-auto text-center order-lg-2">
                 <img src="/images/pet-facts-2.png" className="img-responsive img-circle" />
@@ -68,7 +69,7 @@ class Learn extends React.Component {
             </div>
           </div>
 
-          <div className="col-lg-9 col-8 pb-5">
+          <div className="col-lg-9 col-11 pb-5">
             <div className="row justify-content-center">
               <div className="col-lg-4 col-12 mx-5 my-auto text-center">
                 <img src="/images/pet-facts-3.png" className="img-responsive img-circle" />
@@ -88,7 +89,7 @@ class Learn extends React.Component {
             </div>
           </div>
 
-          <div className="col-lg-9 col-8 pb-5">
+          <div className="col-lg-9 col-11 pb-5">
             <div className="row justify-content-center">
               <div className="col-lg-4 col-12 mx-5 my-auto text-center order-lg-2">
                 <img src="/images/pet-facts-4.png" className="img-responsive img-circle" />
