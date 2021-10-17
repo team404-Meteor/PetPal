@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import PropTypes from 'prop-types';
 import { Button, Form, Image, Segment, TransitionablePortal } from 'semantic-ui-react';
 import PetCard from '../components/PetCard';
@@ -25,7 +25,7 @@ function ListPets({
 
 function ListPets() {
 
-  const [openFilter, setOpenFilter] = useState(false);
+  // const [openFilter, setOpenFilter] = useState(false);
 
   const filterStyle = {
     position: 'fixed',
@@ -41,8 +41,8 @@ function ListPets() {
         <TransitionablePortal
           closeOnTriggerClick
           openOnTriggerClick
-          onOpen={() => setOpenFilter(true)}
-          onClose={() => setOpenFilter(false)}
+          onOpen={() => true}
+          onClose={() => false}
           trigger={
             <Button className='filter-button'>
               <span className='filter-text'>FILTER</span>
