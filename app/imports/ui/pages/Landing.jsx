@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap';
 
 /** A simple static component to render some text for the landing page. */
@@ -17,7 +17,7 @@ class Landing extends React.Component {
             </div>
             <div className="row pb-5 justify-content-center">
               <div className="col mb-5 text-center">
-                <Link to="#" class="stretched-link">VIEW PETS</Link>
+                <Link to="/listPets" class="stretched-link">VIEW PETS</Link>
               </div>
             </div>
           </div>
