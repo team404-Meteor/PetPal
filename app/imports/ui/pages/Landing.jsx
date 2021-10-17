@@ -1,40 +1,54 @@
 import React from 'react';
-import { Grid, Image } from 'semantic-ui-react';
-import PetCard from '../components/PetCard';
-
-const testPet = {
-  name: 'Foo',
-  breed: 'Baz',
-  age: '2 years old',
-  description: 'something something',
-  photos: 'test',
-  status: 'Available',
-  type: 'Dog',
-};
+import { withRouter, Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap';
 
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
 
   render() {
     return (
-      <Grid id='landing-page' verticalAlign='middle' textAlign='center' container>
+      <div className="container py-2 my-5 px-5">
+        <div className="row px-kg-5 px-lg-5 py-lg-5 my-lg-5">
+          <div className="col-md-3 col-8 text-center mx-auto text-center h-100 position-relative">
+            <div className="row pb-3 justify-content-center">
+              <div className="col mx-auto">
+                <img src="/images/home-dog.png" className="img-fluid"></img>
+              </div>
+            </div>
+            <div className="row pb-5 justify-content-center">
+              <div className="col mb-5 text-center">
+                <Link to="#" class="stretched-link">VIEW PETS</Link>
+              </div>
+            </div>
+          </div>
 
-        <Grid.Row>
-          <Grid.Column width={4}>
-            <Image size='small' circular src="/images/meteor-logo.png"/>
-          </Grid.Column>
+          <div className="col-md-3 col-7 text-center mx-auto text-center h-100 position-relative">
+            <div className="row pb-3 justify-content-center">
+              <div className="col mx-auto">
+                <img src="/images/home-cat.png" className="img-fluid"></img>
+              </div>
+            </div>
+            <div className="row pb-5 justify-content-center">
+              <div className="col mb-5 text-center">
+                <Link to="/add" class="stretched-link">LIST A PET</Link>
+              </div>
+            </div>
+          </div>
 
-          <Grid.Column width={8}>
-            <h1>Welcome to this template</h1>
-            <p>Now get to work and modify this app!</p>
-          </Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
-          <PetCard pet={testPet} />
-        </Grid.Row>
-
-      </Grid>
+          <div className="col-md-3 col-8 text-center mx-auto text-center h-100 position-relative">
+            <div className="row pb-3 justify-content-center">
+              <div className="col mx-auto">
+                <img src="/images/home-other.png" className="img-fluid"></img>
+              </div>
+            </div>
+            <div className="row pb-5 justify-content-center">
+              <div className="col text-center">
+                <Link to="#" class="stretched-link">LEARN MORE</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }
