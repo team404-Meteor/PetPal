@@ -25,7 +25,7 @@ function ListPets({
 
 function ListPets() {
 
-  const [openFilter, setOpenFilter] = useState(false);
+  // const [openFilter, setOpenFilter] = useState(false);
 
   const filterStyle = {
     position: 'fixed',
@@ -41,8 +41,8 @@ function ListPets() {
         <TransitionablePortal
           closeOnTriggerClick
           openOnTriggerClick
-          onOpen={() => setOpenFilter(true)}
-          onClose={() => setOpenFilter(false)}
+          onOpen={() => true}
+          onClose={() => false}
           trigger={
             <Button className='filter-button'>
               <span className='filter-text'>FILTER</span>
