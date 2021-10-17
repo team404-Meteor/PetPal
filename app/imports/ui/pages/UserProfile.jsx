@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Stuffs } from '../../api/stuff/Stuff';
+import { Pets } from '../../api/pet/Pet';
 import 'bootstrap/dist/css/bootstrap';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */

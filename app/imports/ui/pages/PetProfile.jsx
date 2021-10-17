@@ -1,19 +1,11 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Table, Header, Loader } from 'semantic-ui-react';
+import { Container, Table, Header, Loader, Grid } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Pets } from '../../api/pet/Pet';
-import StuffItem from '../components/StuffItem';
-import { Stuffs } from '../../api/stuff/Stuff';
 import { PetProfileCard } from "../components/PetProfileCard";
 import 'bootstrap/dist/css/bootstrap';
-
-
-
-
-
-
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class PetProfile extends React.Component {
@@ -31,27 +23,17 @@ class PetProfile extends React.Component {
           <div className="row px-lg-5 mx-lg-5">
             <div className="col-md-4 col-10 pb-5 mx-auto text-center">
               <div className="col-md-8 col-7 mx-auto pb-3">
-                <img src="images/placeholder-1.png"></img>
-              </div>
                 {this.props.pets.map((pet) => <PetProfileCard key={pet._id} pet={pet} />)}
+              </div>
             </div>
             <div className="col-md-8 col-12 py-5 px-5 rounded shadow overflow-auto scroll-style">
               Description<hr />
-              
-              <div className="row pb-5">
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-1.png"></img></a></div>
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-1.png"></img></a></div>
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-1.png"></img></a></div>
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-1.png"></img></a></div>
-              </div>
-                You currently have no listings. Add one <a href="#" className="d inline-block">here.</a><br/><br/>
-
-              Favorites<hr />
+                
+              Favorites<p />
               <div className="row">
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-2.png"></img></a></div>
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-2.png"></img></a></div>
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-2.png"></img></a></div>
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-2.png"></img></a></div>
+                <Grid colums={3} divided>
+                  {this.props.pets.map((pet) => <PetProfilePhotoCard key={pet._id} pet={pet} />)}
+                </Grid>
               </div>
             </div>
           </div>

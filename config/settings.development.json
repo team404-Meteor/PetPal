@@ -5,14 +5,25 @@
   ],
 
   "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
-  ],
-
-  "defaultPetData": [
-    {"petName": "Max and Minnie", "breed": "Chihuahua Mix", "age": "3 and 4 years old", "description": "This is their description", "photoUrl": "/images/meteor-logo.png", "status": "Available", "petType": "Dogs"},
-    {"petName": "Monroe ", "breed": "Catahoula Leopard Dog", "age": "5 years old", "description": "Monroe is a happy, healthy, playful boy. He just needs a bit of room to run and play, and someone who wants to play with him! He’s very active and loves to play fetch. Needs to be the only animal in the house, as he’s not too good with other animals, especially small dogs. Not aggressive, he just thinks small dogs are toys and gets overly-playful. Wonderful addition to our family, but original owner surrendered ownership and we cannot take him with us off island. Monroe knows lots of commands and tricks, and will do just about anything for a biscuit!", "photoUrl": "/images/meteor-logo.png", "status": "Available", "petType": "Dogs"}
+    {
+      "owner": "john@foo.com", 
+      "petName": "Max and Minnie", 
+      "breed": "Chihuahua Mix", 
+      "age": "3 and 4 years old", 
+      "description": "This is their description", 
+      "photoUrl": "/images/meteor-logo.png", 
+      "status": "Available", 
+      "petType": "Dog"
+    },
+    {
+      "owner": "john@foo.com", 
+      "petName": "Monroe ", 
+      "breed": "Catahoula Leopard Dog", 
+      "age": "5 years old", 
+      "description": "Monroe is a happy, healthy, playful boy. He just needs a bit of room to run and play, and someone who wants to play with him! He’s very active and loves to play fetch. Needs to be the only animal in the house, as he’s not too good with other animals, especially small dogs. Not aggressive, he just thinks small dogs are toys and gets overly-playful. Wonderful addition to our family, but original owner surrendered ownership and we cannot take him with us off island. Monroe knows lots of commands and tricks, and will do just about anything for a biscuit!", 
+      "photoUrl": "/images/Monroe.jpg", 
+      "status": "Available", 
+      "petType": "Dog"
+    }
   ]
 }
