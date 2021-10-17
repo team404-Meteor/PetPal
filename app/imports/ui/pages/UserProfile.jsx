@@ -7,7 +7,7 @@ import { Stuffs } from '../../api/stuff/Stuff';
 import 'bootstrap/dist/css/bootstrap';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class PetProfile extends React.Component {
+class UserProfile extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
@@ -52,7 +52,7 @@ class PetProfile extends React.Component {
 }
 
 // Require an array of Stuff documents in the props.
-PetProfile.propTypes = {
+UserProfile.propTypes = {
   stuffs: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -69,4 +69,4 @@ export default withTracker(() => {
     stuffs,
     ready,
   };
-})(PetProfile);
+})(UserProfile);
