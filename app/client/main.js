@@ -2,6 +2,9 @@ import '../imports/startup/client/Startup';
 import './style.css';
 import {$, jQuery} from 'meteor/jquery';
 
+/***********************************************
+ **************** Navbar Sidebar ***************
+ **********************************************/
 $(document).ready(function() {
 
     $('#navbarSideButton').on('click', function() {
@@ -15,4 +18,12 @@ $(document).ready(function() {
     });
   
   });
-  
+
+/***********************************************
+ **************** Navbar Sidebar ***************
+ **********************************************/
+ $(document).ready(function test_function() {
+  $('html, body').animate({
+    scrollTop: $("#divid").offset().top
+  }, 2000);
+});

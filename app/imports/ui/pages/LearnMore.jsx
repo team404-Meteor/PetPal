@@ -42,7 +42,7 @@ class Landing extends React.Component {
             </div>
             <div class="row pb-5 justify-content-center">
               <div class="col text-center">
-              <Link to="/learn" class="stretched-link">LEARN MORE</Link>
+              <Link to="#" class="stretched-link">LEARN MORE</Link>
               </div>
             </div>
           </div>

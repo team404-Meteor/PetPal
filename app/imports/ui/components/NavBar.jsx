@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap';
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
 class NavBar extends React.Component {
   render() {
-    const navStyle = { border: '0', boxShadow: 'none' };
+    const navStyle = { border: '0', boxShadow: 'none', zIndex: '100' };
     return (
       <nav className="navbar navbar-light bg-white shadow py-3 sticky-top">
         <a className="navbar-brand" href="#">
