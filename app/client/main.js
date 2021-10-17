@@ -22,8 +22,8 @@ $(document).ready(function() {
 /***********************************************
  **************** Navbar Sidebar ***************
  **********************************************/
- $(document).ready(function test_function() {
+ $("#theSolutionClick").click(function() {
   $('html, body').animate({
-    scrollTop: $("#divid").offset().top
+      scrollTop: $("learn#theSolution").offset().top
   }, 2000);
 });
