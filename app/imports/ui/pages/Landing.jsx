@@ -40,9 +40,9 @@ class Landing extends React.Component {
                 <img src="/images/home-other.png" className="img-fluid"></img>
               </div>
             </div>
-            <div class="row pb-5 justify-content-center">
-              <div class="col text-center">
-              <Link to="/learn" class="stretched-link">LEARN MORE</Link>
+            <div className="row pb-5 justify-content-center">
+              <div className="col text-center">
+                <Link to="/learn" class="stretched-link">LEARN MORE</Link>
               </div>
             </div>
           </div>
