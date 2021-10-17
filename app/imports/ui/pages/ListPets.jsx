@@ -94,6 +94,9 @@ function ListPets() {
                   </div>
                 </div>
               </Form.Group>
+              <div align='center'>
+                <Button>APPLY</Button>
+              </div>
             </Form>
           </Segment>
         </TransitionablePortal>
