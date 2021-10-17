@@ -207,3 +207,26 @@ a {
 .paragraph{
   margin-top: 38px;
 }
+
+/************************************
+************ List Pets **************
+************************************/
+.btn-custom3, .btn-custom3:hover {
+    background-color:#ff8b94  !important;
+    border-radius: 25px !important;
+    background-image: none !important;
+    width: 100px !important;
+}
+
+label {
+    font-weight: lighter !important;
+    line-height: 8pt;
+}
+
+.bold {
+    font-weight: 600 !important;
+}
+
+.ui.checkbox {
+    padding-left: 0px !important;
+}

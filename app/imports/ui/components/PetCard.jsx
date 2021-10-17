@@ -12,10 +12,10 @@ function PetCard({
         <div className="pet-image">
           <Image size="medium" circular src={photoUrl}/>
         </div>
-        <div className="pet-overview">
+        <div className="pet-overview pt-2">
           <h2>{name}</h2>
-          <h3>{breed}</h3>
-          <h3>{age}</h3>
+          {breed}<br/>
+          {age}
         </div>
       </Card.Content>
     </Card>

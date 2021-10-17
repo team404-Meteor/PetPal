@@ -29,15 +29,32 @@ function ListPets() {
 
   const filterStyle = {
     position: 'fixed',
-    top: '15%',
-    left: '20%',
-    zIndex: 1000,
-    borderRadius: '25px',
+    marginTop:'-275px',
+    marginRight:'auto',
+    marginBottom:'0',
+    marginLeft:'-195px',
+    width: '400px',
+    top: '50%',
+    left: '50%',
+    zIndex: '2000',
   };
+
+  const formStyle = {
+    paddingTop: '25px',
+    paddingLeft: '25px',
+    paddingRight: '25px',
+    paddingBottom: '10px',
+    fontSize: '12pt',
+    color: '#5f5f5f',
+    letterSpacing: '2px',
+    align: 'center',
+  };
+
+  const rowStyle = { backgroundColor: '#e7e7e7', width: '100%', top: '88px', zIndex: '1' };
 
   return (
     <div>
-      <nav className='navbar navbar-light pet-filter'>
+      <nav className='navbar navbar-light pet-filter sticky-top' style={rowStyle}>
         <TransitionablePortal
           closeOnTriggerClick
           openOnTriggerClick
@@ -53,10 +70,10 @@ function ListPets() {
           <Segment
             style={filterStyle}
           >
-            <Form>
+            <Form style={formStyle}>
               <Form.Group grouped>
-                <label>Pet Type</label>
-                <div className='row'>
+                <label className="bold">Pet Type</label>
+                <div className='row pb-1'>
                   <div className='col-4'>
                     <Form.Checkbox label='Dog'/>
                     <Form.Checkbox label='Dog'/>
@@ -72,19 +89,19 @@ function ListPets() {
                 </div>
               </Form.Group>
               <Form.Group grouped>
-                <label>Age</label>
+                <label className="bold pt-1">Age</label>
                 <Form.Field label='Less than 1 year' control='input' type='checkbox'/>
                 <Form.Field label='Less than 1 year' control='input' type='checkbox'/>
                 <Form.Field label='Less than 1 year' control='input' type='checkbox'/>
               </Form.Group>
               <Form.Group grouped>
-                <label>Size</label>
+                <label className="bold pt-1">Size</label>
                 <Form.Field label='Less than 1 year' control='input' type='checkbox'/>
                 <Form.Field label='Less than 1 year' control='input' type='checkbox'/>
                 <Form.Field label='Less than 1 year' control='input' type='checkbox'/>
               </Form.Group>
               <Form.Group grouped>
-                <label>Gender</label>
+                <label className="bold pt-1">Gender</label>
                 <div className='row'>
                   <div className='col'>
                     <Form.Checkbox label='Male'/>
@@ -95,7 +112,7 @@ function ListPets() {
                 </div>
               </Form.Group>
               <div align='center'>
-                <Button>APPLY</Button>
+                <Button className="btn-custom3">APPLY</Button>
               </div>
             </Form>
           </Segment>
@@ -105,7 +122,7 @@ function ListPets() {
         <div className='row'>
           {
             petArray.map((value, index) => (
-              <div key={index} className='col-sm-6 col-md-4' align='center'>
+              <div key={index} className='col-sm-6 col-md-4 pb-3 card-style' align='center'>
                 <PetCard pet={{ name: value.name, breed: value.breed, age: value.age, photoUrl: value.photoUrl }}/>
               </div>
             ))
