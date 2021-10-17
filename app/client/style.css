@@ -186,17 +186,23 @@ a {
     }
 }
 
-#salmon-pink-text{
-  color: #ffaaa5 !important;
+#signup-page{
+  margin-top: 200px;
 }
 
-#signin-background{
+#signin-page{
+  margin-top: 200px;
+}
+
+#salmon-pink-text{
+  color: #ff8b94 !important;
+}
+
+
+#segment-background{
   background-color: #dcedc1 !important;
 }
 
-#signup-background{
-  background-color: #ffd3b6;
-}
 
 .paragraph{
   margin-top: 38px;

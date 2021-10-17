@@ -50,7 +50,7 @@ export default class Signin extends React.Component {
                 Login to your account
             </Header>
             <Form onSubmit={this.submit} >
-              <Segment id={'signin-background'} textAlign="center" style={square} circular>
+              <Segment id={'segment-background'} textAlign="center" style={square} circular>
                 <Form.Input
                   size={'huge'}
                   label="Email"

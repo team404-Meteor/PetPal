@@ -47,7 +47,7 @@ class Signup extends React.Component {
                 Register your account
             </Header>
             <Form onSubmit={this.submit}>
-              <Segment circular centered fluid style={square} textAlign={'center'} id={'signup-background'}>
+              <Segment circular centered fluid style={square} textAlign={'center'} id={'segment-background'}>
                 <Form.Input
                   size={'huge'}
                   label="Email"
@@ -72,7 +72,7 @@ class Signup extends React.Component {
                 />
                 <Button className={'btn-custom'} id="signup-form-submit" content="Submit"/>
                 <p className={'paragraph'}>
-                    Already have an account? Login <Link to="/signin" id={'salmon-pink-text'}>HERE</Link>
+                    Already have an account? Login <Link id={'salmon-pink-text'} to="/signin"><u>HERE</u></Link>
                 </p>
               </Segment>
             </Form>
