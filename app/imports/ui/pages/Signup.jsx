@@ -43,7 +43,7 @@ class Signup extends React.Component {
       
       <div className="container-fluid">
         <div className="row justify-content-center">
-          <div className="col-lg-3 col-10 mt-5 px-5 py-3 rounded card text-center">
+          <div className="col-lg-3 col-10 mt-5 px-5 py-3 rounded shadow text-center">
             <div className="row justify-content-center">
               <div className="col-lg-5 col-5 text-center">
                 <img src="/images/signin-signup.png"></img>
