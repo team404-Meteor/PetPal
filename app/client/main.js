@@ -1,18 +1,17 @@
 import '../imports/startup/client/Startup';
 import './style.css';
-import {$, jQuery} from 'meteor/jquery';
+import { $, jQuery } from 'meteor/jquery';
 
-$(document).ready(function() {
+$(document).ready(function () {
 
-    $('#navbarSideButton').on('click', function() {
-      $('#navbarSide').addClass('reveal');
-      $('.overlay').show();
-    });
-  
-    $('.overlay').on('click', function(){
-      $('#navbarSide').removeClass('reveal');
-      $('.overlay').hide();
-    });
-  
+  $('#navbarSideButton').on('click', function () {
+    $('#navbarSide').addClass('reveal');
+    $('.overlay').show();
   });
-  
+
+  $('.overlay').on('click', function () {
+    $('#navbarSide').removeClass('reveal');
+    $('.overlay').hide();
+  });
+
+});

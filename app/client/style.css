@@ -1,9 +1,49 @@
 /************************************
+************** Pet Card ***************
+************************************/
+
+.pet-card {
+  border: none;
+  margin: 0rem 1rem !important;
+  box-shadow: none !important;
+  text-align: center;
+  height: 100%;
+}
+
+div.pet-overview > * {
+  margin: 0em 1em;
+}
+
+
+
+/************************************
+************** Filter ***************
+************************************/
+
+.pet-filter {
+  background-color: #e7e7e7;
+  padding: 1rem;
+}
+
+.ui.button.filter-button {
+  background: #e7e7e7 none;
+}
+
+.filter-text {
+  margin-right: 0.8rem;
+}
+
+
+/************************************
 ************** NavBar ***************
 ************************************/
 
 html {
     font-size: 62.5%;
+}
+
+.navbar-top {
+  margin-bottom: 0;
 }
 
 .navbar-side {
