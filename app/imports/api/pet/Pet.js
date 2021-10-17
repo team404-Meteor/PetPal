@@ -1,6 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
+import { ImageField } from 'uniforms-semantic';
 
 /**
  * The PetCollection. It encapsulates state and variable values for stuff.
@@ -41,11 +42,8 @@ class PetCollection {
         type: String,
       },
       status: {
-        type: String,
-        allowedValues: [
-          'Available',
-          'Adopted',
-        ],
+        type: Boolean,
+        defaultValue: true,
       },
       petType: {
         type: String,
@@ -73,9 +71,20 @@ class PetCollection {
       },
       'personality.$': {
         type: String, allowedValues: [
-          'a',
-          'b',
-          'c',
+          'Enjoys games of fetch',
+          'Enjoys long walks, runs and hikes',
+          'Friendly',
+          'Laid back',
+          'Has lots of energy',
+          'Loves naps',
+          'Loves toys',
+          'Loves treats',
+          'Playful',
+          'Potty trained',
+          'Shy',
+          'Smart',
+          'Sociable with other animals',
+          'Great with kids',
         ],
       },
 
