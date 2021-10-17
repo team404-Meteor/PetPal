@@ -38,11 +38,60 @@ export default class Signin extends React.Component {
     const { from } = this.props.location.state || { from: { pathname: '/' } };
     // if correct authentication, redirect to page instead of login screen
     if (this.state.redirectToReferer) {
-      return <Redirect to={from}/>;
+      return <Redirect to={from} />;
     }
     const square = { width: 360, height: 360 };
     // Otherwise return the Login form.
     return (
+      <div className="container-fluid pb-5">
+        <div className="row justify-content-center">
+          <div className="col-lg-3 col-10 mt-5 px-5 py-3 rounded card text-center">
+            <div className="row justify-content-center">
+              <div className="col-lg-5 col-5 text-center">
+                <img src="/images/signin-signup.png"></img>
+              </div>
+              <div className="col-12 text-center pt-3">
+                <h1>Sign In</h1>
+                <hr />
+              </div>
+              <Form onSubmit={this.submit} >
+                <div className="form">
+                  <div className="col-12 text-left pt-3">
+                    <label>Email</label>
+                    <Form.Input className="form-control py-3 mt-1 text-input"
+                      id="signin-form-email"
+                      name="email"
+                      type="email"
+                      onChange={this.handleChange} />
+                  </div>
+                  <div className="col-12 text-left pt-3">
+                    <label>Password</label>
+                    <Form.Input className="form-control py-3 mt-1 text-input"
+                      id="signin-form-password"
+                      name="password"
+                      type="password"
+                      onChange={this.handleChange} />
+                    <p className="caption">Need to create an account? Sign up <Link to="/signup">here.</Link></p>
+                  </div>
+                  <div className="col-12 text-center pt-3">
+                    <button className="btn btn-custom">Submit</button>
+                  </div>
+                </div>
+              </Form>
+              {this.state.error === '' ? (
+                ''
+              ) : (
+                <Message
+                  error
+                  header="Login was not successful"
+                  content={this.state.error}
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+      /*
       <Container id="signin-page">
         <Grid textAlign="center" verticalAlign="middle" centered columns={3}>
           <Grid.Column>
@@ -91,7 +140,7 @@ export default class Signin extends React.Component {
             )}
           </Grid.Column>
         </Grid>
-      </Container>
+      </Container>*/
     );
   }
 }
