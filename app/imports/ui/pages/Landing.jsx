@@ -8,7 +8,7 @@ class Landing extends React.Component {
   render() {
     return (
       <div className="container py-2 my-5 px-5">
-        <div className="row px-kg-5 px-lg-5 py-lg-5 my-lg-5">
+        <div className="row px-lg-5 px-lg-5 py-lg-5 my-lg-5">
           <div className="col-md-3 col-8 text-center mx-auto text-center h-100 position-relative">
             <div className="row pb-3 justify-content-center">
               <div className="col mx-auto">
