@@ -82,7 +82,7 @@ class AddPet extends React.Component {
                       <TextField name='petName' />
                     </div>
                     <div class="col-lg-6 col-12 text-left pl-2">
-                      <SelectField name='petType' class="custom-select w-100"  />
+                      <SelectField name='petType' class="custom-select w-100" />
                     </div>
                   </div>
                   <div class="row pt-3 justify-content-center mx-auto">
@@ -103,12 +103,13 @@ class AddPet extends React.Component {
                       <TextField name='photoUrl' />
                     </div>
                     <div class="col-lg-6 col-12 text-left pl-2">
-                        <SelectField name="status" class="custom-select w-100"  />
+                      <SelectField name="status" class="custom-select w-100" />
                     </div>
                   </div>
                   <div class="row pt-3 justify-content-center mx-auto">
                     <div class="col-12 text-left my-auto text-center">
                       <SubmitField value='Submit' className="btn btn-custom" />
+                      <ErrorsField />
                     </div>
                   </div>
                 </div>
