@@ -55,20 +55,20 @@ class Signup extends React.Component {
                 <div className="form">
                   <div className="col-12 text-left pt-3">
                     <label>Email</label>
-                    <Form.Input
+                    <Form.Input 
                       id="signin-form-email"
                       name="email"
                       type="email"
-                      onChange={this.handleChange} ><input className="form-control py-3 mt-1 text-input"/></Form.Input>
+                      onChange={this.handleChange} ><input className="form-control mt-1 py-3 text-input"/></Form.Input>
                   </div>
                   <div className="col-12 text-left pt-3">
                     <label>Password</label>
-                    <Form.Input
+                    <Form.Input 
                       id="signin-form-password"
                       name="password"
                       type="password"
-                      onChange={this.handleChange} ><input className="form-control py-3 mt-1 text-input"/></Form.Input>
-                    <p className="caption">Need to create an account? Sign up <Link to="/signup">here.</Link></p>
+                      onChange={this.handleChange} ><input className="form-control mt-1 py-3 text-input"/></Form.Input>
+                    <p className="caption">Already have an account? Sign in <Link to="/signin">here.</Link></p>
                   </div>
                   <div className="col-12 text-center pt-3">
                     <button className="btn btn-custom">Submit</button>
