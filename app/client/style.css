@@ -253,3 +253,6 @@ input[type="text"] {
 .ui.form .field > .selection.dropdown {
     width: auto !important;
 }
+.ui.form .field.error .ui.dropdown {
+    width: 100% !important;
+}
