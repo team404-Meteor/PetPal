@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Segment, Header } from 'semantic-ui-react';
+import { Grid, Segment, Header, Input } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
@@ -67,6 +67,56 @@ class AddPet extends React.Component {
   render() {
     let fRef = null;
     return (
+      <div className="container-fluid pt-5 mt-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-5 col-11 card rounded shadow px-3 py-3">
+            <div class="row justify-content-center">
+              <div class="col-11 pt-3 text-center">
+                <h1>Add a Pet</h1>
+                <hr />
+              </div>
+              <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
+                <div class="col-11 pt-1 text-center mx-auto">
+                  <div class="row justify-content-center mx-auto">
+                    <div class="col-lg-6 col-12 text-left pl-2">
+                      <TextField name='petName' />
+                    </div>
+                    <div class="col-lg-6 col-12 text-left pl-2">
+                      <SelectField name='petType' class="custom-select w-100"  />
+                    </div>
+                  </div>
+                  <div class="row pt-3 justify-content-center mx-auto">
+                    <div class="col-6 text-left pl-2">
+                      <TextField name='breed' />
+                    </div>
+                    <div class="col-6 text-left pl-2">
+                      <TextField name='age' />
+                    </div>
+                  </div>
+                  <div class="row pt-3 justify-content-center mx-auto">
+                    <div class="col-12 text-left pl-2">
+                      <TextField name='description' />
+                    </div>
+                  </div>
+                  <div class="row pt-3 justify-content-center mx-auto">
+                    <div class="col-lg-6 col-12 text-left pl-2">
+                      <TextField name='photoUrl' />
+                    </div>
+                    <div class="col-lg-6 col-12 text-left pl-2">
+                        <SelectField name="status" class="custom-select w-100"  />
+                    </div>
+                  </div>
+                  <div class="row pt-3 justify-content-center mx-auto">
+                    <div class="col-12 text-left my-auto text-center">
+                      <SubmitField value='Submit' className="btn btn-custom" />
+                    </div>
+                  </div>
+                </div>
+              </AutoForm>
+            </div>
+          </div>
+        </div>
+        {/*
       <Grid container centered>
         <Grid.Column>
           <Header as="h2" textAlign="center">Add Pet</Header>
@@ -84,7 +134,8 @@ class AddPet extends React.Component {
             </Segment>
           </AutoForm>
         </Grid.Column>
-      </Grid>
+      </Grid>*/}
+      </div>
     );
   }
 }
