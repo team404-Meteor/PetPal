@@ -1,9 +1,11 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Loader } from 'semantic-ui-react';
+import { useParams } from 'react-router';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Stuffs } from '../../api/stuff/Stuff';
+import { Pets } from '../../api/pet/Pet';
+import { petPhotoUrl as petPhotos } from '../../api/pet/PetPhotoUrl';
 import 'bootstrap/dist/css/bootstrap';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
@@ -11,7 +13,8 @@ class UserProfile extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+      const { photoUrlReady, photoUrlExists} = this.props;
+      return ( photoUrlReady && photoUrlExists )  ? this.renderPage() : <Loader active>Getting data...</Loader>;
   }
 
   // Render the page once subscriptions have been received.
@@ -24,18 +27,18 @@ class UserProfile extends React.Component {
               <div className="col-md-8 col-7 mx-auto pb-3">
                 <img src="images/placeholder-1.png"></img>
               </div>
-              <h3>Username</h3>
+              <h3></h3>
             </div>
             <div className="col-md-8 col-12 py-5 px-5 rounded shadow overflow-auto scroll-style">
               Listings<hr />
               <div className="row pb-5">
+              <img src={photoUrlExists ? photoUrlListing.photoUrl : ''} fluid rounded/>
                 <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-1.png"></img></a></div>
                 <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-1.png"></img></a></div>
                 <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-1.png"></img></a></div>
                 <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-1.png"></img></a></div>
               </div>
                 You currently have no listings. Add one <a href="#" className="d inline-block">here.</a><br/><br/>
-
               Favorites<hr />
               <div className="row">
                 <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-2.png"></img></a></div>
@@ -53,20 +56,30 @@ class UserProfile extends React.Component {
 
 // Require an array of Stuff documents in the props.
 UserProfile.propTypes = {
-  stuffs: PropTypes.array.isRequired,
+  owner: PropTypes.string,
+  pets: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
+  photoUrlListing: PropTypes.object,
+  photoUrlExists: PropTypes.bool,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Stuffs.userPublicationName);
+  const subscription = Meteor.subscribe(Pets.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents
-  const stuffs = Stuffs.collection.find({}).fetch();
+  const pets = Pets.collection.find({}).fetch();
+  
+  const { owner } = useParams();
+  const photoUrlListing = petPhotos.getAllPetsPhotoUrl(owner);
+  const photoUrlExists = petPhotos.recordExists(owner);
+
   return {
-    stuffs,
+    pets,
     ready,
+    photoUrlListing,
+    photoUrlExists,
   };
 })(UserProfile);

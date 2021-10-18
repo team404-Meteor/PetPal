@@ -24,11 +24,8 @@ const formSchema = new SimpleSchema({
     type: String,
   },
   status: {
-    type: String,
-    allowedValues: [
-      'Available',
-      'Adopted',
-    ],
+    type: Boolean,
+    defaultValue: true,
   },
   petType: {
     type: String,
@@ -98,11 +95,8 @@ class AddPet extends React.Component {
                     </div>
                   </div>
                   <div class="row pt-3 justify-content-center mx-auto">
-                    <div class="col-lg-6 col-12 text-left pl-2">
+                    <div class="col-lg-12 col-12 text-left pl-2">
                       <TextField name='photoUrl' />
-                    </div>
-                    <div class="col-lg-6 col-12 text-left pl-2">
-                      <SelectField name="status" class="custom-select w-100" />
                     </div>
                   </div>
                   <div class="row pt-3 justify-content-center mx-auto">
