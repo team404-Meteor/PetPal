@@ -1,7 +1,6 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
+// import { Meteor } from 'meteor/meteor';
 // import PropTypes from 'prop-types';
-import emailjs from 'emailjs-com';
 import { Button, Form, Image, Segment, TransitionablePortal } from 'semantic-ui-react';
 import PetCard from '../components/PetCard';
 
@@ -55,23 +54,8 @@ function ListPets() {
   const rowStyle = { backgroundColor: '#e7e7e7', width: '100%', top: '88px', zIndex: '1' };
 
   const sendEmail = () => {
-    // const { templateID, serviceID } = Meteor.settings.monti;
 
-    Meteor.call('getEmailKey', (e, value) => {
-      const { serviceID, templateID, userID } = value;
-
-      const emailParams = {
-        name: 'Joe',
-        email: 'rexterds@gmail.com',
-      };
-
-      emailjs.send(serviceID, templateID, emailParams, userID)
-        .then((result) => {
-          console.log(result.text);
-        }, (error) => {
-          console.log(error.text);
-        });
-    });
+    // Meteor.call('sendEmail', '');
   };
 
   return (
