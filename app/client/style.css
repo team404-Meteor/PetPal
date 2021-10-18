@@ -249,10 +249,3 @@ label {
 input[type="text"] {
     height: 38px !important;
 }
-
-.ui.form .field > .selection.dropdown {
-    width: auto !important;
-}
-.ui.form .field.error .ui.dropdown {
-    width: 100% !important;
-}

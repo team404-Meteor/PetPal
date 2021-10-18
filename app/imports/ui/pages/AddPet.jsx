@@ -75,23 +75,23 @@ class AddPet extends React.Component {
                 <div class="col-11 pt-1 text-center mx-auto">
                   <div class="row justify-content-center mx-auto">
                     <div class="col-lg-6 col-12 text-left pl-2">
-                      <TextField name='petName' class="custom-select w-100"/>
+                      <TextField name='petName' />
                     </div>
                     <div class="col-lg-6 col-12 text-left pl-2">
-                      <SelectField name='petType' class="custom-select w-100" placeholder={' '}/>
+                      <SelectField name='petType' placeholder={' '}/>
                     </div>
                   </div>
                   <div class="row pt-3 justify-content-center mx-auto">
                     <div class="col-6 text-left pl-2">
-                      <TextField name='breed' class="custom-select w-100"/>
+                      <TextField name='breed' />
                     </div>
                     <div class="col-6 text-left pl-2">
-                      <TextField name='age' class="custom-select w-100"/>
+                      <TextField name='age' />
                     </div>
                   </div>
                   <div class="row pt-3 justify-content-center mx-auto">
                     <div class="col-12 text-left pl-2">
-                      <LongTextField name='description' class="custom-select w-100"/>
+                      <LongTextField name='description' />
                     </div>
                   </div>
                   <div class="row pt-3 justify-content-center mx-auto">
@@ -101,7 +101,7 @@ class AddPet extends React.Component {
                   </div>
                   <div className="row pt-3 justify-content-center mx-auto">
                     <div className="col-lg-6 col-12 text-left pl-2">
-                      <HiddenField name="status" class="custom-select w-100"/>
+                      <HiddenField name="status" />
                     </div>
                   </div>
                   <div class="row pt-3 justify-content-center mx-auto">
