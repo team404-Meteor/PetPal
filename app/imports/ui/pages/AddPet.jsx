@@ -78,7 +78,7 @@ class AddPet extends React.Component {
                       <TextField name='petName' class="custom-select w-100"/>
                     </div>
                     <div class="col-lg-6 col-12 text-left pl-2">
-                      <SelectField name='petType' class="custom-select w-100" placeholderText=''/>
+                      <SelectField name='petType' class="custom-select w-100" placeholder={' '}/>
                     </div>
                   </div>
                   <div class="row pt-3 justify-content-center mx-auto">
