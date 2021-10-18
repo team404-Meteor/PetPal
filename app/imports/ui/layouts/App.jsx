@@ -9,7 +9,6 @@ import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import Learn from '../pages/Learn';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
-import AddStuff from '../pages/AddStuff';
 import AddPet from '../pages/AddPet';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
