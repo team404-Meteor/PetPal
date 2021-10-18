@@ -57,6 +57,7 @@ html {
     list-style: none;
     background-color: #fff;
     overflow-y: scroll;
+    z-index: 5000;
 }
 
 @media (min-width: 320px) {
