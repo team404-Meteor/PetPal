@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
-import { Container, Form, Grid, Header, Message, Segment, Button } from 'semantic-ui-react';
+import { Form, Message } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
 
 /**
@@ -38,7 +38,6 @@ class Signup extends React.Component {
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
     }
-    const square = { width: 360, height: 360 };
     return (
       
       <div className="container-fluid">

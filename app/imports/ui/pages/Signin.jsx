@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
-import { Container, Form, Grid, Header, Message, Segment, Button } from 'semantic-ui-react';
+import { Form, Message } from 'semantic-ui-react';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -40,7 +40,6 @@ export default class Signin extends React.Component {
     if (this.state.redirectToReferer) {
       return <Redirect to={from} />;
     }
-    const square = { width: 360, height: 360 };
     // Otherwise return the Login form.
     return (
       <div className="container-fluid pb-5">
@@ -48,7 +47,7 @@ export default class Signin extends React.Component {
           <div className="col-lg-3 col-10 mt-5 px-5 py-3 rounded shadow text-center">
             <div className="row justify-content-center">
               <div className="col-lg-5 col-5 text-center">
-                <img src="/images/signin-signup.png"></img>
+                <img src="/images/signin-signup.png" alt={'paw logo'}/>
               </div>
               <div className="col-12 text-center pt-3">
                 <h1>Sign In</h1>
@@ -91,56 +90,6 @@ export default class Signin extends React.Component {
           </div>
         </div>
       </div>
-      /*
-      <Container id="signin-page">
-        <Grid textAlign="center" verticalAlign="middle" centered columns={3}>
-          <Grid.Column>
-            <Header as="h2" textAlign="center">
-                Login to your account
-            </Header>
-            <Form onSubmit={this.submit} >
-              <Segment id={'segment-background'} textAlign="center" style={square} circular>
-                <Form.Input
-                  size={'huge'}
-                  label="Email"
-                  id="signin-form-email"
-                  icon="user"
-                  iconPosition="left"
-                  name="email"
-                  type="email"
-                  placeholder="E-mail address"
-                  onChange={this.handleChange}
-                />
-                <Form.Input
-                  size={'huge'}
-                  label="Password"
-                  id="signin-form-password"
-                  icon="lock"
-                  iconPosition="left"
-                  name="password"
-                  placeholder="Password"
-                  type="password"
-                  onChange={this.handleChange}
-                />
-                <Button className={'btn-custom'}>Submit</Button>
-                <p className={'paragraph'}>
-                  Click <Link id={'salmon-pink-text'} to="/signup"><u>HERE</u></Link> to Register
-                </p>
-              </Segment>
-            </Form>
-
-            {this.state.error === '' ? (
-              ''
-            ) : (
-              <Message
-                error
-                header="Login was not successful"
-                content={this.state.error}
-              />
-            )}
-          </Grid.Column>
-        </Grid>
-      </Container>*/
     );
   }
 }

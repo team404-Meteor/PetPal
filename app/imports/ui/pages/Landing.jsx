@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap';
 
+// test
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
 
@@ -17,7 +18,7 @@ class Landing extends React.Component {
             </div>
             <div className="row pb-5 justify-content-center">
               <div className="col mb-5 text-center">
-                <Link to="/listPets" class="stretched-link">VIEW PETS</Link>
+                <Link to="/listPets" className="stretched-link">VIEW PETS</Link>
               </div>
             </div>
           </div>
@@ -43,7 +44,7 @@ class Landing extends React.Component {
             </div>
             <div className="row pb-5 justify-content-center">
               <div className="col text-center">
-                <Link to="/learn" class="stretched-link">LEARN MORE</Link>
+                <Link to="/learn" className="stretched-link">LEARN MORE</Link>
               </div>
             </div>
           </div>

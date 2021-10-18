@@ -1,4 +1,5 @@
 import React from 'react';
+// import { Meteor } from 'meteor/meteor';
 // import PropTypes from 'prop-types';
 import { Button, Form, Image, Segment, TransitionablePortal } from 'semantic-ui-react';
 import PetCard from '../components/PetCard';
@@ -29,10 +30,10 @@ function ListPets() {
 
   const filterStyle = {
     position: 'fixed',
-    marginTop:'-270px',
-    marginRight:'auto',
-    marginBottom:'0',
-    marginLeft:'-190px',
+    marginTop: '-270px',
+    marginRight: 'auto',
+    marginBottom: '0',
+    marginLeft: '-190px',
     width: '380px',
     top: '50%',
     left: '50%',
@@ -51,6 +52,11 @@ function ListPets() {
   };
 
   const rowStyle = { backgroundColor: '#e7e7e7', width: '100%', top: '88px', zIndex: '1' };
+
+  const sendEmail = () => {
+
+    // Meteor.call('sendEmail', '');
+  };
 
   return (
     <div>
@@ -117,6 +123,7 @@ function ListPets() {
             </Form>
           </Segment>
         </TransitionablePortal>
+        <Button onClick={sendEmail}>TEST EMAIL</Button>
       </nav>
       <div className='container pet-listing px-3'>
         <div className='row px-5 py-5'>
