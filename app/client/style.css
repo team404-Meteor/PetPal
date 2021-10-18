@@ -213,6 +213,7 @@ a {
 .paragraph {
     margin-top: 38px;
 }
+
 /************************************
 ************ List Pets **************
 ************************************/
@@ -226,7 +227,7 @@ a {
 
 label {
     font-weight: lighter !important;
-    line-height: 8pt;
+    line-height: 12pt !important;
 }
 
 .bold {
@@ -245,10 +246,10 @@ label {
     background-color: #fff;
 }
 
-/************************************
-************ Add Pets **************
-************************************/
+input[type="text"] {
+    height: 38px !important;
+}
 
-#txt-field{
-  height: 38px;
+.ui.form .field > .selection.dropdown {
+    width: auto !important;
 }
