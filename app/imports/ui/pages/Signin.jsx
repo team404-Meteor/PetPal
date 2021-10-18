@@ -58,19 +58,19 @@ export default class Signin extends React.Component {
                 <div className="form">
                   <div className="col-12 text-left pt-3">
                     <label>Email</label>
-                    <Form.Input className="form-control py-3 mt-1 text-input"
+                    <Form.Input
                       id="signin-form-email"
                       name="email"
                       type="email"
-                      onChange={this.handleChange} />
+                      onChange={this.handleChange} ><input className="form-control py-3 mt-1 text-input"/></Form.Input>
                   </div>
                   <div className="col-12 text-left pt-3">
                     <label>Password</label>
-                    <Form.Input className="form-control py-3 mt-1 text-input"
+                    <Form.Input
                       id="signin-form-password"
                       name="password"
                       type="password"
-                      onChange={this.handleChange} />
+                      onChange={this.handleChange} ><input className="form-control py-3 mt-1 text-input"/></Form.Input>
                     <p className="caption">Need to create an account? Sign up <Link to="/signup">here.</Link></p>
                   </div>
                   <div className="col-12 text-center pt-3">
