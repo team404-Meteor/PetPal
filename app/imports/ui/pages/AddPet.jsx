@@ -107,7 +107,7 @@ class AddPet extends React.Component {
               <div className="row">
                 <div className="col">
                   <label>Name</label>
-                  <TextField name='petName' className="py-3 mt-1" placeholder="Pet's name" label=''/>
+                  <TextField id={'txt-field'} name='petName' className="mr-sm-2 w-100" placeholder="Pet's name" label=''/>
                 </div>
                 <div className="col">
                   <div className="row">
@@ -123,13 +123,13 @@ class AddPet extends React.Component {
               <div className="row pt-3">
                 <div className="col-lg-5 col-12">
                   <label>Breed</label>
-                  <TextField name='breed' className="py-3 mt-1" placeholder="Breed name" label=''/>
+                  <TextField id={'txt-field'} name='breed' className="mr-sm-2 w-100" placeholder="Breed name" label=''/>
                 </div>
-                <div className="col-lg-7 col-12">
+                <div className="col-lg-7 col-12 pt-3">
                   <label>Age</label>
                   <div className="row">
                     <div className="col-4">
-                      <NumField name='age' className="py-3 mt-1" placeholder="Age" min={0} label=''/>
+                      <NumField id={'txt-field'} name='age' className="mr-sm-2 w-100" placeholder="Age" min={0} label=''/>
                     </div>
                     <div className="col-8">
                       <SelectField name='timeFrame' className="custom-select mr-sm-2 w-100" id="inlineFormCustomSelectPref" label='' placeholder="weeks/months/years"/>
@@ -137,12 +137,12 @@ class AddPet extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="row pt-3 px-2">
+              <div className="row pt-4">
                 <label>Pet Description</label>
-                <LongTextField name='description' className="py-3 mt-1" placeholder="" label=''/>
+                <LongTextField name='description' className="mt-1" placeholder="" label=''/>
               </div>
-              <div className="row py-3">
-                <label className="pb-3">Personality</label>
+              <div className="row pt-3">
+                <label className="pb-0">Personality</label>
               </div>
               <MultiSelectField name='personality' label=''/>
               <div className="row pt-3">

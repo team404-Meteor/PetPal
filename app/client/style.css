@@ -244,3 +244,11 @@ label {
     border-bottom-style: 0.5px solid #5f5f5f !important;
     background-color: #fff;
 }
+
+/************************************
+************ Add Pets **************
+************************************/
+
+#txt-field{
+  height: 38px;
+}
