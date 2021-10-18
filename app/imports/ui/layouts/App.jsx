@@ -15,6 +15,7 @@ import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
+import TestAddPet from '../pages/TestAddPet';
 import ListPets from '../pages/ListPets';
 import UserProfile from '../pages/UserProfile';
 
@@ -34,6 +35,7 @@ class App extends React.Component {
             <Route path="/listPets" component={ListPets}/>
             <ProtectedRoute path="/userProfile" component={UserProfile}/>
             <ProtectedRoute path="/add" component={AddPet}/>
+            <ProtectedRoute path="/testAdd" component={TestAddPet}/>
             <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
             <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
             <Route component={NotFound}/>

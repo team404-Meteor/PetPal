@@ -31,7 +31,7 @@ class Landing extends React.Component {
             </div>
             <div className="row pb-5 justify-content-center">
               <div className="col mb-5 text-center">
-                <Link to="/add" class="stretched-link">LIST A PET</Link>
+                <Link to="/testAdd" class="stretched-link">LIST A PET</Link>
               </div>
             </div>
           </div>
