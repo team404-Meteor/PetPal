@@ -1,18 +1,19 @@
-import { Meteor } from 'meteor/meteor';
-import { Stuffs } from '../../api/stuff/Stuff.js';
+import { Pets } from '../../api/pet/Pet.js';
 
 /* eslint-disable no-console */
 
 // Initialize the database with a default data document.
 function addData(data) {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
-  Stuffs.collection.insert(data);
+  console.log(`  Adding: ${data.petName} (${data.breed}, ${data.petType})`);
+  Pets.collection.insert(data);
 }
 
 // Initialize the StuffsCollection if empty.
-if (Stuffs.collection.find().count() === 0) {
-  if (Meteor.settings.defaultData) {
-    console.log('Creating default data.');
-    Meteor.settings.defaultData.map(data => addData(data));
-  }
+if (Pets.collection.find({}).count() === 0) {
+  console.log('Creating pet data.');
+
+  const filename = 'pets.json';
+  const petJson = JSON.parse(Assets.getText(filename));
+
+  petJson.petData.map(data => addData(data));
 }

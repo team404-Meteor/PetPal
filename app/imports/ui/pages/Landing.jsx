@@ -24,7 +24,7 @@ class Landing extends React.Component {
               </div>
             </div>
           </div>
-
+      
           <div className="col-lg-4 col-md-7 col-12 text-center">
             <div className="col-lg-8 col-md-12 col-7 text-center mx-auto text-center h-100 position-relative">
               <div className="row pb-3 justify-content-center">
