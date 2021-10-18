@@ -44,6 +44,7 @@ html {
 
 .navbar-top {
   margin-bottom: 0;
+  z-index: 2000;
 }
 
 .navbar-side {
@@ -57,7 +58,7 @@ html {
     list-style: none;
     background-color: #fff;
     overflow-y: scroll;
-    z-index: 5000;
+    z-index: 3000;
 }
 
 @media (min-width: 320px) {
@@ -134,7 +135,7 @@ a, .side-link:active, .side-link:hover {
     cursor: pointer;
     background-color: #5f5f5f;
     opacity: .6;
-    z-index: 990;
+    z-index: 2000;
 }
 
 /************************************
