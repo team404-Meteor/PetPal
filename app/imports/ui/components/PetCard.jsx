@@ -14,8 +14,8 @@ function PetCard({
         </div>
         <div className="pet-overview pt-2">
           <h2>{name}</h2>
-          {breed}<br/>
-          {age}
+          <p className="mb-0">{breed}</p>
+          <p>{age}</p>
         </div>
       </Card.Content>
     </Card>

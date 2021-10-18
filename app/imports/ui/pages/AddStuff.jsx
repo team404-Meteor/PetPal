@@ -41,9 +41,9 @@ class AddStuff extends React.Component {
   render() {
     let fRef = null;
     return (
-      <div className="container-fluid pb-5 mb-5">
+      <div className="container-fluid pb-5 mt-5 mb-5">
         <div className="row">
-          <div className="col-lg-6 col-10 rounded shadow mx-auto mt-lg-5 px-5 pt-5 pb-2">
+          <div className="col-lg-6 col-11 rounded shadow mx-auto mt-lg-5 px-5 pt-5 pb-2">
             <div className="row">
               <div className="col text-center">
                 <h2>Add a Listing</h2><hr />
@@ -77,7 +77,7 @@ class AddStuff extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div class="row pt-3">
+                <div class="row">
                   <div class="col-lg-5 col-12">
                     <label>Breed</label>
                     <input type="text" className="form-control py-3 mt-1" placeholder="Breed name" />
@@ -85,10 +85,10 @@ class AddStuff extends React.Component {
                   <div class="col-lg-7 col-12">
                     <label>Age</label>
                     <div class="row">
-                      <div class="col-8">
+                      <div class="col-7">
                         <input type="number" className="form-control py-3 mt-1" placeholder="Age" />
                       </div>
-                      <div class="col-4">
+                      <div class="col-5">
                         <select class="custom-select my-1 mr-sm-2 w-100" id="inlineFormCustomSelectPref" required>
                           <option selected>Choose...</option>
                           <option value="1">Week(s)</option>
@@ -100,21 +100,122 @@ class AddStuff extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div class="row pt-3 px-2">
+                <div class="row pt-3">
                   <label>Pet Description</label>
+                  </div>
+                <div class="row px-2">
                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
-                <div class="row py-3">
-                  <label className="pb-3">Personality</label>
-
+                <div class="row pt-4">
+                  <label className="">Personality</label>
+                  <div class="row scroll-style2">
+                    <div className="col-lg-4">
+                      <div class="form-check">
+                        <input class="form-check-input px-2" type="checkbox" value="" id="defaultCheck1" />
+                        <label class="form-check-label" for="defaultCheck1">
+                          Enjoys games of fetch
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input px-2" type="checkbox" value="" id="defaultCheck1" />
+                        <label class="form-check-label" for="defaultCheck1">
+                          Enjoys long walks
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input px-2" type="checkbox" value="" id="defaultCheck1" />
+                        <label class="form-check-label" for="defaultCheck1">
+                          Enjoys runs and hikes
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input px-2" type="checkbox" value="" id="defaultCheck1" />
+                        <label class="form-check-label" for="defaultCheck1">
+                          Friendly
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input px-2" type="checkbox" value="" id="defaultCheck1" />
+                        <label class="form-check-label" for="defaultCheck1">
+                          Laid back
+                        </label>
+                      </div>
+                    </div>
+                    <div className="col-lg-4">
+                      <div class="form-check">
+                        <input class="form-check-input px-2" type="checkbox" value="" id="defaultCheck1" />
+                        <label class="form-check-label" for="defaultCheck1">
+                          Loves naps
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input px-2" type="checkbox" value="" id="defaultCheck1" />
+                        <label class="form-check-label" for="defaultCheck1">
+                          Loves toys
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input px-2" type="checkbox" value="" id="defaultCheck1" />
+                        <label class="form-check-label" for="defaultCheck1">
+                          Loves treats
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input px-2" type="checkbox" value="" id="defaultCheck1" />
+                        <label class="form-check-label" for="defaultCheck1">
+                          Playful
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input px-2" type="checkbox" value="" id="defaultCheck1" />
+                        <label class="form-check-label" for="defaultCheck1">
+                          Potty trained
+                        </label>
+                      </div>
+                    </div>
+                    <div className="col-lg-4">
+                      <div class="form-check">
+                        <input class="form-check-input px-2" type="checkbox" value="" id="defaultCheck1" />
+                        <label class="form-check-label" for="defaultCheck1">
+                          Shy
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input px-2" type="checkbox" value="" id="defaultCheck1" />
+                        <label class="form-check-label" for="defaultCheck1">
+                          Smart
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input px-2" type="checkbox" value="" id="defaultCheck1" />
+                        <label class="form-check-label" for="defaultCheck1">
+                          Sociable with cats
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input px-2" type="checkbox" value="" id="defaultCheck1" />
+                        <label class="form-check-label" for="defaultCheck1">
+                          Sociable with dogs
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input px-2" type="checkbox" value="" id="defaultCheck1" />
+                        <label class="form-check-label" for="defaultCheck1">
+                          Sociable with kids
+                        </label>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="row pt-3">
+                <div class="row pt-3 justify-content-center">
                   <label>Add Photo for Listing</label>
+                  <div class="col-12 py-1">
                   <hr/>
+                  </div>
                   <div class="col-12">
                     <div class="row">
-                      <div class="col-lg-3 col-5">
+                      <div class="col-lg-3 col-6">
                         <label>Upload Photo</label>
                       </div>
                       <div class="col">

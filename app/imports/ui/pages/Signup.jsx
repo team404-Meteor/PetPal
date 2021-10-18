@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
-import { Container, Form, Grid, Header, Message, Segment, Button } from 'semantic-ui-react';
+import { Form, Message } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
 
 /**
@@ -33,61 +33,61 @@ class Signup extends React.Component {
 
   /* Display the signup form. Redirect to add page after successful registration and login. */
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/add' } };
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
     // if correct authentication, redirect to from: page instead of signup screen
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
     }
-    const square = { width: 360, height: 360 };
     return (
-      <Container id="signup-page">
-        <Grid centered columns={3}>
-          <Grid.Column >
-            <Header as="h2" textAlign="center">
-                Register your account
-            </Header>
-            <Form onSubmit={this.submit}>
-              <Segment circular centered fluid style={square} textAlign={'center'} id={'segment-background'}>
-                <Form.Input
-                  size={'huge'}
-                  label="Email"
-                  id="signup-form-email"
-                  icon="user"
-                  iconPosition="left"
-                  name="email"
-                  type="email"
-                  placeholder="E-mail address"
-                  onChange={this.handleChange}
+      
+      <div className="container-fluid">
+        <div className="row justify-content-center">
+          <div className="col-lg-3 col-10 mt-5 px-5 py-3 rounded shadow text-center">
+            <div className="row justify-content-center">
+              <div className="col-lg-5 col-5 text-center">
+                <img src="/images/signin-signup.png"></img>
+              </div>
+              <div className="col-12 text-center pt-3">
+                <h1>Sign Up</h1>
+                <hr />
+              </div>
+              <Form onSubmit={this.submit} >
+                <div className="form">
+                  <div className="col-12 text-left pt-3">
+                    <label>Email</label>
+                    <Form.Input 
+                      id="signin-form-email"
+                      name="email"
+                      type="email"
+                      onChange={this.handleChange} ><input className="form-control mt-1 py-3 text-input"/></Form.Input>
+                  </div>
+                  <div className="col-12 text-left pt-3">
+                    <label>Password</label>
+                    <Form.Input 
+                      id="signin-form-password"
+                      name="password"
+                      type="password"
+                      onChange={this.handleChange} ><input className="form-control mt-1 py-3 text-input"/></Form.Input>
+                    <p className="caption">Already have an account? Sign in <Link to="/signin">here.</Link></p>
+                  </div>
+                  <div className="col-12 text-center pt-3">
+                    <button className="btn btn-custom">Submit</button>
+                  </div>
+                </div>
+              </Form>
+              {this.state.error === '' ? (
+                ''
+              ) : (
+                <Message
+                  error
+                  header="Login was not successful"
+                  content={this.state.error}
                 />
-                <Form.Input
-                  size={'huge'}
-                  label="Password"
-                  id="signup-form-password"
-                  icon="lock"
-                  iconPosition="left"
-                  name="password"
-                  placeholder="Password"
-                  type="password"
-                  onChange={this.handleChange}
-                />
-                <Button className={'btn-custom'} id="signup-form-submit" content="Submit"/>
-                <p className={'paragraph'}>
-                    Already have an account? Login <Link id={'salmon-pink-text'} to="/signin"><u>HERE</u></Link>
-                </p>
-              </Segment>
-            </Form>
-            {this.state.error === '' ? (
-              ''
-            ) : (
-              <Message
-                error
-                header="Registration was not successful"
-                content={this.state.error}
-              />
-            )}
-          </Grid.Column>
-        </Grid>
-      </Container>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

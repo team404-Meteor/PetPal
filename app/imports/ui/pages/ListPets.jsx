@@ -1,4 +1,5 @@
 import React from 'react';
+// import { Meteor } from 'meteor/meteor';
 // import PropTypes from 'prop-types';
 import { Button, Form, Image, Segment, TransitionablePortal } from 'semantic-ui-react';
 import PetCard from '../components/PetCard';
@@ -29,11 +30,11 @@ function ListPets() {
 
   const filterStyle = {
     position: 'fixed',
-    marginTop:'-275px',
-    marginRight:'auto',
-    marginBottom:'0',
-    marginLeft:'-195px',
-    width: '400px',
+    marginTop: '-270px',
+    marginRight: 'auto',
+    marginBottom: '0',
+    marginLeft: '-190px',
+    width: '380px',
     top: '50%',
     left: '50%',
     zIndex: '2000',
@@ -51,6 +52,11 @@ function ListPets() {
   };
 
   const rowStyle = { backgroundColor: '#e7e7e7', width: '100%', top: '88px', zIndex: '1' };
+
+  const sendEmail = () => {
+
+    // Meteor.call('sendEmail', '');
+  };
 
   return (
     <div>
@@ -117,12 +123,13 @@ function ListPets() {
             </Form>
           </Segment>
         </TransitionablePortal>
+        <Button onClick={sendEmail}>TEST EMAIL</Button>
       </nav>
-      <div className='container pet-listing'>
-        <div className='row'>
+      <div className='container pet-listing px-3'>
+        <div className='row px-5 py-5'>
           {
             petArray.map((value, index) => (
-              <div key={index} className='col-sm-6 col-md-4 pb-3 card-style' align='center'>
+              <div key={index} className='col-sm-6 col-md-4 col-10 pb-3 card-style text-center' align='center'>
                 <PetCard pet={{ name: value.name, breed: value.breed, age: value.age, photoUrl: value.photoUrl }}/>
               </div>
             ))
