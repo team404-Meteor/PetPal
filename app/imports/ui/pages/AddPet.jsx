@@ -66,7 +66,7 @@ class AddPet extends React.Component {
   render() {
     let fRef = null;
     return (
-      <div className="container-fluid pt-lg-5 mt-5">
+      <div className="container-fluid pt-lg-5 mt-5 pb-5">
         <div class="row justify-content-center">
           <div class="col-lg-5 col-11 card rounded shadow px-3 py-3">
             <div class="row justify-content-center">
