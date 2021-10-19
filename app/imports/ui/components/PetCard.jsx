@@ -3,72 +3,90 @@ import PropTypes from 'prop-types';
 import { Card, Image, Button, Icon } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
-import { Favorites } from '../../favorites/Favorites';
 import { Redirect } from 'react-router-dom';
-
+import { Favorites } from '../../favorites/Favorites';
 
 function PetCard({
-                   pet: { name, breed, age, photoUrl, _id },
-                 }) {
+  pet: { name, breed, age, photoUrl, _id },
+}) {
 
   function addToFavorites(e) {
     e.preventDefault();
     const owner = Meteor.user().username;
 
-
     console.log('Button Clicked!');
     console.log('_id', _id);
     console.log('owner', owner);
-
 
     Meteor.call('updateWrap', owner, _id,
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
-        } else {
-          swal('Success', 'Item added successfully', 'success');
+          return false;
         }
+        swal('Success', 'Successfully added this listing to your favorites', 'success', { className: 'custom-swal' });
+        return true;
+
       });
   }
 
   // const isLogged = Meteor.userId() !== null;
 
-
-
   function LoggedInCheckForFave() {
     const isLoggedIn = Meteor.userId() !== null;
-    if (isLoggedIn) {
-      return <Button onClick={addToFavorites} circular inverted color='red' icon='heart'/>;
+    if (isLoggedIn & addToFavorites == null) {
+      return <Button onClick={addToFavorites} className="button-custom-heart pt-0 my-auto" />;
+    }
+    if (isLoggedIn && addToFavorites) {
+      return <Button onClick={addToFavorites} className="button-custom-heart-active pt-0 my-auto" />;
     }
     return '';
   }
 
-
-
   return (
-    <Card className="pet-card">
-      <Card.Content>
-
-        <div>
-          <Image className="listing-image" size="medium" align="center" circular src={photoUrl}/>
+    <div className="container-fluid">
+      <div className="row justify-content-center pt-5">
+        <div className="col-lg-8 col-12 text-center px-0">
+          <div className="col-12 text-center">
+            <img className="listing-image rounded-circle img-fluid" src={photoUrl} />
+          </div>
+          <div className="col-12 text-center pt-2">
+            <div className="row justify-content-center">
+              <div className="col-auto px-0 mx-0 text-right">
+                <LoggedInCheckForFave />
+              </div>
+              <div className="col-auto">
+                <h2>{name}</h2>
+              </div>
+            </div>
+          </div>
+          <div className="col-12 text-center">
+            <p className="mb-0">{breed}</p>
+            <p>{age}</p>
+          </div>
         </div>
-        <div className="pet-overview pt-2">
-          <h2>{name}</h2>
-          <p className="mb-0">{breed}</p>
-          <p>{age}</p>
-        </div>
+        {/*
+        <div className="pet-overview pt-1 row justify-content-center">
+          <div class="row">
+            <div class="col-12 text-center">
+              <div class="col-2 px-0 mx-0 text-right">
+                <LoggedInCheckForFave />
+              </div>
+              <div class="col-7 px-0 mx-0 text-left">
+                <h2 class="d-inline0block">{name}</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 px-0 mx-0">
+            <p className="mb-0">{breed}</p>
+            <p>{age}</p>
+          </div>
+        </div> */}
+      </div>
 
-        <LoggedInCheckForFave/>
+      {/* <Button onClick={addToFavorites} circular inverted color='red' icon='heart'/> */}
 
-
-
-        {/*<Button onClick={addToFavorites} circular inverted color='red' icon='heart'/>*/}
-
-
-      </Card.Content>
-
-    </Card>
-
+    </div>
 
   );
 }

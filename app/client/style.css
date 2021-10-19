@@ -14,7 +14,7 @@ div.pet-overview>* {
     margin: 0em 1em;
 }
 
-.ui.medium.image.listing-image {
+.listing-image {
   max-height: 258px;
 }
 /************************************
@@ -149,6 +149,10 @@ a, .side-link:active, .side-link:hover {
     line-height: 20pt !important;
     font-size: 9pt !important;
 }
+.small-font2 {
+    line-height: 20pt !important;
+    font-size: 12pt !important;
+}
 /************************************
 ************ All Pages **************
 ************************************/
@@ -231,6 +235,56 @@ a {
 /************************************
 ************ List Pets **************
 ************************************/
+.swal-text {
+    text-align: center !important;
+}
+.swal-button, .swal-button:focus, .swal-button:active {
+    background-color: #a8e6cf !important;
+    border-radius: 25px !important;
+    background-image: none !important;
+    width: 100px !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+.swal-footer {
+    text-align: center !important;
+    padding-bottom: 30px !important;
+}
+.swal-icon--success {
+    border-color: #ffaaa5 !important;
+}
+.swal-icon--success__ring {   
+    border: 0px solid #fff !important;
+    background-image: url('/images/success.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-color: #fff !important;
+    background-position: bottom center;
+}
+.button-custom-heart {
+    background-position: top center !important;
+    background-image: url('/images/profile-heart-before.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-color: #fff !important;
+    height: 25px !important;
+}
+.button-custom-heart-active {
+    background-position: top center !important;
+    background-image: url('/images/profile-heart.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-color: #fff !important;
+    height: 25px !important;
+}
+.button-custom-heart:focus, .button-custom-heart:hover, .button-custom-heart:visited {
+    background-position: top center !important;
+    background-image: url('/images/profile-heart.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-color: #fff !important;
+    height: 25px !important;
+}
 
 .btn-custom3, .btn-custom3:hover {
     background-color: #ff8b94 !important;

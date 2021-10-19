@@ -7,10 +7,6 @@ import 'bootstrap/dist/css/bootstrap';
 class Home extends React.Component {
 
   render() {
-    const text = {
-      fontSize: 43,
-      textAlign: 'center',
-    };
     return (
       <div className="container pt-lg-5 py-2 my-5 px-5">
         <div className="row py-lg-5 my-lg-5 justify-content-center">
