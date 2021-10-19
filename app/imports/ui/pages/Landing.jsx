@@ -7,8 +7,20 @@ import 'bootstrap/dist/css/bootstrap';
 class Landing extends React.Component {
 
   render() {
+    const text = {
+      fontSize: 43,
+      textAlign: 'center',
+    };
     return (
+
       <div className="container pt-lg-5 py-2 my-5 px-5">
+        <div className="row justify-content-center pb-2">
+          <div className="col-md-6">
+            <h1 style={text}>SKIP THE SHELTER</h1>
+            <p style={{ textAlign: 'center' }}>PetPal serves to ensure that our furry friends will never have to experience a life in a shelter.</p>
+          </div>
+
+        </div>
         <div className="row py-lg-5 my-lg-5 justify-content-center">
           <div className="col-lg-4 col-md-7 col-12 text-center">
             <div className="col-lg-8 col-md-12 col-8 text-center mx-auto text-center h-100 position-relative">
@@ -24,7 +36,7 @@ class Landing extends React.Component {
               </div>
             </div>
           </div>
-      
+
           <div className="col-lg-4 col-md-7 col-12 text-center">
             <div className="col-lg-8 col-md-12 col-7 text-center mx-auto text-center h-100 position-relative">
               <div className="row pb-3 justify-content-center">
