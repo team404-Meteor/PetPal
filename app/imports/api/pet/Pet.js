@@ -49,6 +49,9 @@ class PetCollection {
     this.adminPublicationName = `${this.name}.publication.admin`;
   }
 
+  getAllPets() {
+    return this.collection.find({}).fetch();
+  }
   // Returns all the pets. (subscribe to admin)
   getAllPetsAdmin() {
     return this.collection.find({}).fetch();
