@@ -4,18 +4,37 @@ import { Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Stuffs } from '../../api/stuff/Stuff';
+import { Favorites } from '../../favorites/Favorites';
 import 'bootstrap/dist/css/bootstrap';
+import { Pets } from '../../api/pet/Pet';
+import PetCard from '../components/PetCard';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class UserProfile extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+    return (this.props.FavoritesReady && this.props.PetsReady) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
   // Render the page once subscriptions have been received.
   renderPage() {
+
+    console.log(this.props.favorites);
+    // const faveIds = this.props.favorites[0].favoriteIds;
+    let favoritePetProfileIds = [];
+    if (this.props.favorites.length > 0) {
+      favoritePetProfileIds = this.props.favorites[0].favoriteIds;
+    }
+    // const favoritePetProfileIds = [] in this.props.favorites ? [] : this.props.favorites[0].favoriteIds;
+    // console.log(favoritePetProfileIds);
+
+    console.log('favoritePetProfileIds', favoritePetProfileIds);
+    const favoriteProfilesQuery = Pets.collection.find({ _id: { $in: favoritePetProfileIds } }).fetch();
+    console.log('favoriteProfilesQuery', favoriteProfilesQuery);
+
+    // console.log('favoriteProfiles', favoriteProfiles);
+
     return (
       <div className="profile-wrapper">
         <div className="container-fluid px-5 mt-5 py-lg-5 my-lg-5 pb-5">
@@ -37,12 +56,18 @@ class UserProfile extends React.Component {
                 You currently have no listings. Add one <a href="#" className="d inline-block">here.</a><br/><br/>
 
               Favorites<hr />
-              <div className="row">
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-2.png"></img></a></div>
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-2.png"></img></a></div>
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-2.png"></img></a></div>
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-2.png"></img></a></div>
+              <div className='container pet-listing px-3'>
+                <div className='row px-5 py-5'>
+                  {
+                    favoriteProfilesQuery.map((favoriteProfile, index) => (
+                      <div key={index} className='col-sm-6 col-md-4 col-10 pb-3 card-style text-center' align='center'>
+                        <PetCard pet={{ name: favoriteProfile.petName, breed: favoriteProfile.breed, age: favoriteProfile.age, photoUrl: favoriteProfile.photoUrl, _id: favoriteProfile._id }}/>
+                      </div>
+                    ))
+                  }
+                </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -53,20 +78,31 @@ class UserProfile extends React.Component {
 
 // Require an array of Stuff documents in the props.
 UserProfile.propTypes = {
-  stuffs: PropTypes.array.isRequired,
-  ready: PropTypes.bool.isRequired,
+  favorites: PropTypes.array.isRequired,
+  FavoritesReady: PropTypes.bool.isRequired,
+  PetsReady: PropTypes.bool.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-export default withTracker(() => {
+export default withTracker(({ match }) => {
+
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Stuffs.userPublicationName);
+  const FavoritesSubscription = Meteor.subscribe(Favorites.userPublicationName);
+  const PetsSubscription = Meteor.subscribe(Pets.adminPublicationName);
+
+  // get the username
+  const username = match.params._id;
+
   // Determine if the subscription is ready
-  const ready = subscription.ready();
+  const FavoritesReady = FavoritesSubscription.ready();
+  const PetsReady = PetsSubscription.ready();
+
   // Get the Stuff documents
-  const stuffs = Stuffs.collection.find({}).fetch();
+  const favorites = Favorites.collection.find({ _id: username }).fetch();
+
   return {
-    stuffs,
-    ready,
+    favorites,
+    FavoritesReady,
+    PetsReady,
   };
 })(UserProfile);
