@@ -61,7 +61,7 @@ class UserProfile extends React.Component {
                 <div className='row pb-5 mx-0 px-0'>
                   {
                     this.props.userListings.map((userListing, index) => (
-                      <div key={index} className='col-4 col-md-3 sm-px-0 mx-0 text-center'>
+                      <div key={index} className='col-4 col-md-3 sm-px-0 mx-0 pb-3 text-center'>
                         <PetCardForUserProfile pet={{ photoUrl: userListing.photoUrl }} />
                       </div>
                     ))
@@ -74,7 +74,7 @@ class UserProfile extends React.Component {
                 <div className='row pb-5 mx-0 px-0'>
                   {
                     favoriteProfilesQuery.map((favoriteProfile, index) => (
-                      <div key={index} className='col-4 col-md-3 sm-px-0 mx-0 text-center'>
+                      <div key={index} className='col-4 col-md-3 sm-px-0 mx-0 pb-3 text-center'>
                         <PetCardForUserProfile pet={{ photoUrl: favoriteProfile.photoUrl }} />
                       </div>
                     ))
