@@ -231,7 +231,9 @@ a {
 /************************************
 ************ List Pets **************
 ************************************/
-
+.custom-favorite {
+    color:#ff8b94 !important;
+}
 .btn-custom3, .btn-custom3:hover {
     background-color: #ff8b94 !important;
     border-radius: 25px !important;

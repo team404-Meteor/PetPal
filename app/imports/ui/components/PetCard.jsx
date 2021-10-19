@@ -11,6 +11,7 @@ function PetCard({
                    pet: { name, breed, age, photoUrl, _id },
                  }) {
 
+  const buttonStyle = { color: '#ffaaa5' }
   function addToFavorites(e) {
     e.preventDefault();
     const owner = Meteor.user().username;
@@ -38,11 +39,10 @@ function PetCard({
   function LoggedInCheckForFave() {
     const isLoggedIn = Meteor.userId() !== null;
     if (isLoggedIn) {
-      return <Button onClick={addToFavorites} circular inverted color='red' icon='heart'/>;
+      return <Button onClick={addToFavorites} className="custom-favorite" circular inverted icon='heart'></Button>;
     }
     return '';
   }
-
 
 
   return (
