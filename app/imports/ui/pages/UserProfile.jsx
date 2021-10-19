@@ -4,18 +4,27 @@ import { Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Stuffs } from '../../api/stuff/Stuff';
+import { Favorites } from '../../favorites/Favorites';
 import 'bootstrap/dist/css/bootstrap';
+import { Pets } from '../../api/pet/Pet';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class UserProfile extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+    return (this.props.FavoritesReady && this.props.PetsReady && this.props.favorites) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
+
 
   // Render the page once subscriptions have been received.
   renderPage() {
+
+    const faveIds = this.props.favorites[0].favoriteIds;
+    console.log(faveIds);
+    const favoriteProfiles = Pets.collection.find({ _id: { $in: faveIds } }).fetch();
+    console.log(favoriteProfiles);
+
     return (
       <div className="profile-wrapper">
         <div className="container-fluid px-5 mt-5 py-lg-5 my-lg-5 pb-5">
@@ -53,20 +62,28 @@ class UserProfile extends React.Component {
 
 // Require an array of Stuff documents in the props.
 UserProfile.propTypes = {
-  stuffs: PropTypes.array.isRequired,
-  ready: PropTypes.bool.isRequired,
+  favorites: PropTypes.array.isRequired,
+  FavoritesReady: PropTypes.bool.isRequired,
+  PetsReady: PropTypes.bool.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
+
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Stuffs.userPublicationName);
+  const FavoritesSubscription = Meteor.subscribe(Favorites.userPublicationName);
+  const PetsSubscription = Meteor.subscribe(Pets.userPublicationName);
+
   // Determine if the subscription is ready
-  const ready = subscription.ready();
+  const FavoritesReady = FavoritesSubscription.ready();
+  const PetsReady = PetsSubscription.ready();
+
   // Get the Stuff documents
-  const stuffs = Stuffs.collection.find({}).fetch();
+  const favorites = Favorites.collection.find({}).fetch();
+
   return {
-    stuffs,
-    ready,
+    favorites,
+    FavoritesReady,
+    PetsReady,
   };
 })(UserProfile);
