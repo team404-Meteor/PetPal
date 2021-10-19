@@ -7,7 +7,8 @@ import { Stuffs } from '../../api/stuff/Stuff';
 import { Favorites } from '../../favorites/Favorites';
 import 'bootstrap/dist/css/bootstrap';
 import { Pets } from '../../api/pet/Pet';
-import PetCard from '../components/PetCard';
+import PetCardForUserProfile from '../components/PetCardForUserProfile';
+import PetCardForUserProfileUsername from '../components/PetCardForUserProfileUsername';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class UserProfile extends React.Component {
@@ -39,22 +40,29 @@ class UserProfile extends React.Component {
 
     return (
       <div className="profile-wrapper">
-        <div className="container-fluid px-5 mt-5 py-lg-5 my-lg-5 pb-5">
-          <div className="row px-lg-5 mx-lg-5">
-            <div className="col-md-4 col-10 pb-5 mx-auto text-center">
-              <div className="col-md-8 col-7 mx-auto pb-3">
+        <div className="container-fluid px-3 mt-5 py-lg-5 my-lg-5 pb-5">
+          <div className="row px-lg-5 mx-lg-5 justify-content-center">
+            <div className="col-md-4 col-10 pb-2 mx-auto text-center">
+              <div className="col-md-8 col-7 mx-auto pb-3 text-center">
                 <img src="images/placeholder-1.png"></img>
               </div>
-              <h3>Username</h3>
+              <div className="col-12 text-center">
+                  {
+                    this.props.userListings.map((userListing, index) => (
+                      <div key={index} className='col-12'><PetCardForUserProfileUsername pet={{ owner: userListing.owner }} />
+                      </div>
+                    ))
+                  }
+              </div>
             </div>
             <div className="col-md-8 col-12 py-5 px-5 rounded shadow overflow-auto scroll-style">
               Listings<hr />
-              <div className='container pet-listing px-3'>
-                <div className='row px-5 py-5'>
+              <div className='container pet-listing mx-0 px-0'>
+                <div className='row pb-5 mx-0 px-0'>
                   {
                     this.props.userListings.map((userListing, index) => (
-                      <div key={index} className='col-sm-6 col-md-4 col-10 pb-3 card-style text-center' align='center'>
-                        <PetCard pet={{ name: userListing.petName, breed: userListing.breed, age: userListing.age, photoUrl: userListing.photoUrl, _id: userListing._id }}/>
+                      <div key={index} className='col-4 col-md-3 px-0 mx-0 text-center'>
+                        <PetCardForUserProfile pet={{ photoUrl: userListing.photoUrl }} />
                       </div>
                     ))
                   }
@@ -62,12 +70,12 @@ class UserProfile extends React.Component {
               </div>
 
               Favorites<hr />
-              <div className='container pet-listing px-3'>
-                <div className='row px-5 py-5'>
+              <div className='container pet-listing mx-0 px-0'>
+                <div className='row pb-5 mx-0 px-0'>
                   {
                     favoriteProfilesQuery.map((favoriteProfile, index) => (
-                      <div key={index} className='col-sm-6 col-md-4 col-10 pb-3 card-style text-center' align='center'>
-                        <PetCard pet={{ name: favoriteProfile.petName, breed: favoriteProfile.breed, age: favoriteProfile.age, photoUrl: favoriteProfile.photoUrl, _id: favoriteProfile._id }}/>
+                      <div key={index} className='col-4 col-md-3 px-0 mx-0 text-center'>
+                        <PetCardForUserProfile pet={{ photoUrl: favoriteProfile.photoUrl }} />
                       </div>
                     ))
                   }

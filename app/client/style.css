@@ -149,6 +149,10 @@ a, .side-link:active, .side-link:hover {
     line-height: 20pt !important;
     font-size: 9pt !important;
 }
+.small-font2 {
+    line-height: 20pt !important;
+    font-size: 12pt !important;
+}
 /************************************
 ************ All Pages **************
 ************************************/
