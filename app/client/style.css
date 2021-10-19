@@ -235,6 +235,15 @@ a {
 /************************************
 ************ List Pets **************
 ************************************/
+.button-custom-heart {
+    background-position: top center !important;
+    background-image: url('/images/profile-heart.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-color: #fff !important;
+    height: 25px !important;
+    top: -5px !important;
+}
 
 .btn-custom3, .btn-custom3:hover {
     background-color: #ff8b94 !important;

@@ -8,8 +8,8 @@ import { Redirect } from 'react-router-dom';
 
 
 function PetCard({
-                   pet: { name, breed, age, photoUrl, _id },
-                 }) {
+  pet: { name, breed, age, photoUrl, _id },
+}) {
 
   function addToFavorites(e) {
     e.preventDefault();
@@ -38,7 +38,7 @@ function PetCard({
   function LoggedInCheckForFave() {
     const isLoggedIn = Meteor.userId() !== null;
     if (isLoggedIn) {
-      return <Button onClick={addToFavorites} circular inverted color='red' icon='heart'/>;
+      return <Button onClick={addToFavorites} className="button-custom-heart pt-0 my-auto" />;
     }
     return '';
   }
@@ -46,28 +46,52 @@ function PetCard({
 
 
   return (
-    <Card className="pet-card">
-      <Card.Content>
-
-        <div>
-          <Image className="listing-image" size="medium" align="center" circular src={photoUrl}/>
+    <div class="container-fluid">
+      <div class="row justify-content-center pt-5">
+        <div class="col-lg-10 col-12 text-center px-0">
+        <div class="col-12 text-center">
+          <img className="listing-image" className="rounded-circle img-fluid" src={photoUrl} />
         </div>
-        <div className="pet-overview pt-2">
-          <h2>{name}</h2>
+        <div class="col-12 text-center pt-2">
+          <div class="row justify-content-center">
+            <div class="col-auto px-0 mx-0 text-right">
+              <LoggedInCheckForFave />
+            </div>
+            <div class="col-auto">
+              <h2>{name}</h2>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 text-center">
           <p className="mb-0">{breed}</p>
           <p>{age}</p>
         </div>
+        </div>
+        {/*
+        <div className="pet-overview pt-1 row justify-content-center">
+          <div class="row">
+            <div class="col-12 text-center">
+              <div class="col-2 px-0 mx-0 text-right">
+                <LoggedInCheckForFave />
+              </div>
+              <div class="col-7 px-0 mx-0 text-left">
+                <h2 class="d-inline0block">{name}</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 px-0 mx-0">
+            <p className="mb-0">{breed}</p>
+            <p>{age}</p>
+          </div>
+        </div>*/}
+      </div>
 
-        <LoggedInCheckForFave/>
+
+      {/*<Button onClick={addToFavorites} circular inverted color='red' icon='heart'/>*/}
 
 
 
-        {/*<Button onClick={addToFavorites} circular inverted color='red' icon='heart'/>*/}
-
-
-      </Card.Content>
-
-    </Card>
+    </div>
 
 
   );
