@@ -21,13 +21,13 @@ class UserProfile extends React.Component {
   // Render the page once subscriptions have been received.
   renderPage() {
 
-    // console.log(this.props.favorites);
+    console.log(this.props.favorites);
     // const faveIds = this.props.favorites[0].favoriteIds;
     let favoritePetProfileIds = [];
     if (this.props.favorites === []) {
-      favoritePetProfileIds = this.props.favorites[0].favoriteIds;
-    } else {
       favoritePetProfileIds = [];
+    } else {
+      favoritePetProfileIds = this.props.favorites[0].favoriteIds;
     }
     // const favoritePetProfileIds = [] in this.props.favorites ? [] : this.props.favorites[0].favoriteIds;
     // console.log(favoritePetProfileIds);
