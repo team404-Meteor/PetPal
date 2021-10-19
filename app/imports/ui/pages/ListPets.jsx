@@ -1,50 +1,73 @@
 import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
-import { Button, Form, Image, Segment, TransitionablePortal } from 'semantic-ui-react';
+import { Meteor } from 'meteor/meteor';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
+import _ from 'lodash';
+import { Button, Checkbox, Dimmer, Form, Image, Loader, Segment, TransitionablePortal } from 'semantic-ui-react';
 import PetCard from '../components/PetCard';
+import { Pets } from '../../api/pet/Pet';
 
-const pet = {
-  name: 'Max and Minnie',
-  breed: 'Chihuahua Mix',
-  age: '3 and 4 years old',
-  description: 'This is their description',
-  photoUrl: '/images/meteor-logo.png',
-  status: 'Available',
-  type: 'Dogs',
+const saveFilter = {
+  Dog: false,
+  Cat: false,
+  Bunny: false,
+  Reptile: false,
+  Other: false,
 };
 
-const petArray = [pet, pet, pet, pet, pet, pet];
-
-/*
-
-function ListPets({
-  pets: { name, breed, age, description, photoUrl, status, type },
-}) {
-
-*/
-
-function ListPets() {
-
-  const [openFilter, setOpenFilter] = useState(false);
+function ListPets({ petReady, pets }) {
 
   const filterStyle = {
     position: 'fixed',
-    top: '15%',
-    left: '20%',
-    zIndex: 1000,
-    borderRadius: '25px',
+    marginTop: '-270px',
+    marginRight: 'auto',
+    marginBottom: '0',
+    marginLeft: '-190px',
+    width: '380px',
+    top: '50%',
+    left: '50%',
+    zIndex: '2000',
+  };
+
+  const formStyle = {
+    paddingTop: '25px',
+    paddingLeft: '25px',
+    paddingRight: '25px',
+    paddingBottom: '10px',
+    fontSize: '12pt',
+    color: '#5f5f5f',
+    letterSpacing: '2px',
+    align: 'center',
+  };
+
+  const rowStyle = { backgroundColor: '#e7e7e7', width: '100%', top: '88px', zIndex: '1' };
+
+  const [openFilter, setOpenFilter] = useState(false);
+  const [filterTypes, setFilterTypes] = useState(saveFilter);
+
+  const selectPetType = (e, data) => {
+    const current = saveFilter[data.label];
+    saveFilter[data.label] = !current;
+    setFilterTypes({ ...saveFilter });
+  };
+
+  const submitFilter = () => {
+    setOpenFilter(!openFilter);
+  };
+
+  const sendEmail = () => {
+
+    // Meteor.call('sendEmail', '');
   };
 
   return (
     <div>
-      <nav className='navbar navbar-light pet-filter'>
+      <nav className='navbar navbar-light pet-filter sticky-top' style={rowStyle}>
         <TransitionablePortal
-          closeOnTriggerClick
-          openOnTriggerClick
-          onOpen={() => setOpenFilter(true)}
-          onClose={() => setOpenFilter(false)}
+          onClose={() => (openFilter ? setOpenFilter(!openFilter) : setOpenFilter(openFilter))}
+          open={openFilter}
           trigger={
-            <Button className='filter-button'>
+            <Button className='filter-button' onClick={() => setOpenFilter(!openFilter)}>
               <span className='filter-text'>FILTER</span>
               <Image src='/images/list-filter.png' avatar/>
             </Button>
@@ -53,91 +76,82 @@ function ListPets() {
           <Segment
             style={filterStyle}
           >
-            <Form>
+            <Form style={formStyle} onSubmit={() => submitFilter()}>
               <Form.Group grouped>
-                <label>Pet Type</label>
-                <div className='row'>
+                <label className="bold">Pet Type</label>
+                <div className='row pb-1'>
                   <div className='col-4'>
-                    <Form.Checkbox label='Dog'/>
-                    <Form.Checkbox label='Dog'/>
+                    <Checkbox checked={filterTypes.Dog}label='Dog' onChange={(e, data) => selectPetType(e, data)}/>
+                    <Checkbox checked={filterTypes.Cat} label='Cat' onChange={(e, data) => selectPetType(e, data)}/>
                   </div>
                   <div className='col-4'>
-                    <Form.Checkbox label='Dog'/>
-                    <Form.Checkbox label='Dog'/>
+                    <Checkbox checked={filterTypes.Bunny} label='Bunny' onChange={(e, data) => selectPetType(e, data)}/>
+                    <Checkbox checked={filterTypes.Reptile} label='Reptile' onChange={(e, data) => selectPetType(e, data)}/>
 
                   </div>
                   <div className='col-4'>
-                    <Form.Checkbox label='Dog'/>
+                    <Checkbox checked={filterTypes.Other} label='Other' onChange={(e, data) => selectPetType(e, data)}/>
                   </div>
                 </div>
               </Form.Group>
-              <Form.Group grouped>
-                <label>Age</label>
-                <Form.Field label='Less than 1 year' control='input' type='checkbox'/>
-                <Form.Field label='Less than 1 year' control='input' type='checkbox'/>
-                <Form.Field label='Less than 1 year' control='input' type='checkbox'/>
-              </Form.Group>
-              <Form.Group grouped>
-                <label>Size</label>
-                <Form.Field label='Less than 1 year' control='input' type='checkbox'/>
-                <Form.Field label='Less than 1 year' control='input' type='checkbox'/>
-                <Form.Field label='Less than 1 year' control='input' type='checkbox'/>
-              </Form.Group>
-              <Form.Group grouped>
-                <label>Gender</label>
-                <div className='row'>
-                  <div className='col'>
-                    <Form.Checkbox label='Male'/>
-                  </div>
-                  <div className='col'>
-                    <Form.Checkbox label='Male'/>
-                  </div>
-                </div>
-              </Form.Group>
+              <div align='center'>
+                <Button type="submit" className="btn-custom3">DONE</Button>
+              </div>
             </Form>
           </Segment>
         </TransitionablePortal>
+        <Button onClick={sendEmail}>TEST EMAIL</Button>
       </nav>
-      <div className='container pet-listing'>
-        <div className='row'>
-          {
-            petArray.map((value, index) => (
-              <div key={index} className='col-sm-6 col-md-4' align='center'>
-                <PetCard pet={{ name: value.name, breed: value.breed, age: value.age, photoUrl: value.photoUrl }}/>
-              </div>
-            ))
-          }
-        </div>
-      </div>
+      {
+        petReady ?
+          <div className='container pet-listing px-3'>
+            <div className='row px-5 py-5'>
+              {
+                // filter pets first then map the resulting array to pet card
+                // eslint-disable-next-line consistent-return
+                _.filter(pets, function (pet) {
+                  const { Dog, Cat, Bunny, Reptile, Other } = filterTypes;
+
+                  // return if the user did not check anything
+                  if (!Dog && !Cat && !Bunny && !Reptile && !Other) return pet;
+
+                  if (Dog && pet.petType === 'Dog') return pet;
+                  if (Cat && pet.petType === 'Cat') return pet;
+                  if (Bunny && pet.petType === 'Bunny') return pet;
+                  if (Reptile && pet.petType === 'Reptile') return pet;
+                  if (Other && pet.petType === 'Other') return pet;
+
+                }).map((pet, index) => (
+                  <div key={index} className='col-sm-6 col-md-4 col-10 pb-3 card-style text-center' align='center'>
+                    <PetCard pet={{ name: pet.petName, breed: pet.breed, age: pet.age, photoUrl: pet.photoUrl }}/>
+                  </div>
+                ))
+              }
+            </div>
+          </div> :
+          <div>
+            <Dimmer active inverted>
+              <Loader inverted>Getting pets</Loader>
+            </Dimmer>
+          </div>
+      }
     </div>
   );
 }
 
-/*
 ListPets.propTypes = {
-  pets: PropTypes.shape({
-    name: PropTypes.string,
-    breed: PropTypes.string,
-    age: PropTypes.string,
-    description: PropTypes.string,
-    photoUrl: PropTypes.string,
-    status: PropTypes.string,
-    type: PropTypes.string,
-  }),
+  petReady: PropTypes.bool,
+  pets: PropTypes.array,
 };
-*/
 
-export default ListPets;
+export default withTracker(() => {
+  // subscribe to all the data since the page is not user specific
+  const petSubscribe = Meteor.subscribe(Pets.adminPublicationName);
 
-/*
-Name (for search view)
-Breed (for search view)
-Age (for search view)
-Description (for profile)
-Personality traits (for profile)
-Photos (for profile)
-Videos (for profile)
-Status (for profile)
-Type (for filter view)
+  const pets = Pets.getAllPetsAdmin();
 
-*/
+  return {
+    petReady: petSubscribe.ready(),
+    pets,
+  };
+})(ListPets);
