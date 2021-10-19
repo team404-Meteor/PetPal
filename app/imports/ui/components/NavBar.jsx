@@ -11,9 +11,17 @@ class NavBar extends React.Component {
     const navStyle = { border: '0', boxShadow: 'none' };
     return (
       <nav className="navbar navbar-light bg-white shadow py-3 sticky-top navbar-top">
-        <a className="navbar-brand" href="#">
+      {this.props.currentUser ? ([
+        <a className="navbar-brand" href="/home">
           <img className="mx-4" src="/images/logo.png" width="auto" height="auto" alt="logo" />
-        </a>
+        </a>]
+        ) : ''}
+
+        {this.props.currentUser === '' ? ([
+        <a className="navbar-brand" href="/">
+          <img className="mx-4" src="/images/logo.png" width="auto" height="auto" alt="logo" />
+        </a>]
+        ) : ''}
 
         {this.props.currentUser ? ([
           <ul key={1} className="navbar-side" id="navbarSide">

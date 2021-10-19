@@ -139,6 +139,17 @@ a, .side-link:active, .side-link:hover {
 }
 
 /************************************
+*************** Home ****************
+************************************/
+.text-custom-color {
+    color: #a8e6cf !important;
+    font-weight: 800 !important;
+}
+.small-font {
+    line-height: 20pt !important;
+    font-size: 9pt !important;
+}
+/************************************
 ************ All Pages **************
 ************************************/
 

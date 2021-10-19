@@ -105,7 +105,7 @@ function ListPets({ petReady, pets }) {
       {
         petReady ?
           <div className='container pet-listing px-3'>
-            <div className='row px-5 py-5'>
+            <div className='row px-5 py-5 justify-content-center'>
               {
                 // filter pets first then map the resulting array to pet card
                 // eslint-disable-next-line consistent-return
