@@ -113,3 +113,4 @@ class PetCollection {
  * @type {PetCollection}
  */
 export const Pets = new PetCollection();
+

@@ -1,23 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function PetPhoto({
-    pet: { owner, photoUrl },
+function PetOwner({
+    pet: { owner },
 }) {
     return (
         <div className="col-12 custom-col">
-            <img className="img-fluid rounded-circle" src={photoUrl} />
             <p className="mb-0">
-                {owner}
+                <b className="text-custom">Current User:</b><br/>
+                 {owner}
             </p>
         </div>
     );
 }
 
-PetPhoto.propTypes = {
+PetOwner.propTypes = {
     pet: PropTypes.shape({
         owner: PropTypes.string,
-        photoUrl: PropTypes.string,
     }).isRequired,
 };
-export default PetPhoto;
+export default PetOwner;
