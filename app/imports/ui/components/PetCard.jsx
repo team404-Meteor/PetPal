@@ -4,6 +4,7 @@ import { Card, Image, Button, Icon } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
 import { Favorites } from '../../favorites/Favorites';
+import { Redirect } from 'react-router-dom';
 
 
 function PetCard({
@@ -30,6 +31,20 @@ function PetCard({
       });
   }
 
+  // const isLogged = Meteor.userId() !== null;
+
+
+
+  function LoggedInCheckForFave() {
+    const isLoggedIn = Meteor.userId() !== null;
+    if (isLoggedIn) {
+      return <Button onClick={addToFavorites} circular inverted color='red' icon='heart'/>;
+    }
+    return '';
+  }
+
+
+
   return (
     <Card className="pet-card">
       <Card.Content>
@@ -43,7 +58,11 @@ function PetCard({
           <p>{age}</p>
         </div>
 
-        <Button onClick={addToFavorites} circular inverted color='red' icon='heart'/>
+        <LoggedInCheckForFave/>
+
+
+
+        {/*<Button onClick={addToFavorites} circular inverted color='red' icon='heart'/>*/}
 
 
       </Card.Content>
