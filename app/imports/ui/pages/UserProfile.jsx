@@ -14,9 +14,8 @@ class UserProfile extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
-    return (this.props.FavoritesReady && this.props.PetsReady && this.props.favorites) ? this.renderPage() : <Loader active>Getting data</Loader>;
+    return (this.props.FavoritesReady && this.props.PetsReady) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
-
 
   // Render the page once subscriptions have been received.
   renderPage() {
@@ -33,7 +32,6 @@ class UserProfile extends React.Component {
     console.log('favoritePetProfileIds', favoritePetProfileIds);
     const favoriteProfilesQuery = Pets.collection.find({ _id: { $in: favoritePetProfileIds } }).fetch();
     console.log('favoriteProfilesQuery', favoriteProfilesQuery);
-
 
     // console.log('favoriteProfiles', favoriteProfiles);
 
@@ -86,18 +84,21 @@ UserProfile.propTypes = {
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-export default withTracker(() => {
+export default withTracker(({ match }) => {
 
   // Get access to Stuff documents.
   const FavoritesSubscription = Meteor.subscribe(Favorites.userPublicationName);
-  const PetsSubscription = Meteor.subscribe(Pets.userPublicationName);
+  const PetsSubscription = Meteor.subscribe(Pets.adminPublicationName);
+
+  // get the username
+  const username = match.params._id;
 
   // Determine if the subscription is ready
   const FavoritesReady = FavoritesSubscription.ready();
   const PetsReady = PetsSubscription.ready();
 
   // Get the Stuff documents
-  const favorites = Favorites.collection.find({}).fetch();
+  const favorites = Favorites.collection.find({ _id: username }).fetch();
 
   return {
     favorites,

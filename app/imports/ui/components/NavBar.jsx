@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter, Link, NavLink } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap';
 
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
@@ -27,7 +27,7 @@ class NavBar extends React.Component {
                   </svg>
                 </div>
                 <div className="col-9 px-0 text-left">
-                  <Link to="/userProfile" className="side-link">Profile</Link>
+                  <Link as={NavLink} to={`/userProfile/${this.props.currentUser}`} className="side-link">Profile</Link>
                 </div>
               </div>
             </li>
