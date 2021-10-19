@@ -887,3 +887,143 @@
     }
    ]
 }
+=======
+{
+  "defaultAccounts": [
+    { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
+    { "email": "john@foo.com", "password": "changeme" }
+  ],
+
+  "defaultData": [
+    {
+      "owner": null,
+      "petName": "Leia",
+      "breed": "Hound & Whippet Mix",
+      "description": null,
+      "photoUrl": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/53173922/6/?bust=1634436434&width=720",
+      "age": "Adult",
+      "status": "Available",
+      "petType": "Dog"
+    },
+    {
+      "owner": null,
+      "petName": "Megatron",
+      "breed": "Hound",
+      "description": null,
+      "photoUrl": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/53156479/1/?bust=1634436852&width=720",
+      "age": "Puppy",
+      "status": "Available",
+      "petType": "Dog"
+    },
+    {
+      "owner": null,
+      "petName": "Leia",
+      "breed": "Hound & Whippet Mix",
+      "description": null,
+      "photoUrl": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/53173922/4/?bust=1634453655&width=720",
+      "age": "Adult",
+      "status": "Available",
+      "petType": "Dog"
+    },
+    {
+      "owner": null,
+      "petName": "Mana",
+      "breed": "American Staffordshire Terrier",
+      "description": null,
+      "photoUrl": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/53182361/3/?bust=1634436504&width=720",
+      "age": "Adult",
+      "status": "Available",
+      "petType": "Dog"
+    },
+    {
+      "owner": null,
+      "petName": "Marlee",
+      "breed": "Hound Mix",
+      "description": null,
+      "photoUrl": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/53193198/3/?bust=1634456862&width=720",
+      "age": "Senior",
+      "status": "Available",
+      "petType": "Dog"
+    },
+    {
+      "owner": null,
+      "petName": "Kanaka",
+      "breed": "Shepherd & Hound Mix",
+      "description": "Are you looking for an outdoor adventurer? Look no further! I would be the greatest friend for a nice hike, or even a day playing on the beach. I am a great companion for other dogs, and people too! If you take me home, I will try to be the goodest boy ever! I can't wait to find my forever family!",
+      "photoUrl": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/53245931/5/?bust=1634436932&width=720",
+      "age": "Adult",
+      "status": "Available",
+      "petType": "Dog"
+    },
+    {
+      "owner": null,
+      "petName": "Felicia",
+      "breed": "Whippet",
+      "description": null,
+      "photoUrl": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/53246752/1/?bust=1634436741&width=720",
+      "age": "Adult",
+      "status": "Available",
+      "petType": "Dog"
+    },
+    {
+      "owner": null,
+      "petName": "Vivian",
+      "breed": "Hound",
+      "description": null,
+      "photoUrl": "",
+      "age": "Young",
+      "status": "Available",
+      "petType": "Dog"
+    },
+    {
+      "owner": null,
+      "petName": "Rudy",
+      "breed": "Pit Bull Terrier",
+      "description": "Rudy is a very sweet boy! He may seem angry when you greet him at his kennel but once you get in his kennel with him and love on him or play with him in the yard he is a total lap dog! Rudy was surrendered to us because their owners are moving to the mainland and couldn't take him with them. Ask us about our boy Rudy! Take him home today!",
+      "photoUrl": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/52446010/1/?bust=1629855820&width=720",
+      "age": "Young",
+      "status": "Available",
+      "petType": "Dog"
+    },
+    {
+      "owner": null,
+      "petName": "Marlee",
+      "breed": "Hound Mix",
+      "description": null,
+      "photoUrl": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/53193198/1/?bust=1634456255&width=720",
+      "age": "Senior",
+      "status": "Available",
+      "petType": "Dog"
+    },
+    {
+      "owner": null,
+      "petName": "Millie",
+      "breed": "American Staffordshire Terrier",
+      "description": null,
+      "photoUrl": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/53193196/4/?bust=1634492742&width=720",
+      "age": "Senior",
+      "status": "Available",
+      "petType": "Dog"
+    },
+    {
+      "owner": null,
+      "petName": "Wonder",
+      "breed": "Pharaoh Hound",
+      "description": null,
+      "photoUrl": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/53173325/1/?bust=1634436703&width=720",
+      "age": "Young",
+      "status": "Available",
+      "petType": "Dog"
+    },
+    {
+      "owner": null,
+      "petName": "Kanaka",
+      "breed": "Shepherd & Hound Mix",
+      "description": "Are you looking for an outdoor adventurer? Look no further! I would be the greatest friend for a nice hike, or even a day playing on the beach. I am a great companion for other dogs, and people too! If you take me home, I will try to be the goodest boy ever! I can't wait to find my forever family!",
+      "photoUrl": "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/53245931/6/?bust=1634437126&width=720",
+      "age": "Adult",
+      "status": "Available",
+      "petType": "Dog"
+    }
+   ]
+}

@@ -13,32 +13,17 @@ class PetCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      // <Segment>
-      //   <TextField name='petName'/>
-      //   <TextField name='breed'/>
-      //   <TextField name='age'/>
-      //   <TextField name='description'/>
-      //   <TextField name='photoUrl'/>
-      //   <SelectField name='status'/>
-      //   <SelectField name='petType'/>
-      //   <SubmitField value='Submit'/>
-      //   <ErrorsField/>
-      // </Segment>
       owner: String,
-      petName: {
-        type: String,
-      },
-      breed: {
-        type: String,
-      },
-      age: {
-        type: String,
-      },
+      petName: String,
+      breed: String,
+      age: String,
       description: {
         type: String,
+        defaultValue: '',
       },
       photoUrl: {
         type: String,
+        defaultValue: 'images/default-pet-photo.png',
       },
       status: {
         type: Boolean,
@@ -51,13 +36,11 @@ class PetCollection {
           'Cat',
           'Bunny',
           'Reptile',
-          'Gerbil',
-          'Bird',
-          'Fish',
           'Other',
         ],
       },
-
+      photoSetUrls: Array,
+      'photoSetUrls.$': String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
@@ -102,7 +85,7 @@ class PetCollection {
     }
     return true;
   }
-  getPetsListedByOwner() {
+  getAllPets() {
     return this.collection.find({}).fetch();
   }
 }
