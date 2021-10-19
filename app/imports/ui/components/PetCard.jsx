@@ -48,7 +48,7 @@ function PetCard({
   return (
     <div class="container-fluid">
       <div class="row justify-content-center pt-5">
-        <div class="col-lg-10 col-12 text-center px-0">
+        <div class="col-lg-8 col-12 text-center px-0">
         <div class="col-12 text-center">
           <img className="listing-image" className="rounded-circle img-fluid" src={photoUrl} />
         </div>
