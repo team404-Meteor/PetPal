@@ -122,7 +122,7 @@ function ListPets({ petReady, pets }) {
 
                 }).map((pet, index) => (
                   <div key={index} className='col-lg-4 col-10' align='center'>
-                    <PetCard pet={{ name: pet.petName, breed: pet.breed, age: pet.age, photoUrl: pet.photoUrl }}/>
+                    <PetCard pet={{ name: pet.petName, breed: pet.breed, age: pet.age, photoUrl: pet.photoUrl, _id: pet._id }}/>
                   </div>
                 ))
               }

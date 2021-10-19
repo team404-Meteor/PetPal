@@ -39,8 +39,8 @@ class PetCollection {
           'Other',
         ],
       },
-      // photoSetUrls: Array,
-      // 'photoSetUrls.$': String,
+      photoSetUrls: Array,
+      'photoSetUrls.$': String,
     },
       { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
