@@ -55,8 +55,6 @@ Meteor.publish(null, function () {
 
 Meteor.methods({
   updateWrap: function (owner, _id) {
-    console.log('_id', _id);
-    console.log('owner', owner);
     Favorites.collection.update(owner, { $addToSet: { favoriteIds: _id } }, { upsert: true });
   },
 });

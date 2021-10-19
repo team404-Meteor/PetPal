@@ -7,6 +7,7 @@ import { Stuffs } from '../../api/stuff/Stuff';
 import { Favorites } from '../../favorites/Favorites';
 import 'bootstrap/dist/css/bootstrap';
 import { Pets } from '../../api/pet/Pet';
+import PetCard from '../components/PetCard';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class UserProfile extends React.Component {
@@ -20,10 +21,23 @@ class UserProfile extends React.Component {
   // Render the page once subscriptions have been received.
   renderPage() {
 
-    const faveIds = this.props.favorites[0].favoriteIds;
-    console.log(faveIds);
-    const favoriteProfiles = Pets.collection.find({ _id: { $in: faveIds } }).fetch();
-    console.log(favoriteProfiles);
+    // console.log(this.props.favorites);
+    // const faveIds = this.props.favorites[0].favoriteIds;
+    let favoritePetProfileIds = [];
+    if (this.props.favorites === []) {
+      favoritePetProfileIds = this.props.favorites[0].favoriteIds;
+    } else {
+      favoritePetProfileIds = [];
+    }
+    // const favoritePetProfileIds = [] in this.props.favorites ? [] : this.props.favorites[0].favoriteIds;
+    // console.log(favoritePetProfileIds);
+
+    console.log('favoritePetProfileIds', favoritePetProfileIds);
+    const favoriteProfilesQuery = Pets.collection.find({ _id: { $in: favoritePetProfileIds } }).fetch();
+    console.log('favoriteProfilesQuery', favoriteProfilesQuery);
+
+
+    // console.log('favoriteProfiles', favoriteProfiles);
 
     return (
       <div className="profile-wrapper">
@@ -46,12 +60,18 @@ class UserProfile extends React.Component {
                 You currently have no listings. Add one <a href="#" className="d inline-block">here.</a><br/><br/>
 
               Favorites<hr />
-              <div className="row">
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-2.png"></img></a></div>
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-2.png"></img></a></div>
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-2.png"></img></a></div>
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-2.png"></img></a></div>
+              <div className='container pet-listing px-3'>
+                <div className='row px-5 py-5'>
+                  {
+                    favoriteProfilesQuery.map((favoriteProfile, index) => (
+                      <div key={index} className='col-sm-6 col-md-4 col-10 pb-3 card-style text-center' align='center'>
+                        <PetCard pet={{ name: favoriteProfile.petName, breed: favoriteProfile.breed, age: favoriteProfile.age, photoUrl: favoriteProfile.photoUrl, _id: favoriteProfile._id }}/>
+                      </div>
+                    ))
+                  }
+                </div>
               </div>
+
             </div>
           </div>
         </div>
