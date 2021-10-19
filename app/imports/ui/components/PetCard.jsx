@@ -1,14 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Image } from 'semantic-ui-react';
+import { Card, Image, Button, Icon } from 'semantic-ui-react';
+
+
 
 function PetCard({
   pet: { name, breed, age, photoUrl },
 }) {
 
+  function addToFavorites(e) {
+    e.preventDefault();
+    console.log('Button Clicked!');
+  }
+
+
   return (
     <Card className="pet-card">
       <Card.Content>
+
         <div>
           <Image className="listing-image" size="medium" circular src={photoUrl}/>
         </div>
@@ -17,8 +26,16 @@ function PetCard({
           <p className="mb-0">{breed}</p>
           <p>{age}</p>
         </div>
+
+        <Button onClick={addToFavorites} circular inverted color='red' icon='heart' />
+
+
       </Card.Content>
+
     </Card>
+
+
+
   );
 }
 
