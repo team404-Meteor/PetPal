@@ -102,6 +102,9 @@ class PetCollection {
     }
     return true;
   }
+  getPetsListedByOwner() {
+    return this.collection.find({}).fetch();
+  }
 }
 
 
