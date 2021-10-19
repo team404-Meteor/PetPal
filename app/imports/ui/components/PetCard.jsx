@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { Card, Image, Button, Icon } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
-import { Favorites } from '../../favorites/Favorites';
 import { Redirect } from 'react-router-dom';
-
+import { Favorites } from '../../favorites/Favorites';
 
 function PetCard({
   pet: { name, breed, age, photoUrl, _id },
@@ -15,27 +14,23 @@ function PetCard({
     e.preventDefault();
     const owner = Meteor.user().username;
 
-
     console.log('Button Clicked!');
     console.log('_id', _id);
     console.log('owner', owner);
-
 
     Meteor.call('updateWrap', owner, _id,
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
           return false;
-        } else {
-          swal('Success', 'Successfully added this listing to your favorites', 'success', {className: 'custom-swal'});
-          return true;
         }
+        swal('Success', 'Successfully added this listing to your favorites', 'success', { className: 'custom-swal' });
+        return true;
+
       });
   }
 
   // const isLogged = Meteor.userId() !== null;
-
-
 
   function LoggedInCheckForFave() {
     const isLoggedIn = Meteor.userId() !== null;
@@ -48,26 +43,24 @@ function PetCard({
     return '';
   }
 
-
-
   return (
-    <div class="container-fluid">
-      <div class="row justify-content-center pt-5">
-        <div class="col-lg-8 col-12 text-center px-0">
-          <div class="col-12 text-center">
-            <img className="listing-image" className="rounded-circle img-fluid" src={photoUrl} />
+    <div className="container-fluid">
+      <div className="row justify-content-center pt-5">
+        <div className="col-lg-8 col-12 text-center px-0">
+          <div className="col-12 text-center">
+            <img className="listing-image rounded-circle img-fluid" src={photoUrl} />
           </div>
-          <div class="col-12 text-center pt-2">
-            <div class="row justify-content-center">
-              <div class="col-auto px-0 mx-0 text-right">
+          <div className="col-12 text-center pt-2">
+            <div className="row justify-content-center">
+              <div className="col-auto px-0 mx-0 text-right">
                 <LoggedInCheckForFave />
               </div>
-              <div class="col-auto">
+              <div className="col-auto">
                 <h2>{name}</h2>
               </div>
             </div>
           </div>
-          <div class="col-12 text-center">
+          <div className="col-12 text-center">
             <p className="mb-0">{breed}</p>
             <p>{age}</p>
           </div>
@@ -88,16 +81,12 @@ function PetCard({
             <p className="mb-0">{breed}</p>
             <p>{age}</p>
           </div>
-        </div>*/}
+        </div> */}
       </div>
 
-
-      {/*<Button onClick={addToFavorites} circular inverted color='red' icon='heart'/>*/}
-
-
+      {/* <Button onClick={addToFavorites} circular inverted color='red' icon='heart'/> */}
 
     </div>
-
 
   );
 }

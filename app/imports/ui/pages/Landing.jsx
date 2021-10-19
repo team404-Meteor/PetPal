@@ -7,10 +7,6 @@ import 'bootstrap/dist/css/bootstrap';
 class Landing extends React.Component {
 
   render() {
-    const text = {
-      fontSize: 43,
-      textAlign: 'center',
-    };
     return (
       <div className="container pt-4 py-2 my-2 px-5">
         <div className="row justify-content-center">
@@ -23,9 +19,12 @@ class Landing extends React.Component {
             <p style={{ textAlign: 'center' }}>PetPal serves to ensure that our furry friends will never have to experience life in a shelter. Looking to rehome your pet? Looking for a new companion?
               <br />
               PetPal is for you.
-              </p>
-              <p className="pt-0 small-font">Already have an account? <Link className="text-custom-color" to="/signin">Sign in</Link></p>
-              <Link className="btn btn-custom3" to="/signup">Sign Up</Link><br/>
+            </p>
+            <p className="pt-0 small-font">
+              Already have an account?
+              <Link className="text-custom-color" to="/signin">Sign in</Link>
+            </p>
+            <Link className="btn btn-custom3" to="/signup">Sign Up</Link><br/>
           </div>
         </div>
       </div>

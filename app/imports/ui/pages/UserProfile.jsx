@@ -3,7 +3,6 @@ import { Meteor } from 'meteor/meteor';
 import { Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Stuffs } from '../../api/stuff/Stuff';
 import { Favorites } from '../../favorites/Favorites';
 import 'bootstrap/dist/css/bootstrap';
 import { Pets } from '../../api/pet/Pet';
@@ -20,8 +19,6 @@ class UserProfile extends React.Component {
 
   // Render the page once subscriptions have been received.
   renderPage() {
-
-    console.log('userListings', this.props.userListings);
 
     // console.log(this.props.favorites);
     // const faveIds = this.props.favorites[0].favoriteIds;
@@ -47,12 +44,12 @@ class UserProfile extends React.Component {
                 <img src="images/placeholder-1.png"></img>
               </div>
               <div className="col-12 text-center">
-                  {
-                    this.props.userListings.map((userListing, index) => (
-                      <div key={index} className='col-12'><PetCardForUserProfileUsername pet={{ owner: userListing.owner }} />
-                      </div>
-                    ))
-                  }
+                {
+                  this.props.userListings.map((userListing, index) => (
+                    <div key={index} className='col-12'><PetCardForUserProfileUsername pet={{ owner: userListing.owner }} />
+                    </div>
+                  ))
+                }
               </div>
             </div>
             <div className="col-md-8 col-12 py-5 px-5 rounded shadow overflow-auto scroll-style">
@@ -114,7 +111,6 @@ export default withTracker(({ match }) => {
   const FavoritesReady = FavoritesSubscription.ready();
   const PetsReady = PetsSubscription.ready();
   // const PetsUserReady = PetsUserSubscription.ready();
-
 
   // Get the Stuff documents
   const favorites = Favorites.collection.find({ _id: username }).fetch();
