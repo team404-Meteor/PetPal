@@ -14,7 +14,7 @@ class Landing extends React.Component {
     return (
       <div className="container pt-4 py-2 my-2 px-5">
         <div className="row justify-content-center">
-          <div className="col-lg-6 col-11">
+          <div className="col-lg-6 col-11 pt-lg-0 mt-lg-0 mt-xl-3 mt-5">
             <img src="/images/home.png" />
           </div>
         </div>
