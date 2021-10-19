@@ -16,3 +16,8 @@ $(document).ready(function () {
 
 
 });
+
+$('button-custom-heart').on('click', function(){
+  $('button').removeClass('');
+  $(this).addClass('active');
+});

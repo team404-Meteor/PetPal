@@ -25,8 +25,10 @@ function PetCard({
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
+          return false;
         } else {
-          swal('Success', 'Item added successfully', 'success');
+          swal('Success', 'Successfully added this listing to your favorites', 'success', {className: 'custom-swal'});
+          return true;
         }
       });
   }
@@ -37,8 +39,11 @@ function PetCard({
 
   function LoggedInCheckForFave() {
     const isLoggedIn = Meteor.userId() !== null;
-    if (isLoggedIn) {
+    if (isLoggedIn & addToFavorites == null) {
       return <Button onClick={addToFavorites} className="button-custom-heart pt-0 my-auto" />;
+    }
+    if (isLoggedIn && addToFavorites) {
+      return <Button onClick={addToFavorites} className="button-custom-heart-active pt-0 my-auto" />;
     }
     return '';
   }
@@ -49,23 +54,23 @@ function PetCard({
     <div class="container-fluid">
       <div class="row justify-content-center pt-5">
         <div class="col-lg-8 col-12 text-center px-0">
-        <div class="col-12 text-center">
-          <img className="listing-image" className="rounded-circle img-fluid" src={photoUrl} />
-        </div>
-        <div class="col-12 text-center pt-2">
-          <div class="row justify-content-center">
-            <div class="col-auto px-0 mx-0 text-right">
-              <LoggedInCheckForFave />
-            </div>
-            <div class="col-auto">
-              <h2>{name}</h2>
+          <div class="col-12 text-center">
+            <img className="listing-image" className="rounded-circle img-fluid" src={photoUrl} />
+          </div>
+          <div class="col-12 text-center pt-2">
+            <div class="row justify-content-center">
+              <div class="col-auto px-0 mx-0 text-right">
+                <LoggedInCheckForFave />
+              </div>
+              <div class="col-auto">
+                <h2>{name}</h2>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-12 text-center">
-          <p className="mb-0">{breed}</p>
-          <p>{age}</p>
-        </div>
+          <div class="col-12 text-center">
+            <p className="mb-0">{breed}</p>
+            <p>{age}</p>
+          </div>
         </div>
         {/*
         <div className="pet-overview pt-1 row justify-content-center">
