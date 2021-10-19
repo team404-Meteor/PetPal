@@ -148,7 +148,7 @@ export default withTracker(() => {
   // subscribe to all the data since the page is not user specific
   const petSubscribe = Meteor.subscribe(Pets.adminPublicationName);
 
-  const pets = Pets.getAllPets();
+  const pets = Pets.getAllPetsAdmin();
 
   return {
     petReady: petSubscribe.ready(),
