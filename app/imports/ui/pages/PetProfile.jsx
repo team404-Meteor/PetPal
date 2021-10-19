@@ -5,6 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Pets } from '../../api/pet/Pet';
 import { PetProfileCard } from "../components/PetProfileCard";
+import { PetProfilePhotoCard } from "../components/PetProfilePhotoCard"; 
 import 'bootstrap/dist/css/bootstrap';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
@@ -32,7 +33,7 @@ class PetProfile extends React.Component {
               Photos & Videos<p />
               <div className="row">
                 <Grid colums={3} divided>
-                  {this.props.pets.map((pet) => <PetProfilePhotoCard key={pet._id} pet={pet} />)}
+                  {this.props.pets.map((pet) => <PetProfilePhotoCard key={pet._id} pet={pet} />)} 
                 </Grid>
               </div>
             </div>
@@ -45,20 +46,23 @@ class PetProfile extends React.Component {
 
 // Require an array of Stuff documents in the props.
 PetProfile.propTypes = {
-  pets: PropTypes.array.isRequired,
+  doc: PropTypes.object,
+  model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-export default withTracker(() => {
-  // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Pets.userPublicationName);
+export default withTracker(({ match }) => {
+  // Get access to Pet documents.
+  const documentId = match.params._id;
+  // Get access to Pet documents.
+  const subscription = Meteor.subscribe(Pets.adminPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
-  // Get the Stuff documents
-  const pets = Pets.collection.find({}).fetch();
+  // Get the document
+  const doc = Pets.collection.findOne(documentId);
   return {
-    pets,
+    doc,
     ready,
   };
 })(PetProfile);
