@@ -49,13 +49,26 @@ class PetCollection {
     this.adminPublicationName = `${this.name}.publication.admin`;
   }
 
+  getAllPets() {
+    return this.collection.find({}).fetch();
+  }
+  // Returns all the pets. (subscribe to admin)
+  getAllPetsAdmin() {
+    return this.collection.find({}).fetch();
+  }
+
+  // Returns pet photo and owner
+  getPetsPhotoUrl(owner) {
+    return this.collection.find({owner}).fetch();
+  }
+
   // Returns an array containing all the pets from the user.
   getAllPets(owner) {
     const petsListed = this.collection.find({ owner }).fetch();
     const petsList = [];
 
     _.forEach(petsListed, function (data) {
-      const { petName, breed, age, description, photoUrl, status, petType } = data;
+      const { petName, breed, age, description, photoUrl, status, petType, _id } = data;
 
       petsList.push({
         petName,
@@ -71,11 +84,6 @@ class PetCollection {
 
     return petsList;
   }
-  
-  // Returns the most recent check-in.
-  getAllPetsPhotoUrl(owner) {
-    return this.collection.find({ owner }).fetch();
-  }
 
   // Checks if owner has any pet listings
   recordExists(owner) {
@@ -85,15 +93,11 @@ class PetCollection {
     }
     return true;
   }
-  getAllPets() {
-    return this.collection.find({}).fetch();
-  }
-}
 
+}
 
 /**
  * The singleton instance of the PetCollection.
  * @type {PetCollection}
  */
 export const Pets = new PetCollection();
-

@@ -20,13 +20,13 @@ function UserProfile({ petReady, pets }) {
                 <div className="col-md-8 col-7 mx-auto pb-3">
                   <img src="images/placeholder-1.png"></img>
                 </div>
-                <p className="pt-0 mt-0">{
+                <p className="pt-0 mt-0">{/*{
                       pets.map((pet, index) => (
                         <div key={index}>
                           <PetOwner pet={{ owner: pet.owner }} />
                         </div>
                       ))
-                    }</p>
+                    }*/}Username</p>
               </div>
               <div className="col-md-7 col-12 py-5 px-5 rounded shadow overflow-auto scroll-style">
                 Listings<hr />
@@ -35,7 +35,7 @@ function UserProfile({ petReady, pets }) {
                     {
                       pets.map((pet, index) => (
                         <div key={index} align='center' className="img-fluid">
-                          <PetPhoto pet={{ photoUrl: pet.photoUrl }} />
+                        <PetPhoto pet={{ photoUrl: pet.photoUrl }}/>
                         </div>
                       ))
                     }</a>
@@ -66,7 +66,8 @@ UserProfile.propTypes = {
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   const petSubscribe = Meteor.subscribe(Pets.userPublicationName);
-  const pets = Pets.getPetsListedByOwner();
+  const pets = Pets.getAllPets();
+  
   return {
     petReady: petSubscribe.ready(),
     pets,

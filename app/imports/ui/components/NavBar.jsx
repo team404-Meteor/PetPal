@@ -27,7 +27,7 @@ class NavBar extends React.Component {
                   </svg>
                 </div>
                 <div className="col-9 px-0 text-left">
-                  <Link to="/userProfile" className="side-link">Profile</Link>
+                  <Link to="/userProfile/${this.props.currentUser}" className="side-link">Profile</Link>
                 </div>
               </div>
             </li>
