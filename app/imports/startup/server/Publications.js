@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Pets } from '../../api/pet/Pet';
+import { Favorites } from '../../favorites/Favorites';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -9,6 +10,14 @@ Meteor.publish(Stuffs.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Stuffs.collection.find({ owner: username });
+  }
+  return this.ready();
+});
+
+Meteor.publish(Favorites.userPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Favorites.collection.find({ owner: username });
   }
   return this.ready();
 });
@@ -42,4 +51,12 @@ Meteor.publish(null, function () {
     return Meteor.roleAssignment.find({ 'user._id': this.userId });
   }
   return this.ready();
+});
+
+Meteor.methods({
+  updateWrap: function (owner, _id) {
+    console.log('_id', _id);
+    console.log('owner', owner);
+    Favorites.collection.update(owner, { $addToSet: { favoriteIds: _id } }, { upsert: true });
+  },
 });
