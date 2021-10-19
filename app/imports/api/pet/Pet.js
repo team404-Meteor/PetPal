@@ -14,22 +14,16 @@ class PetCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       owner: String,
-      petName: {
-        type: String,
-      },
-      breed: {
-        type: String,
-      },
-      age: {
-        type: String,
-      },
+      petName: String,
+      breed: String,
+      age: String,
       description: {
         type: String,
         defaultValue: '',
       },
       photoUrl: {
         type: String,
-        defaultValue: '',
+        defaultValue: 'images/default-pet-photo.png',
       },
       status: {
         type: Boolean,
@@ -45,18 +39,18 @@ class PetCollection {
           'Other',
         ],
       },
-      photoSetUrls: {
-        type: Array,
-      },
-      'photoSetUrls.$': {
-        type: String,
-      },
+      photoSetUrls: Array,
+      'photoSetUrls.$': String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
     // Define names for publications and subscriptions
     this.userPublicationName = `${this.name}.publication.user`;
     this.adminPublicationName = `${this.name}.publication.admin`;
+  }
+
+  getAllPets() {
+    return this.collection.find({}).fetch();
   }
 }
 

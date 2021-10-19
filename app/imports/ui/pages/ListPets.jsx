@@ -1,32 +1,12 @@
 import React from 'react';
-// import { Meteor } from 'meteor/meteor';
-// import PropTypes from 'prop-types';
+import { Meteor } from 'meteor/meteor';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
 import { Button, Form, Image, Segment, TransitionablePortal } from 'semantic-ui-react';
 import PetCard from '../components/PetCard';
+import { Pets } from '../../api/pet/Pet';
 
-const pet = {
-  name: 'Max and Minnie',
-  breed: 'Chihuahua Mix',
-  age: '3 and 4 years old',
-  description: 'This is their description',
-  photoUrl: '/images/meteor-logo.png',
-  status: 'Available',
-  type: 'Dogs',
-};
-
-const petArray = [pet, pet, pet, pet, pet, pet];
-
-/*
-
-function ListPets({
-  pets: { name, breed, age, description, photoUrl, status, type },
-}) {
-
-*/
-
-function ListPets() {
-
-  // const [openFilter, setOpenFilter] = useState(false);
+function ListPets({ petReady, pets }) {
 
   const filterStyle = {
     position: 'fixed',
@@ -125,46 +105,38 @@ function ListPets() {
         </TransitionablePortal>
         <Button onClick={sendEmail}>TEST EMAIL</Button>
       </nav>
-      <div className='container pet-listing px-3'>
-        <div className='row px-5 py-5'>
-          {
-            petArray.map((value, index) => (
-              <div key={index} className='col-sm-6 col-md-4 col-10 pb-3 card-style text-center' align='center'>
-                <PetCard pet={{ name: value.name, breed: value.breed, age: value.age, photoUrl: value.photoUrl }}/>
-              </div>
-            ))
-          }
-        </div>
-      </div>
+      {
+        petReady ?
+          <div className='container pet-listing px-3'>
+            <div className='row px-5 py-5'>
+              {
+                pets.map((pet, index) => (
+                  <div key={index} className='col-sm-6 col-md-4 col-10 pb-3 card-style text-center' align='center'>
+                    <PetCard pet={{ name: pet.petName, breed: pet.breed, age: pet.age, photoUrl: pet.photoUrl }}/>
+                  </div>
+                ))
+              }
+            </div>
+          </div> :
+          <div></div>
+      }
     </div>
   );
 }
 
-/*
 ListPets.propTypes = {
-  pets: PropTypes.shape({
-    name: PropTypes.string,
-    breed: PropTypes.string,
-    age: PropTypes.string,
-    description: PropTypes.string,
-    photoUrl: PropTypes.string,
-    status: PropTypes.string,
-    type: PropTypes.string,
-  }),
+  petReady: PropTypes.bool,
+  pets: PropTypes.array,
 };
-*/
 
-export default ListPets;
+export default withTracker(() => {
+  // subscribe to all the data since the page is not user specific
+  const petSubscribe = Meteor.subscribe(Pets.adminPublicationName);
 
-/*
-Name (for search view)
-Breed (for search view)
-Age (for search view)
-Description (for profile)
-Personality traits (for profile)
-Photos (for profile)
-Videos (for profile)
-Status (for profile)
-Type (for filter view)
+  const pets = Pets.getAllPets();
 
-*/
+  return {
+    petReady: petSubscribe.ready(),
+    pets,
+  };
+})(ListPets);

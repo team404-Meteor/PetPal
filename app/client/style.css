@@ -14,6 +14,9 @@ div.pet-overview>* {
     margin: 0em 1em;
 }
 
+.ui.medium.image.listing-image {
+  max-height: 258px;
+}
 /************************************
 ************** Filter ***************
 ************************************/

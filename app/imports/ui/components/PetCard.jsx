@@ -9,8 +9,8 @@ function PetCard({
   return (
     <Card className="pet-card">
       <Card.Content>
-        <div className="pet-image">
-          <Image size="medium" circular src={photoUrl}/>
+        <div>
+          <Image className="listing-image" size="medium" circular src={photoUrl}/>
         </div>
         <div className="pet-overview pt-2">
           <h2>{name}</h2>
