@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Image } from 'semantic-ui-react';
 
-function PetCard({
+function PetPhoto({
     pet: { owner, photoUrl },
 }) {
-
     return (
         <div className="col-12">
-            <img className="img-fluid rounded-circle" circular src={photoUrl} />
+            <img className="img-fluid rounded-circle" src={photoUrl} />
             <p className="mb-0">{owner}</p>
         </div>
     );
@@ -20,4 +18,4 @@ PetCard.propTypes = {
         photoUrl: PropTypes.string,
     }).isRequired,
 };
-export default PetCard;
+export default PetPhoto;
