@@ -61,7 +61,7 @@ function ListPets({ petReady, pets }) {
   };
 
   return (
-    <div>
+    <div class="container-fluid mx-0 px-0">
       <nav className='navbar navbar-light pet-filter sticky-top' style={rowStyle}>
         <TransitionablePortal
           onClose={() => (openFilter ? setOpenFilter(!openFilter) : setOpenFilter(openFilter))}
@@ -104,8 +104,7 @@ function ListPets({ petReady, pets }) {
       </nav>
       {
         petReady ?
-          <div className='container pet-listing px-3'>
-            <div className='row px-5 py-5'>
+        <div className='row my-auto justify-content-center px-5 mx-5'>
               {
                 // filter pets first then map the resulting array to pet card
                 // eslint-disable-next-line consistent-return
@@ -122,13 +121,12 @@ function ListPets({ petReady, pets }) {
                   if (Other && pet.petType === 'Other') return pet;
 
                 }).map((pet, index) => (
-                  <div key={index} className='col-sm-6 col-md-4 col-10 pb-3 card-style text-center' align='center'>
-                    <PetCard pet={{ name: pet.petName, breed: pet.breed, age: pet.age, photoUrl: pet.photoUrl }}/>
+                  <div key={index} className='col-lg-4 col-10' align='center'>
+                    <PetCard pet={{ name: pet.petName, breed: pet.breed, age: pet.age, photoUrl: pet.photoUrl, _id: pet._id }}/>
                   </div>
                 ))
               }
-            </div>
-          </div> :
+            </div>:
           <div>
             <Dimmer active inverted>
               <Loader inverted>Getting pets</Loader>

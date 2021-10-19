@@ -11,7 +11,7 @@ class Learn extends React.Component {
     return (
       <div className="container-fluid h-100">
         <div className="row pt-5 justify-content-center">
-          <div className="col-lg-9 col-11 pb-5">
+          <div className="col-lg-9 col-11 pb-5 py-lg-5">
             <div className="row justify-content-center">
               <div className="col-lg-4 col-12 mx-5 my-auto text-center">
                 <img src="/images/pet-facts-1.png" className="img-responsive img-circle" />
@@ -31,7 +31,7 @@ class Learn extends React.Component {
             </div>
           </div>
 
-          <div className="col-lg-9 col-11 pb-5">
+          <div className="col-lg-9 col-11 pb-5 py-lg-5">
             <div className="row justify-content-center">
               <div className="col-lg-4 col-12 mx-5 my-auto text-center order-lg-2">
                 <img src="/images/pet-facts-2.png" className="img-responsive img-circle" />
@@ -50,7 +50,7 @@ class Learn extends React.Component {
             </div>
           </div>
 
-          <div className="col-lg-9 col-11 pb-5">
+          <div className="col-lg-9 col-11 pb-5 py-lg-5">
             <div className="row justify-content-center">
               <div className="col-lg-4 col-12 mx-5 my-auto text-center">
                 <img src="/images/pet-facts-3.png" className="img-responsive img-circle" />
@@ -70,7 +70,7 @@ class Learn extends React.Component {
             </div>
           </div>
 
-          <div className="col-lg-9 col-11 pb-5">
+          <div className="col-lg-9 col-11 pb-5 py-lg-5">
             <div className="row justify-content-center">
               <div className="col-lg-4 col-12 mx-5 my-auto text-center order-lg-2">
                 <img src="/images/pet-facts-4.png" className="img-responsive img-circle" />

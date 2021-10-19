@@ -6,8 +6,10 @@ import { Roles } from 'meteor/alanning:roles';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+import Home from '../pages/Home';
 import Landing from '../pages/Landing';
 import Learn from '../pages/Learn';
+import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddPet from '../pages/AddPet';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
@@ -31,9 +33,11 @@ class App extends React.Component {
             <Route path="/signout" component={Signout}/>
             <Route path="/learn" component={Learn}/>
             <Route path="/listPets" component={ListPets}/>
-            <Route path="/petProfile/:_id" component={PetProfile}/>
-            <ProtectedRoute path="/userProfile" component={UserProfile}/>
+            <ProtectedRoute path="/home" component={Home}/>
+            <ProtectedRoute path="/userProfile/:_id" component={UserProfile}/>
             <ProtectedRoute path="/add" component={AddPet}/>
+            <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
+            <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
             <Route component={NotFound}/>
           </Switch>
           <Footer/>

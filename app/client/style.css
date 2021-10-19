@@ -3,36 +3,36 @@
 ************************************/
 
 .pet-card {
-  border: none;
-  margin: 0rem 1rem !important;
-  box-shadow: none !important;
-  text-align: center;
-  height: 100%;
+    border: none;
+    margin: 0rem 1rem !important;
+    box-shadow: none !important;
+    text-align: center;
+    height: 100%;
 }
 
-div.pet-overview > * {
-  margin: 0em 1em;
+div.pet-overview>* {
+    margin: 0em 1em;
 }
 
-
-
+.ui.medium.image.listing-image {
+  max-height: 258px;
+}
 /************************************
 ************** Filter ***************
 ************************************/
 
 .pet-filter {
-  background-color: #e7e7e7;
-  padding: 1rem;
+    background-color: #e7e7e7;
+    padding: 1rem;
 }
 
 .ui.button.filter-button {
-  background: #e7e7e7 none;
+    background: #e7e7e7 none;
 }
 
 .filter-text {
-  margin-right: 0.8rem;
+    margin-right: 0.8rem;
 }
-
 
 /************************************
 ************** NavBar ***************
@@ -43,7 +43,8 @@ html {
 }
 
 .navbar-top {
-  margin-bottom: 0;
+    margin-bottom: 0;
+    z-index: 2000;
 }
 
 .navbar-side {
@@ -57,7 +58,7 @@ html {
     list-style: none;
     background-color: #fff;
     overflow-y: scroll;
-    z-index: 1000;
+    z-index: 3000;
 }
 
 @media (min-width: 320px) {
@@ -134,9 +135,20 @@ a, .side-link:active, .side-link:hover {
     cursor: pointer;
     background-color: #5f5f5f;
     opacity: .6;
-    z-index: 990;
+    z-index: 2000;
 }
 
+/************************************
+*************** Home ****************
+************************************/
+.text-custom-color {
+    color: #a8e6cf !important;
+    font-weight: 800 !important;
+}
+.small-font {
+    line-height: 20pt !important;
+    font-size: 9pt !important;
+}
 /************************************
 ************ All Pages **************
 ************************************/
@@ -161,29 +173,94 @@ a {
         height: calc( 100vh - 250px);
         overflow-y: scroll;
     }
-    ;
 }
 
 /************************************
 ********* Upload listing ************
 ************************************/
+
 .btn-custom, .btn-custom:hover {
-    background-color:#a8e6cf !important;
+    background-color: #a8e6cf !important;
     border-radius: 25px !important;
     background-image: none !important;
     width: 100px !important;
 }
 
 .btn-custom2, .btn-custom2:hover {
-    background-color:#ffd3b6  !important;
+    background-color: #ffd3b6 !important;
     border-radius: 25px !important;
     background-image: none !important;
     width: 100px !important;
 }
+
 @media (max-width:961px) {
     .scroll-style2 {
         height: calc( 100vh - 400px);
         overflow-y: scroll;
     }
-    ;
 }
+
+/************************************
+******** Sign-in Sign-up ***********
+************************************/
+
+.caption {
+    font-size: 10pt;
+}
+
+#signup-page {
+    margin-top: 200px;
+}
+
+#signin-page {
+    margin-top: 200px;
+}
+
+#salmon-pink-text {
+    color: #ff8b94 !important;
+}
+
+#segment-background {
+    background-color: #dcedc1 !important;
+}
+
+.paragraph {
+    margin-top: 38px;
+}
+
+/************************************
+************ List Pets **************
+************************************/
+
+.btn-custom3, .btn-custom3:hover {
+    background-color: #ff8b94 !important;
+    border-radius: 25px !important;
+    background-image: none !important;
+    width: 100px !important;
+}
+
+label {
+    font-weight: lighter !important;
+    line-height: 12pt !important;
+}
+
+.bold {
+    font-weight: 600 !important;
+}
+
+.ui.checkbox {
+    padding-left: 0px !important;
+}
+
+.text-input, .text-input:focus {
+    border-top-style: 0.5px solid #5f5f5f !important;
+    border-right-style: 0.5px solid #5f5f5f !important;
+    border-left-style: 0.5px solid #5f5f5f !important;
+    border-bottom-style: 0.5px solid #5f5f5f !important;
+    background-color: #fff;
+}
+
+input[type="text"] {
+    height: 38px !important;
+}
+
