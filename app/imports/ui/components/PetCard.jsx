@@ -10,7 +10,7 @@ function PetCard({
     <Card className="pet-card">
       <Card.Content>
         <div>
-          <Image className="listing-image" size="medium" circular src={photoUrl}/>
+          <Image className="listing-image" size="medium" align="center" circular src={photoUrl}/>
         </div>
         <div className="pet-overview pt-2">
           <h2>{name}</h2>
