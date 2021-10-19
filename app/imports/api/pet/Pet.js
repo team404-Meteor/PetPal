@@ -85,6 +85,7 @@ class PetCollection {
     }
     return true;
   }
+  
   getAllPets() {
     return this.collection.find({}).fetch();
   }
