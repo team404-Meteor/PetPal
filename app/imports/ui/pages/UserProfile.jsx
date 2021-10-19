@@ -24,9 +24,7 @@ class UserProfile extends React.Component {
     console.log(this.props.favorites);
     // const faveIds = this.props.favorites[0].favoriteIds;
     let favoritePetProfileIds = [];
-    if (this.props.favorites === []) {
-      favoritePetProfileIds = [];
-    } else {
+    if (this.props.favorites.length > 0) {
       favoritePetProfileIds = this.props.favorites[0].favoriteIds;
     }
     // const favoritePetProfileIds = [] in this.props.favorites ? [] : this.props.favorites[0].favoriteIds;
