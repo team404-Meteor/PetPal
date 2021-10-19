@@ -28,8 +28,8 @@ class PetProfile extends React.Component {
             </div>
             <div className="col-md-8 col-12 py-5 px-5 rounded shadow overflow-auto scroll-style">
               Description<hr />
-                
-              Favorites<p />
+                {this.props.pets.description}
+              Photos & Videos<p />
               <div className="row">
                 <Grid colums={3} divided>
                   {this.props.pets.map((pet) => <PetProfilePhotoCard key={pet._id} pet={pet} />)}

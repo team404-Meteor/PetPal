@@ -25,16 +25,15 @@ class PetCollection {
       },
       description: {
         type: String,
+        defaultValue: '',
       },
       photoUrl: {
         type: String,
+        defaultValue: '',
       },
       status: {
-        type: String,
-        allowedValues: [
-          'Available',
-          'Adopted',
-        ],
+        type: Boolean,
+        defaultValue: true,
       },
       petType: {
         type: String,
@@ -45,6 +44,12 @@ class PetCollection {
           'Reptile',
           'Other',
         ],
+      },
+      photoSetUrls: {
+        type: Array,
+      },
+      'photoSetUrls.$': {
+        type: String,
       },
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.

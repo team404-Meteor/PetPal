@@ -33,7 +33,7 @@ class App extends React.Component {
             <Route path="/listPets" component={ListPets}/>
             <Route path="/petProfile/:_id" component={PetProfile}/>
             <ProtectedRoute path="/userProfile" component={UserProfile}/>
-            <ProtectedRoute path="/addPet" component={AddPet}/>
+            <ProtectedRoute path="/add" component={AddPet}/>
             <Route component={NotFound}/>
           </Switch>
           <Footer/>
