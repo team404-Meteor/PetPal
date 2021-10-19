@@ -92,6 +92,7 @@ export default withTracker(({ match }) => {
 
   // get the username
   const username = match.params._id;
+  console.log('username', username);
 
   // Determine if the subscription is ready
   const FavoritesReady = FavoritesSubscription.ready();
