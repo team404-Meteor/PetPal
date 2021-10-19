@@ -19,7 +19,7 @@ class Landing extends React.Component {
           </div>
         </div>
         <div className="row justify-content-center pb-2">
-          <div className="col-lg-6 col-10 text-center">
+          <div className="col-lg-6 col-12 text-center">
             <p style={{ textAlign: 'center' }}>PetPal serves to ensure that our furry friends will never have to experience life in a shelter. Looking to rehome your pet? Looking for a new companion?
               <br />
               PetPal is for you.
