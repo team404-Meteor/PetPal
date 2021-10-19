@@ -12,15 +12,15 @@ class NavBar extends React.Component {
     return (
       <nav className="navbar navbar-light bg-white shadow py-3 sticky-top navbar-top">
       {this.props.currentUser ? ([
-        <a className="navbar-brand" href="/home">
+        <Link className="navbar-brand" to="/home/${this.props.currentUser}">
           <img className="mx-4" src="/images/logo.png" width="auto" height="auto" alt="logo" />
-        </a>]
+        </Link>]
         ) : ''}
 
         {this.props.currentUser === '' ? ([
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           <img className="mx-4" src="/images/logo.png" width="auto" height="auto" alt="logo" />
-        </a>]
+        </Link>]
         ) : ''}
 
         {this.props.currentUser ? ([
