@@ -20,7 +20,9 @@ class UserProfile extends React.Component {
   // Render the page once subscriptions have been received.
   renderPage() {
 
-    console.log(this.props.favorites);
+    console.log('userListings', this.props.userListings);
+
+    // console.log(this.props.favorites);
     // const faveIds = this.props.favorites[0].favoriteIds;
     let favoritePetProfileIds = [];
     if (this.props.favorites.length > 0) {
@@ -29,9 +31,9 @@ class UserProfile extends React.Component {
     // const favoritePetProfileIds = [] in this.props.favorites ? [] : this.props.favorites[0].favoriteIds;
     // console.log(favoritePetProfileIds);
 
-    console.log('favoritePetProfileIds', favoritePetProfileIds);
+    // console.log('favoritePetProfileIds', favoritePetProfileIds);
     const favoriteProfilesQuery = Pets.collection.find({ _id: { $in: favoritePetProfileIds } }).fetch();
-    console.log('favoriteProfilesQuery', favoriteProfilesQuery);
+    // console.log('favoriteProfilesQuery', favoriteProfilesQuery);
 
     // console.log('favoriteProfiles', favoriteProfiles);
 
@@ -47,13 +49,17 @@ class UserProfile extends React.Component {
             </div>
             <div className="col-md-8 col-12 py-5 px-5 rounded shadow overflow-auto scroll-style">
               Listings<hr />
-              <div className="row pb-5">
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-1.png"></img></a></div>
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-1.png"></img></a></div>
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-1.png"></img></a></div>
-                <div className="col-lg-3 col-4 pb-4"><a href="#"><img src="images/placeholder-1.png"></img></a></div>
+              <div className='container pet-listing px-3'>
+                <div className='row px-5 py-5'>
+                  {
+                    this.props.userListings.map((userListing, index) => (
+                      <div key={index} className='col-sm-6 col-md-4 col-10 pb-3 card-style text-center' align='center'>
+                        <PetCard pet={{ name: userListing.petName, breed: userListing.breed, age: userListing.age, photoUrl: userListing.photoUrl, _id: userListing._id }}/>
+                      </div>
+                    ))
+                  }
+                </div>
               </div>
-                You currently have no listings. Add one <a href="#" className="d inline-block">here.</a><br/><br/>
 
               Favorites<hr />
               <div className='container pet-listing px-3'>
@@ -67,7 +73,6 @@ class UserProfile extends React.Component {
                   }
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -79,8 +84,10 @@ class UserProfile extends React.Component {
 // Require an array of Stuff documents in the props.
 UserProfile.propTypes = {
   favorites: PropTypes.array.isRequired,
+  userListings: PropTypes.array.isRequired,
   FavoritesReady: PropTypes.bool.isRequired,
   PetsReady: PropTypes.bool.isRequired,
+  // PetsUserReady: PropTypes.bool.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -89,21 +96,26 @@ export default withTracker(({ match }) => {
   // Get access to Stuff documents.
   const FavoritesSubscription = Meteor.subscribe(Favorites.userPublicationName);
   const PetsSubscription = Meteor.subscribe(Pets.adminPublicationName);
+  // const PetsUserSubscription = Meteor.subscribe(Pets.userPublicationName);
 
   // get the username
   const username = match.params._id;
-  console.log('username', username);
+  // console.log('username', username);
 
   // Determine if the subscription is ready
   const FavoritesReady = FavoritesSubscription.ready();
   const PetsReady = PetsSubscription.ready();
+  // const PetsUserReady = PetsUserSubscription.ready();
+
 
   // Get the Stuff documents
   const favorites = Favorites.collection.find({ _id: username }).fetch();
+  const userListings = Pets.collection.find({ owner: username }).fetch();
 
   return {
     favorites,
     FavoritesReady,
     PetsReady,
+    userListings,
   };
 })(UserProfile);
