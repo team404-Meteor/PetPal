@@ -52,7 +52,7 @@ class NavBar extends React.Component {
                 </div>
               </div>
             </li>
-          </ul>
+          </ul>]
         ) : ''}
 
         {this.props.currentUser === '' ? ([
