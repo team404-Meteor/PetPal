@@ -18,6 +18,11 @@ const typeOptions = [
   { key: 'o', text: 'Other', value: 'Other' },
 ];
 
+const statusOptions = [
+  { key: 't', text: 'Available', value: 'Available' },
+  { key: 'f', text: 'Adopted', value: 'Adopted' },
+];
+
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class PetProfile extends React.Component {
 
@@ -32,7 +37,7 @@ class PetProfile extends React.Component {
       age: '',
       description: '',
       photoUrl: '',
-      available: true,
+      status: '',
     };
 
     this.addToFavorites = this.addToFavorites.bind(this);
@@ -40,26 +45,32 @@ class PetProfile extends React.Component {
 
   handleOpenEdit = () => this.setState({ openEdit: !this.state.openEdit });
 
-  handleChange = (e, { value }) => {
-    console.log(e);
-    console.log(value);
+  handleChange = (e, { name, value }) => {
+
+    this.setState({ [name]: value });
   }
 
   // On submit, insert the data.
   submit = (data, formRef) => {
 
-    console.log(data);
-    console.log(formRef);
-    /*
     const updatedData = {
-      petName: data.petName,
-      breed: data.breed,
-      age: data.age,
-      description: data.description,
-      photoUrl: data.photoUrl,
-      status: data.available,
-      petType: data.petType,
+      petName: this.state.petName || this.props.pet.petName,
+      breed: this.state.breed || this.props.pet.breed,
+      age: this.state.age || this.props.pet.age,
+      description: this.state.description || this.props.pet.description,
+      photoUrl: this.state.photoUrl || this.props.pet.photoUrl,
+      petType: this.state.petType || this.props.pet.petType,
     };
+
+    const newStatus = () => {
+      if (this.state.status) {
+        return this.state.status === 'Available';
+      }
+
+      return this.props.pet.status;
+    };
+
+    updatedData.status = newStatus();
 
     Pets.collection.update({ _id: this.props.pet._id }, { $set: updatedData },
       (error) => {
@@ -67,10 +78,12 @@ class PetProfile extends React.Component {
           swal('Error', error.message, 'error');
         } else {
           swal('Success', 'Pet profile updated!', 'success');
-          formRef.reset();
         }
       });
-      */
+
+    if (!updatedData.status) {
+      Meteor.call('sendEmail', 'rexterds@gmail.com', updatedData.petName);
+    }
   }
 
   addToFavorites(e) {
@@ -98,7 +111,7 @@ class PetProfile extends React.Component {
 
     let fRef = null;
 
-    const { _id, owner, description, petName, breed, petType, status, age, photoUrl, photoSetUrls } = this.props.pet;
+    const { _id, owner, description, petName, breed, petType, status, age, photoUrl } = this.props.pet;
 
     return (
       <div className="profile-wrapper">
@@ -119,6 +132,7 @@ class PetProfile extends React.Component {
                 owner === this.props.username ?
 
                   <TransitionablePortal
+                    onClose={() => (this.state.openEdit ? this.setState({ openEdit: !this.state.openEdit }) : this.setState({ openEdit: this.state.openEdit }))}
                     open={this.state.openEdit}
                     trigger={
                       <Button onClick={this.handleOpenEdit}>Edit pet profile</Button>
@@ -132,7 +146,7 @@ class PetProfile extends React.Component {
                         <div className="col-11 pt-1 text-center mx-auto">
                           <div className="row justify-content-center mx-auto">
                             <div className="col-lg-6 col-12 text-left pl-2">
-                              <Form.Input name="petName" label="Pet Name"value={petName} onChange={this.handleChange}/>
+                              <Form.Input name="petName" label="Pet Name" placeholder={petName} onChange={this.handleChange}/>
                             </div>
                             <div className="col-lg-6 col-12 text-left pl-2">
                               <Form.Select
@@ -140,32 +154,39 @@ class PetProfile extends React.Component {
                                 name="petType"
                                 label='Pet Type'
                                 options={typeOptions}
-                                value={petType}
+                                placeholder={petType}
                                 onChange={this.handleChange}
                               />
                             </div>
                           </div>
                           <div className="row pt-3 justify-content-center mx-auto">
                             <div className="col-6 text-left pl-2">
-                              <Form.Input name="breed" label="Breed" value={breed} onChange={this.handleChange}/>
+                              <Form.Input name="breed" label="Breed" placeholder={breed} onChange={this.handleChange}/>
                             </div>
                             <div className="col-6 text-left pl-2">
-                              <Form.Input name="age" label="Age" value={age} onChange={this.handleChange}/>
+                              <Form.Input name="age" label="Age" placeholder={age} onChange={this.handleChange}/>
                             </div>
                           </div>
                           <div className="row pt-3 justify-content-center mx-auto">
                             <div className="col-12 text-left pl-2">
-                              <Form.TextArea name="description" label="Description" value={description} onChange={this.handleChange}/>
+                              <Form.TextArea name="description" label="Description" placeholder={description} onChange={this.handleChange}/>
                             </div>
                           </div>
                           <div className="row pt-3 justify-content-center mx-auto">
                             <div className="col-lg-12 col-12 text-left pl-2">
-                              <Form.Input name="photoUrl" label="Photo URL" value={photoUrl} onChange={this.handleChange}/>
+                              <Form.Input name="photoUrl" label="Photo URL" placeholder={photoUrl} onChange={this.handleChange}/>
                             </div>
                           </div>
                           <div className="row pt-3 justify-content-start mx-auto">
                             <div className="col-lg-6 col-12 text-left pl-2">
-                              <Checkbox name="status" label="Available" value={status} defaultChecked={status} onClick={this.handleChange}/>
+                              <Form.Select
+                                fluid
+                                name="status"
+                                label='Status'
+                                options={statusOptions}
+                                placeholder={status ? 'Available' : 'Adopted'}
+                                onChange={this.handleChange}
+                              />
                             </div>
                           </div>
                           <div className="row pt-3 justify-content-center mx-auto">

@@ -12,9 +12,9 @@ Meteor.methods({
     return { serviceID, templateID, userID };
   },
 
-  sendEmail: function (to) {
+  sendEmail: function (to, petName) {
 
-    check([to], [String]);
+    check([to, petName], [String]);
 
     this.unblock();
 
@@ -22,7 +22,7 @@ Meteor.methods({
       to,
       from: 'petpal.meteor@gmail.com',
       subject: 'A pet from your favorites list has been adopted!',
-      text: 'A pet from your favorites list has been adopted!',
+      text: `${petName} from your favorites list has been adopted!\n\n-PetPal Team`,
     });
   },
 

@@ -101,7 +101,6 @@ function ListPets({ petReady, pets }) {
             </Form>
           </Segment>
         </TransitionablePortal>
-        <Button onClick={sendEmail}>TEST EMAIL</Button>
       </nav>
       {
         petReady ?
