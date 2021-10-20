@@ -124,12 +124,9 @@ function ListPets({ petReady, pets }) {
               }).map((pet, index) => (
                 <div key={index} className='col-lg-4 col-12 text-center'>
 
-                  <Link as={NavLink} to={`/petProfile/${Meteor.user().username}/${pet._id}`}>
-                    <span className="card pet-card" style={{ display: 'flex' }}>
+                  <Link to={`/petProfile/${Meteor.user().username}/${pet._id}`}>
                       <PetCard pet={{ name: pet.petName, breed: pet.breed, age: pet.age, photoUrl: pet.photoUrl, _id: pet._id }}/>
-                    </span>
-
-                  </Link>
+                      </Link>
                 </div>
               ))
             }

@@ -100,7 +100,7 @@ class PetProfile extends React.Component {
               {description || 'No description'} <br/> <br/>
               Photos and Videos<hr />
               <div className="row">
-                {
+                { 
                   photoSetUrls.length > 0 ?
                     photoSetUrls.map((url, index) => (
                       <div key={index} className="col">
