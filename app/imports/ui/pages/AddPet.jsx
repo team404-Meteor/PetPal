@@ -46,7 +46,7 @@ class AddPet extends React.Component {
 
   // On submit, insert the data.
   submit(data, formRef) {
-    const { petName, breed, age, description, photoUrl, status, petType, } = data;
+    const { petName, breed, age, description, photoUrl, status, petType } = data;
     const owner = Meteor.user().username;
     Pets.collection.insert({ petName, breed, age, description, photoUrl, status, petType, owner },
       (error) => {
@@ -64,38 +64,38 @@ class AddPet extends React.Component {
     let fRef = null;
     return (
       <div className="container-fluid pt-lg-5 mt-5 pb-5">
-        <div class="row justify-content-center">
-          <div class="col-lg-5 col-11 card rounded shadow px-3 py-3">
-            <div class="row justify-content-center">
-              <div class="col-11 pt-3 text-center">
+        <div className="row justify-content-center">
+          <div className="col-lg-5 col-11 card rounded shadow px-3 py-3">
+            <div className="row justify-content-center">
+              <div className="col-11 pt-3 text-center">
                 <h1>Add a Pet</h1>
                 <hr />
               </div>
               <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
-                <div class="col-11 pt-1 text-center mx-auto">
-                  <div class="row justify-content-center mx-auto">
-                    <div class="col-lg-6 col-12 text-left pl-2">
+                <div className="col-11 pt-1 text-center mx-auto">
+                  <div className="row justify-content-center mx-auto">
+                    <div className="col-lg-6 col-12 text-left pl-2">
                       <TextField name='petName' />
                     </div>
-                    <div class="col-lg-6 col-12 text-left pl-2">
+                    <div className="col-lg-6 col-12 text-left pl-2">
                       <SelectField name='petType' placeholder={' '}/>
                     </div>
                   </div>
-                  <div class="row pt-3 justify-content-center mx-auto">
-                    <div class="col-6 text-left pl-2">
+                  <div className="row pt-3 justify-content-center mx-auto">
+                    <div className="col-6 text-left pl-2">
                       <TextField name='breed' />
                     </div>
-                    <div class="col-6 text-left pl-2">
+                    <div className="col-6 text-left pl-2">
                       <TextField name='age' />
                     </div>
                   </div>
-                  <div class="row pt-3 justify-content-center mx-auto">
-                    <div class="col-12 text-left pl-2">
+                  <div className="row pt-3 justify-content-center mx-auto">
+                    <div className="col-12 text-left pl-2">
                       <LongTextField name='description' />
                     </div>
                   </div>
-                  <div class="row pt-3 justify-content-center mx-auto">
-                    <div class="col-lg-12 col-12 text-left pl-2">
+                  <div className="row pt-3 justify-content-center mx-auto">
+                    <div className="col-lg-12 col-12 text-left pl-2">
                       <TextField name='photoUrl' />
                     </div>
                   </div>
@@ -104,8 +104,8 @@ class AddPet extends React.Component {
                       <HiddenField name="status" />
                     </div>
                   </div>
-                  <div class="row pt-3 justify-content-center mx-auto">
-                    <div class="col-12 text-left my-auto text-center">
+                  <div className="row pt-3 justify-content-center mx-auto">
+                    <div className="col-12 text-left my-auto text-center">
                       <SubmitField value='Submit' className="btn btn-custom" />
                       <ErrorsField />
                     </div>
@@ -133,7 +133,7 @@ class AddPet extends React.Component {
             </Segment>
           </AutoForm>
         </Grid.Column>
-      </Grid>*/}
+      </Grid> */}
       </div>
     );
   }

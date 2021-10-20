@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
+import { Link, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Button, Checkbox, Dimmer, Form, Image, Loader, Segment, TransitionablePortal } from 'semantic-ui-react';
@@ -55,13 +56,8 @@ function ListPets({ petReady, pets }) {
     setOpenFilter(!openFilter);
   };
 
-  const sendEmail = () => {
-
-    // Meteor.call('sendEmail', '');
-  };
-
   return (
-    <div class="container-fluid mx-0 px-0">
+    <div className="container-fluid mx-0 px-0">
       <nav className='navbar navbar-light pet-filter sticky-top' style={rowStyle}>
         <TransitionablePortal
           onClose={() => (openFilter ? setOpenFilter(!openFilter) : setOpenFilter(openFilter))}
@@ -100,33 +96,35 @@ function ListPets({ petReady, pets }) {
             </Form>
           </Segment>
         </TransitionablePortal>
-        <Button onClick={sendEmail}>TEST EMAIL</Button>
       </nav>
       {
         petReady ?
-        <div className='row my-auto justify-content-center px-5 mx-5'>
-              {
-                // filter pets first then map the resulting array to pet card
-                // eslint-disable-next-line consistent-return
-                _.filter(pets, function (pet) {
-                  const { Dog, Cat, Bunny, Reptile, Other } = filterTypes;
+          <div className='row my-auto justify-content-center px-5 mx-5'>
+            {
+            // filter pets first then map the resulting array to pet card
+            // eslint-disable-next-line consistent-return
+              _.filter(pets, function (pet) {
+                const { Dog, Cat, Bunny, Reptile, Other } = filterTypes;
 
-                  // return if the user did not check anything
-                  if (!Dog && !Cat && !Bunny && !Reptile && !Other) return pet;
+                // return if the user did not check anything
+                if (!Dog && !Cat && !Bunny && !Reptile && !Other) return pet;
 
-                  if (Dog && pet.petType === 'Dog') return pet;
-                  if (Cat && pet.petType === 'Cat') return pet;
-                  if (Bunny && pet.petType === 'Bunny') return pet;
-                  if (Reptile && pet.petType === 'Reptile') return pet;
-                  if (Other && pet.petType === 'Other') return pet;
+                if (Dog && pet.petType === 'Dog') return pet;
+                if (Cat && pet.petType === 'Cat') return pet;
+                if (Bunny && pet.petType === 'Bunny') return pet;
+                if (Reptile && pet.petType === 'Reptile') return pet;
+                if (Other && pet.petType === 'Other') return pet;
 
-                }).map((pet, index) => (
-                  <div key={index} className='col-lg-4 col-md-4 col-12 text-center'>
+              }).map((pet, index) => (
+                <div key={index} className='col-lg-4 col-12 text-center'>
+
+                  <Link to={`/petProfile/${Meteor.user().username}/${pet._id}`}>
                     <PetCard pet={{ name: pet.petName, breed: pet.breed, age: pet.age, photoUrl: pet.photoUrl, _id: pet._id }}/>
-                  </div>
-                ))
-              }
-            </div>:
+                  </Link>
+                </div>
+              ))
+            }
+          </div> :
           <div>
             <Dimmer active inverted>
               <Loader inverted>Getting pets</Loader>
@@ -148,6 +146,7 @@ export default withTracker(() => {
 
   const pets = Pets.getAllPetsAdmin();
 
+  console.log(petSubscribe.ready());
   return {
     petReady: petSubscribe.ready(),
     pets,

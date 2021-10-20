@@ -1,4 +1,13 @@
 {
+
+  "packages": {
+    "email": {
+      "service": "Gmail",
+      "user": "petpal.meteor@gmail.com",
+      "password": "8FzChfqNBMkkht2"
+    }
+  },
+
   "defaultAccounts": [
     { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
     { "email": "john@foo.com", "password": "changeme" }

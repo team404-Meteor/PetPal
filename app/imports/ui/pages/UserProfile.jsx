@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Stuffs } from '../../api/stuff/Stuff';
+import { Link } from 'react-router-dom';
 import { Favorites } from '../../favorites/Favorites';
 import 'bootstrap/dist/css/bootstrap';
 import { Pets } from '../../api/pet/Pet';
@@ -20,8 +20,6 @@ class UserProfile extends React.Component {
 
   // Render the page once subscriptions have been received.
   renderPage() {
-
-    console.log('userListings', this.props.userListings);
 
     // console.log(this.props.favorites);
     // const faveIds = this.props.favorites[0].favoriteIds;
@@ -47,12 +45,14 @@ class UserProfile extends React.Component {
                 <img src="images/placeholder-1.png"></img>
               </div>
               <div className="col-12 text-center">
-                  {
-                    this.props.userListings.map((userListing, index) => (
-                      <div key={index} className='col-12'><PetCardForUserProfileUsername pet={{ owner: userListing.owner }} />
-                      </div>
-                    ))
-                  }
+                {
+                  this.props.userListings.map((userListing, index) => (
+
+                    <div key={index} className='col-12'>
+                      <PetCardForUserProfileUsername pet={{ owner: userListing.owner }} />
+                    </div>
+                  ))
+                }
               </div>
             </div>
             <div className="col-md-8 col-12 py-5 px-5 rounded shadow overflow-auto scroll-style">
@@ -62,7 +62,9 @@ class UserProfile extends React.Component {
                   {
                     this.props.userListings.map((userListing, index) => (
                       <div key={index} className='col-4 col-md-3 sm-px-0 mx-0 pb-3 text-center'>
-                        <PetCardForUserProfile pet={{ photoUrl: userListing.photoUrl }} />
+                        <Link to={`/petProfile/${this.props.username}/${userListing._id}`}>
+                          <PetCardForUserProfile pet={{ photoUrl: userListing.photoUrl }} />
+                        </Link>
                       </div>
                     ))
                   }
@@ -75,7 +77,9 @@ class UserProfile extends React.Component {
                   {
                     favoriteProfilesQuery.map((favoriteProfile, index) => (
                       <div key={index} className='col-4 col-md-3 sm-px-0 mx-0 pb-3 text-center'>
-                        <PetCardForUserProfile pet={{ photoUrl: favoriteProfile.photoUrl }} />
+                        <Link to={`/petProfile/${this.props.username}/${favoriteProfile._id}`}>
+                          <PetCardForUserProfile pet={{ photoUrl: favoriteProfile.photoUrl }} />
+                        </Link>
                       </div>
                     ))
                   }
@@ -91,6 +95,7 @@ class UserProfile extends React.Component {
 
 // Require an array of Stuff documents in the props.
 UserProfile.propTypes = {
+  username: PropTypes.string,
   favorites: PropTypes.array.isRequired,
   userListings: PropTypes.array.isRequired,
   FavoritesReady: PropTypes.bool.isRequired,
@@ -115,12 +120,12 @@ export default withTracker(({ match }) => {
   const PetsReady = PetsSubscription.ready();
   // const PetsUserReady = PetsUserSubscription.ready();
 
-
   // Get the Stuff documents
   const favorites = Favorites.collection.find({ _id: username }).fetch();
   const userListings = Pets.collection.find({ owner: username }).fetch();
 
   return {
+    username,
     favorites,
     FavoritesReady,
     PetsReady,

@@ -11,20 +11,20 @@ class NavBar extends React.Component {
     const navStyle = { border: '0', boxShadow: 'none' };
     return (
       <nav className="navbar navbar-light bg-white shadow py-3 sticky-top navbar-top">
-      {this.props.currentUser ? ([
-        <Link className="navbar-brand" to="/home/${this.props.currentUser}">
-          <img className="mx-4" src="/images/logo.png" width="auto" height="auto" alt="logo" />
-        </Link>]
+        {this.props.currentUser ? ([
+          <Link key={1} className="navbar-brand" to="/home/">
+            <img className="mx-4" src="/images/logo.png" width="auto" height="auto" alt="logo" />
+          </Link>]
         ) : ''}
 
         {this.props.currentUser === '' ? ([
-        <Link className="navbar-brand" to="/">
-          <img className="mx-4" src="/images/logo.png" width="auto" height="auto" alt="logo" />
-        </Link>]
+          <Link key={2} className="navbar-brand" to="/">
+            <img className="mx-4" src="/images/logo.png" width="auto" height="auto" alt="logo" />
+          </Link>]
         ) : ''}
 
         {this.props.currentUser ? ([
-          <ul key={1} className="navbar-side" id="navbarSide">
+          <ul key={3} className="navbar-side" id="navbarSide">
             <li className="navbar-side-item">
               <div className="row">
                 <div className="col-3 text-right">
@@ -56,7 +56,7 @@ class NavBar extends React.Component {
         ) : ''}
 
         {this.props.currentUser === '' ? ([
-          <ul key={2} className="navbar-side" id="navbarSide">
+          <ul key={4} className="navbar-side" id="navbarSide">
             <li className="navbar-side-item">
               <div className="row">
                 <div className="col-3 text-right">

@@ -1,22 +1,23 @@
 /************************************
-************** Pet Card ***************
+************** Pet Listing Card *****
 ************************************/
-
-.pet-card {
-    border: none;
-    margin: 0rem 1rem !important;
-    box-shadow: none !important;
-    text-align: center;
-    height: 100%;
-}
 
 div.pet-overview>* {
     margin: 0em 1em;
 }
 
-.ui.medium.image.listing-image {
+.listing-image {
   max-height: 258px;
 }
+
+/***********************************
+************** Pet Profile Card *****
+************************************/
+
+.profile-image {
+  max-height: 258px;
+}
+
 /************************************
 ************** Filter ***************
 ************************************/
