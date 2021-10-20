@@ -205,6 +205,8 @@ class PetProfile extends React.Component {
               }
             </div>
             <div className="col-md-8 col-12 py-5 px-5 rounded shadow overflow-auto scroll-style">
+              Contact <hr />
+              {owner} <br/> <br/> <br/>
               Description<hr />
               {description || 'No description'} <br/> <br/>
               Photos and Videos<hr />

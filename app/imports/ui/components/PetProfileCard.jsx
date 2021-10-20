@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 /** Renders a single row in the List petprofile table. See pages/ListStuff.jsx. */
 class PetProfileCard extends React.Component {
   render() {
-    const { photoUrl, petName, breed, status, age } = this.props.petprofile;
+    const { photoUrl, petName, owner, breed, status, age } = this.props.petprofile;
     return (
       <div className="text-center px-0">
         <div className="col-12 text-center">
@@ -19,8 +19,8 @@ class PetProfileCard extends React.Component {
         </div>
         <div className="col-12 text-center">
           <p className="mb-0">Breed: {breed}</p>
-          <p>Status: {status ? 'Available' : 'Adopted'}</p>
           <p>Age: {age}</p>
+          <p>Status: {status ? 'Available' : 'Adopted'}</p>
         </div>
       </div>
     );

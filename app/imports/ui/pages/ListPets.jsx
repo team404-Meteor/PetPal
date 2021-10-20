@@ -56,11 +56,6 @@ function ListPets({ petReady, pets }) {
     setOpenFilter(!openFilter);
   };
 
-  const sendEmail = () => {
-
-    // Meteor.call('sendEmail', '');
-  };
-
   return (
     <div className="container-fluid mx-0 px-0">
       <nav className='navbar navbar-light pet-filter sticky-top' style={rowStyle}>
@@ -124,8 +119,8 @@ function ListPets({ petReady, pets }) {
                 <div key={index} className='col-lg-4 col-12 text-center'>
 
                   <Link to={`/petProfile/${Meteor.user().username}/${pet._id}`}>
-                      <PetCard pet={{ name: pet.petName, breed: pet.breed, age: pet.age, photoUrl: pet.photoUrl, _id: pet._id }}/>
-                      </Link>
+                    <PetCard pet={{ name: pet.petName, breed: pet.breed, age: pet.age, photoUrl: pet.photoUrl, _id: pet._id }}/>
+                  </Link>
                 </div>
               ))
             }
