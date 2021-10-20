@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Image, Button, Icon } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
-import { Link, NavLink, Redirect } from 'react-router-dom';
-import { Favorites } from '../../favorites/Favorites';
 
 function PetCard({
   pet: { name, breed, age, photoUrl, _id },
@@ -42,7 +40,6 @@ function PetCard({
   return (
     <div className="container-fluid">
       <div className="row justify-content-center pt-5">
-
         <div className="col-lg-8 col-12 text-center px-0">
           <div className="col-12 text-center">
             <img className="listing-image rounded-circle img-fluid" src={photoUrl} />
@@ -62,7 +59,6 @@ function PetCard({
             <p>{age}</p>
           </div>
         </div>
-
       </div>
     </div>
 

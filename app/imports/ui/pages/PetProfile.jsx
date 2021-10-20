@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Grid } from 'semantic-ui-react';
+import { Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Pets } from '../../api/pet/Pet';
@@ -27,24 +27,21 @@ class PetProfile extends React.Component {
 */
     const { _id, description, petName, breed, status, age, photoUrl, photoSetUrls } = this.props.pet;
 
-    console.log(this.props.pet);
     return (
       <div className="profile-wrapper">
         <div className="container-fluid px-5 py-lg-5 my-lg-5">
           <div className="row px-lg-5 mx-lg-5">
             <div className="col-md-4 col-10 pb-5 mx-auto text-center">
-              <div className="col-md-8 col-7 mx-auto pb-3">
-                <PetProfileCard petprofile={
-                  {
-                    photoUrl: photoUrl,
-                    petName: petName,
-                    breed: breed,
-                    status: status,
-                    age: age,
-                    _id: _id,
-                  }
-                }/>
-              </div>
+              <PetProfileCard petprofile={
+                {
+                  photoUrl: photoUrl,
+                  petName: petName,
+                  breed: breed,
+                  status: status,
+                  age: age,
+                  _id: _id,
+                }
+              }/>
             </div>
             <div className="col-md-8 col-12 py-5 px-5 rounded shadow overflow-auto scroll-style">
               Description<hr />

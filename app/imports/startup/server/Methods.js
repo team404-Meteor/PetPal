@@ -27,6 +27,7 @@ Meteor.methods({
   },
 
   updateWrap: function (owner, _id) {
+    check([owner, _id], [String]);
     Favorites.collection.update(owner, { $addToSet: { favoriteIds: _id } }, { upsert: true });
   },
 });

@@ -1,16 +1,14 @@
 import React from 'react';
-import { Table, Card, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter, Link } from 'react-router-dom';
 
 /** Renders a single row in the List petprofile table. See pages/ListStuff.jsx. */
 class PetProfileCard extends React.Component {
   render() {
     const { photoUrl, petName, breed, status, age } = this.props.petprofile;
     return (
-      <div className="col-lg-8 col-12 text-center px-0">
+      <div className="text-center px-0">
         <div className="col-12 text-center">
-          <img className="listing-image rounded-circle img-fluid" src={photoUrl} />
+          <img className="profile-image rounded-circle img-fluid" src={photoUrl} />
         </div>
         <div className="col-12 text-center pt-2">
           <div className="row justify-content-center">
