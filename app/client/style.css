@@ -319,3 +319,13 @@ input[type="text"] {
     height: 38px !important;
 }
 
+
+/************************************
+********** Pet Profile **************
+************************************/
+p {
+    margin-bottom: 0pt !important;
+}
+.underline-text {
+    text-decoration: underline !important;
+}
