@@ -45,14 +45,11 @@ class UserProfile extends React.Component {
                 <img src="images/placeholder-1.png"></img>
               </div>
               <div className="col-12 text-center">
-                {
-                  this.props.userListings.map((userListing, index) => (
 
-                    <div key={index} className='col-12'>
-                      <PetCardForUserProfileUsername pet={{ owner: userListing.owner }} />
-                    </div>
-                  ))
-                }
+                <div className='col-12'>
+                  <PetCardForUserProfileUsername pet={{ owner: this.props.username }} />
+                </div>
+
               </div>
             </div>
             <div className="col-md-8 col-12 py-5 px-5 rounded shadow overflow-auto scroll-style">
