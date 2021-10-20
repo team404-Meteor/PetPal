@@ -38,6 +38,7 @@ function PetCard({
   }
 
   return (
+
     <div className="container-fluid">
       <div className="row justify-content-center pt-5">
         <div className="col-lg-8 col-12 text-center px-0">
