@@ -15,12 +15,6 @@ function PetCardForUserProfileUsername({
         e.preventDefault();
         const owner = Meteor.user().username;
 
-
-        console.log('Button Clicked!');
-        console.log('_id', _id);
-        console.log('owner', owner);
-
-
         Meteor.call('updateWrap', owner, _id,
             (error) => {
                 if (error) {
