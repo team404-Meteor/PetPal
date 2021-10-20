@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Image, Button, Icon } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
-import swal from 'sweetalert';
+// import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import { Favorites } from '../../favorites/Favorites';
 import { Redirect } from 'react-router-dom';
 
@@ -20,13 +21,35 @@ function PetCard({
     console.log('_id', _id);
     console.log('owner', owner);
 
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+      },
+    });
+
 
     Meteor.call('updateWrap', owner, _id,
       (error) => {
         if (error) {
-          swal('Error', error.message, 'error');
+
+          Toast.fire({
+            icon: 'Error',
+            title: 'error.message',
+          });
+
+          // swal('Error', error.message, 'error');
         } else {
-          swal('Success', 'Item added successfully', 'success');
+          // swal('Success', 'Item added successfully', 'success');
+          Toast.fire({
+            icon: 'success',
+            title: 'Added to favorites!',
+          });
         }
       });
   }
