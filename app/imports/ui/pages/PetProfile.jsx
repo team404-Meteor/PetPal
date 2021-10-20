@@ -72,6 +72,10 @@ class PetProfile extends React.Component {
 
     updatedData.status = newStatus();
 
+    if (!updatedData.status && this.props.pet.status) {
+      Meteor.call('sendEmail', 'rexterds@gmail.com', updatedData.petName);
+    }
+
     Pets.collection.update({ _id: this.props.pet._id }, { $set: updatedData },
       (error) => {
         if (error) {
@@ -80,10 +84,6 @@ class PetProfile extends React.Component {
           swal('Success', 'Pet profile updated!', 'success');
         }
       });
-
-    if (!updatedData.status) {
-      Meteor.call('sendEmail', 'rexterds@gmail.com', updatedData.petName);
-    }
   }
 
   addToFavorites(e) {
