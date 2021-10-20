@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Card, Image, Button, Icon } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
-import { Redirect } from 'react-router-dom';
+import { Link, NavLink, Redirect } from 'react-router-dom';
 import { Favorites } from '../../favorites/Favorites';
 
 function PetCard({
@@ -13,10 +13,6 @@ function PetCard({
   function addToFavorites(e) {
     e.preventDefault();
     const owner = Meteor.user().username;
-
-    console.log('Button Clicked!');
-    console.log('_id', _id);
-    console.log('owner', owner);
 
     Meteor.call('updateWrap', owner, _id,
       (error) => {
@@ -34,7 +30,7 @@ function PetCard({
 
   function LoggedInCheckForFave() {
     const isLoggedIn = Meteor.userId() !== null;
-    if (isLoggedIn & addToFavorites == null) {
+    if (isLoggedIn && addToFavorites == null) {
       return <Button onClick={addToFavorites} className="button-custom-heart pt-0 my-auto" />;
     }
     if (isLoggedIn && addToFavorites) {
@@ -46,6 +42,7 @@ function PetCard({
   return (
     <div className="container-fluid">
       <div className="row justify-content-center pt-5">
+
         <div className="col-lg-8 col-12 text-center px-0">
           <div className="col-12 text-center">
             <img className="listing-image rounded-circle img-fluid" src={photoUrl} />
@@ -65,27 +62,8 @@ function PetCard({
             <p>{age}</p>
           </div>
         </div>
-        {/*
-        <div className="pet-overview pt-1 row justify-content-center">
-          <div class="row">
-            <div class="col-12 text-center">
-              <div class="col-2 px-0 mx-0 text-right">
-                <LoggedInCheckForFave />
-              </div>
-              <div class="col-7 px-0 mx-0 text-left">
-                <h2 class="d-inline0block">{name}</h2>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 px-0 mx-0">
-            <p className="mb-0">{breed}</p>
-            <p>{age}</p>
-          </div>
-        </div> */}
+
       </div>
-
-      {/* <Button onClick={addToFavorites} circular inverted color='red' icon='heart'/> */}
-
     </div>
 
   );
@@ -93,6 +71,7 @@ function PetCard({
 
 PetCard.propTypes = {
   pet: PropTypes.shape({
+    _id: PropTypes.string,
     name: PropTypes.string,
     breed: PropTypes.string,
     age: PropTypes.string,

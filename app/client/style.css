@@ -2,12 +2,12 @@
 ************** Pet Card ***************
 ************************************/
 
-.pet-card {
-    border: none;
-    margin: 0rem 1rem !important;
-    box-shadow: none !important;
-    text-align: center;
-    height: 100%;
+.card.pet-card {
+  
+}
+
+.card.pet-card:hover {
+
 }
 
 div.pet-overview>* {

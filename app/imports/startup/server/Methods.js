@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Email } from 'meteor/email';
 import { check } from 'meteor/check';
+import { Favorites } from '../../favorites/Favorites';
 
 Meteor.methods({
   getEmailKey: function () {
@@ -23,5 +24,9 @@ Meteor.methods({
       subject: 'A pet from your favorites list has been adopted!',
       text: 'A pet from your favorites list has been adopted!',
     });
+  },
+
+  updateWrap: function (owner, _id) {
+    Favorites.collection.update(owner, { $addToSet: { favoriteIds: _id } }, { upsert: true });
   },
 });

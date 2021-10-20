@@ -10,7 +10,7 @@ class PetProfilePhotoCard extends React.Component {
       <Card className="pet-card">
       <Card.Content>
         <div className="pet-image">
-          <Image size="medium" fluid src={this.props.petprofile.photoUrl}/>
+          <Image size="medium" fluid src={this.props.photoUrl}/>
         </div>
       </Card.Content>
       </Card>
@@ -20,14 +20,7 @@ class PetProfilePhotoCard extends React.Component {
 
 // Require a document to be passed to this component.
 PetProfilePhotoCard.propTypes = {
-  petprofile: PropTypes.shape({
-    photoUrl: PropTypes.string,
-    petName: PropTypes.number,
-    breed: PropTypes.string,
-    status: PropTypes.string,
-    age: PropTypes.string,
-    _id: PropTypes.string,
-  }).isRequired,
+  photoUrl: PropTypes.string,
 };
 
 // Wrap this component in withRouter since we use the <Link> React Router element.

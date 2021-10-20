@@ -6,19 +6,20 @@ import { withRouter, Link } from 'react-router-dom';
 /** Renders a single row in the List petprofile table. See pages/ListStuff.jsx. */
 class PetProfileCard extends React.Component {
   render() {
+    console.log(this.props.petprofile);
     return (
       <Card className="pet-card">
-      <Card.Content>
-        <div className="pet-image">
-          <Image size="medium" circular src={this.props.petprofile.photoUrl}/>
-        </div>
-        <div className="pet-overview">
-          <h2>{this.props.petprofile.petName}</h2>
-          <h3>Breed: {this.props.petprofile.breed}</h3>
-          <h3>Status: {this.props.petprofile.status}</h3>
-          <h3>Age: {this.props.petprofile.age}</h3>
-        </div>
-      </Card.Content>
+        <Card.Content>
+          <div className="pet-image">
+            <Image size="medium" circular src={this.props.petprofile.photoUrl}/>
+          </div>
+          <div className="pet-overview">
+            <h2>{this.props.petprofile.petName}</h2>
+            <h3>Breed: {this.props.petprofile.breed}</h3>
+            <h3>Status: {this.props.petprofile.status ? 'Available' : 'Adopted'}</h3>
+            <h3>Age: {this.props.petprofile.age}</h3>
+          </div>
+        </Card.Content>
       </Card>
     );
   }
@@ -28,13 +29,13 @@ class PetProfileCard extends React.Component {
 PetProfileCard.propTypes = {
   petprofile: PropTypes.shape({
     photoUrl: PropTypes.string,
-    petName: PropTypes.number,
+    petName: PropTypes.string,
     breed: PropTypes.string,
-    status: PropTypes.string,
+    status: PropTypes.bool,
     age: PropTypes.string,
     _id: PropTypes.string,
-  }).isRequired,
+  }),
 };
 
 // Wrap this component in withRouter since we use the <Link> React Router element.
-export default withRouter(PetProfileCard);
+export default PetProfileCard;
