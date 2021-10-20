@@ -8,11 +8,11 @@ class PetProfilePhotoCard extends React.Component {
   render() {
     return (
       <Card className="pet-card">
-      <Card.Content>
-        <div className="pet-image">
-          <Image size="medium" fluid src={this.props.photoUrl}/>
-        </div>
-      </Card.Content>
+        <Card.Content>
+          <div className="pet-image">
+            <Image fluid src={this.props.photoUrl}/>
+          </div>
+        </Card.Content>
       </Card>
     );
   }

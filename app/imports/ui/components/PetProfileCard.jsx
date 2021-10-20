@@ -6,21 +6,25 @@ import { withRouter, Link } from 'react-router-dom';
 /** Renders a single row in the List petprofile table. See pages/ListStuff.jsx. */
 class PetProfileCard extends React.Component {
   render() {
-    console.log(this.props.petprofile);
+    const { photoUrl, petName, breed, status, age } = this.props.petprofile;
     return (
-      <Card className="pet-card">
-        <Card.Content>
-          <div className="pet-image">
-            <Image size="medium" circular src={this.props.petprofile.photoUrl}/>
+      <div className="col-lg-8 col-12 text-center px-0">
+        <div className="col-12 text-center">
+          <img className="listing-image rounded-circle img-fluid" src={photoUrl} />
+        </div>
+        <div className="col-12 text-center pt-2">
+          <div className="row justify-content-center">
+            <div className="col-auto">
+              <h2>{petName}</h2>
+            </div>
           </div>
-          <div className="pet-overview">
-            <h2>{this.props.petprofile.petName}</h2>
-            <h3>Breed: {this.props.petprofile.breed}</h3>
-            <h3>Status: {this.props.petprofile.status ? 'Available' : 'Adopted'}</h3>
-            <h3>Age: {this.props.petprofile.age}</h3>
-          </div>
-        </Card.Content>
-      </Card>
+        </div>
+        <div className="col-12 text-center">
+          <p className="mb-0">Breed: {breed}</p>
+          <p>Status: {status ? 'Available' : 'Adopted'}</p>
+          <p>Age: {age}</p>
+        </div>
+      </div>
     );
   }
 }

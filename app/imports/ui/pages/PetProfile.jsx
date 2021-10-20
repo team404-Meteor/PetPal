@@ -48,14 +48,18 @@ class PetProfile extends React.Component {
             </div>
             <div className="col-md-8 col-12 py-5 px-5 rounded shadow overflow-auto scroll-style">
               Description<hr />
-              {description}
-              Photos  Videos<p />
+              {description || 'No description'} <br/> <br/>
+              Photos and Videos<hr />
               <div className="row">
-                <Grid colums={3} divided>
-                  {
-                    photoSetUrls.map((url, index) => <PetProfilePhotoCard key={index} photoUrl={url}/>)
-                  }
-                </Grid>
+                {
+                  photoSetUrls.length > 0 ?
+                    photoSetUrls.map((url, index) => (
+                      <div key={index} className="col">
+                        <PetProfilePhotoCard photoUrl={url}/>
+                      </div>
+                    )) :
+                    'No photos and videos'
+                }
               </div>
             </div>
           </div>
