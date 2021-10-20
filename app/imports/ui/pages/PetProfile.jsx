@@ -1,13 +1,22 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Button, Segment, TransitionablePortal } from 'semantic-ui-react';
-import swal from 'sweetalert';
 import { withTracker } from 'meteor/react-meteor-data';
+import { Loader, Form, Button, Segment, TransitionablePortal, Header, Checkbox } from 'semantic-ui-react';
+import swal from 'sweetalert';
 import PropTypes from 'prop-types';
 import { Pets } from '../../api/pet/Pet';
 import PetProfileCard from '../components/PetProfileCard';
 import PetProfilePhotoCard from '../components/PetProfilePhotoCard';
 import 'bootstrap/dist/css/bootstrap';
+
+// Create a schema to specify the structure of the data to appear in the form.
+const typeOptions = [
+  { key: 'd', text: 'Dog', value: 'Dog' },
+  { key: 'c', text: 'Cat', value: 'Cat' },
+  { key: 'b', text: 'Bunny', value: 'Bunny' },
+  { key: 'r', text: 'Reptile', value: 'Reptile' },
+  { key: 'o', text: 'Other', value: 'Other' },
+];
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class PetProfile extends React.Component {
@@ -17,12 +26,52 @@ class PetProfile extends React.Component {
 
     this.state = {
       openEdit: false,
+      petName: '',
+      petType: '',
+      breed: '',
+      age: '',
+      description: '',
+      photoUrl: '',
+      available: true,
     };
 
     this.addToFavorites = this.addToFavorites.bind(this);
   }
 
   handleOpenEdit = () => this.setState({ openEdit: !this.state.openEdit });
+
+  handleChange = (e, { value }) => {
+    console.log(e);
+    console.log(value);
+  }
+
+  // On submit, insert the data.
+  submit = (data, formRef) => {
+
+    console.log(data);
+    console.log(formRef);
+    /*
+    const updatedData = {
+      petName: data.petName,
+      breed: data.breed,
+      age: data.age,
+      description: data.description,
+      photoUrl: data.photoUrl,
+      status: data.available,
+      petType: data.petType,
+    };
+
+    Pets.collection.update({ _id: this.props.pet._id }, { $set: updatedData },
+      (error) => {
+        if (error) {
+          swal('Error', error.message, 'error');
+        } else {
+          swal('Success', 'Pet profile updated!', 'success');
+          formRef.reset();
+        }
+      });
+      */
+  }
 
   addToFavorites(e) {
     e.preventDefault();
@@ -47,16 +96,9 @@ class PetProfile extends React.Component {
   // Render the page once subscriptions have been received.
   renderPage() {
 
-    console.log(this.state.openEdit);
+    let fRef = null;
 
-    /*
-    _id: PropTypes.string,
-    name: PropTypes.string,
-    breed: PropTypes.string,
-    age: PropTypes.string,
-    photoUrl: PropTypes.string,
-*/
-    const { _id, owner, description, petName, breed, status, age, photoUrl, photoSetUrls } = this.props.pet;
+    const { _id, owner, description, petName, breed, petType, status, age, photoUrl, photoSetUrls } = this.props.pet;
 
     return (
       <div className="profile-wrapper">
@@ -85,8 +127,54 @@ class PetProfile extends React.Component {
                     <Segment
                       style={{ left: '30%', top: '20%', position: 'fixed', zIndex: 1000 }}
                     >
-                      <p>Portals have tons of great callback functions to hook into.</p>
-                      <p>To close, simply click the close button or click away</p>
+                      <Header>Edit pet profile</Header>
+                      <Form ref={ref => { fRef = ref; }} onSubmit={data => this.submit(data, fRef)}>
+                        <div className="col-11 pt-1 text-center mx-auto">
+                          <div className="row justify-content-center mx-auto">
+                            <div className="col-lg-6 col-12 text-left pl-2">
+                              <Form.Input name="petName" label="Pet Name"value={petName} onChange={this.handleChange}/>
+                            </div>
+                            <div className="col-lg-6 col-12 text-left pl-2">
+                              <Form.Select
+                                fluid
+                                name="petType"
+                                label='Pet Type'
+                                options={typeOptions}
+                                value={petType}
+                                onChange={this.handleChange}
+                              />
+                            </div>
+                          </div>
+                          <div className="row pt-3 justify-content-center mx-auto">
+                            <div className="col-6 text-left pl-2">
+                              <Form.Input name="breed" label="Breed" value={breed} onChange={this.handleChange}/>
+                            </div>
+                            <div className="col-6 text-left pl-2">
+                              <Form.Input name="age" label="Age" value={age} onChange={this.handleChange}/>
+                            </div>
+                          </div>
+                          <div className="row pt-3 justify-content-center mx-auto">
+                            <div className="col-12 text-left pl-2">
+                              <Form.TextArea name="description" label="Description" value={description} onChange={this.handleChange}/>
+                            </div>
+                          </div>
+                          <div className="row pt-3 justify-content-center mx-auto">
+                            <div className="col-lg-12 col-12 text-left pl-2">
+                              <Form.Input name="photoUrl" label="Photo URL" value={photoUrl} onChange={this.handleChange}/>
+                            </div>
+                          </div>
+                          <div className="row pt-3 justify-content-start mx-auto">
+                            <div className="col-lg-6 col-12 text-left pl-2">
+                              <Checkbox name="status" label="Available" value={status} defaultChecked={status} onClick={this.handleChange}/>
+                            </div>
+                          </div>
+                          <div className="row pt-3 justify-content-center mx-auto">
+                            <div className="col-12 text-left my-auto text-center">
+                              <Button type='submit' className="btn btn-custom">Submit</Button>
+                            </div>
+                          </div>
+                        </div>
+                      </Form>
                     </Segment>
                   </TransitionablePortal> :
                   <div>
@@ -100,15 +188,9 @@ class PetProfile extends React.Component {
               {description || 'No description'} <br/> <br/>
               Photos and Videos<hr />
               <div className="row">
-                { 
-                  photoSetUrls.length > 0 ?
-                    photoSetUrls.map((url, index) => (
-                      <div key={index} className="col">
-                        <PetProfilePhotoCard photoUrl={url}/>
-                      </div>
-                    )) :
-                    'No photos and videos'
-                }
+                <div className="col">
+                  <PetProfilePhotoCard photoUrl={photoUrl}/>
+                </div>
               </div>
             </div>
           </div>
