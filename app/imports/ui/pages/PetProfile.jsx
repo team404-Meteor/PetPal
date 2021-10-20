@@ -181,7 +181,14 @@ class PetProfile extends React.Component {
                           </div>
                           <div className="row pt-3 mb-0 justify-content-start">
                             <div className="col-lg-6 col-12 text-left pl-2 pb-0 mb-0">
-                              <Checkbox name="status" label="Available" value={status} defaultChecked={status} onClick={this.handleChange}/>
+                              <Form.Select
+                                fluid
+                                name="status"
+                                label='Status'
+                                options={statusOptions}
+                                placeholder={status ? 'Available' : 'Adopted'}
+                                onChange={this.handleChange}
+                              />
                             </div>
                           </div>
                           <div className="row pt-3 justify-content-center mx-auto">
