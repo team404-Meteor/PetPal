@@ -44,3 +44,4 @@
     "testcafe": "testcafe chrome:headless tests/*.testcafe.js -q --app \"meteor npm run start\""
   }
 }
+
