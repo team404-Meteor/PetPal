@@ -115,20 +115,20 @@ class PetProfile extends React.Component {
 
     return (
       <div className="profile-wrapper">
-      <div className="container-fluid px-3 mt-5 py-lg-5 my-lg-5 pb-5">
-        <div className="row px-lg-5 mx-lg-5 justify-content-center">
+        <div className="container-fluid px-3 mt-5 py-lg-5 my-lg-5 pb-5">
+          <div className="row px-lg-5 mx-lg-5 justify-content-center">
             <div className="col-md-4 col-10 pb-2 mx-auto text-center">
               <div className="col-md-8 col-7 mx-auto pb-3 text-center">
-              <PetProfileCard petprofile={
-                {
-                  photoUrl: photoUrl,
-                  petName: petName,
-                  breed: breed,
-                  status: status,
-                  age: age,
-                  _id: _id,
-                }
-              }/>
+                <PetProfileCard petprofile={
+                  {
+                    photoUrl: photoUrl,
+                    petName: petName,
+                    breed: breed,
+                    status: status,
+                    age: age,
+                    _id: _id,
+                  }
+                }/>
               </div>
               {
                 owner === this.props.username ?
@@ -194,11 +194,11 @@ class PetProfile extends React.Component {
                     </Segment>
                   </TransitionablePortal> :
                   <div className="row justify-content-center">
-                  <div class="col-auto px-0 mx-0 text-right">
-                    <Button onClick={(e) => this.addToFavorites(e)} className="button-custom-heart-active pt-0 my-auto stretched-link"/>
+                    <div className="col-auto px-0 mx-0 text-right">
+                      <Button onClick={(e) => this.addToFavorites(e)} className="button-custom-heart-active pt-0"/>
                     </div>
                     <div className="col-auto pt-2">
-                    <p className="d-inline-block position-relative underline-text">Add to favorites</p>
+                      <p className="d-inline-block position-relative underline-text">Add to favorites</p>
                     </div>
                   </div>
               }
