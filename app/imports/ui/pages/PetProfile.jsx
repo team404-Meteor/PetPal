@@ -16,15 +16,13 @@ class PetProfile extends React.Component {
     super(props);
 
     this.state = {
-      openEdit: true,
+      openEdit: false,
     };
 
     this.addToFavorites = this.addToFavorites.bind(this);
   }
 
-  handleOpenEdit = () => this.setState({ openEdit: true });
-
-  handleCloseEdit = () => this.setState({ openEdit: false })
+  handleOpenEdit = () => this.setState({ openEdit: !this.state.openEdit });
 
   addToFavorites(e) {
     e.preventDefault();
@@ -48,6 +46,9 @@ class PetProfile extends React.Component {
 
   // Render the page once subscriptions have been received.
   renderPage() {
+
+    console.log(this.state.openEdit);
+
     /*
     _id: PropTypes.string,
     name: PropTypes.string,
@@ -74,25 +75,20 @@ class PetProfile extends React.Component {
               }/>
               {
                 owner === this.props.username ?
-                  <div>
-                    <TransitionablePortal
-                      closeOnTriggerClick
-                      openOnTriggerClick
-                      onClose={this.handleCloseEdit}
-                      onOpen={this.handleOpenEdit}
-                      open={this.state.openEdit}
-                      trigger={
-                        <Button>Edit pet profile</Button>
-                      }
+
+                  <TransitionablePortal
+                    open={this.state.openEdit}
+                    trigger={
+                      <Button onClick={this.handleOpenEdit}>Edit pet profile</Button>
+                    }
+                  >
+                    <Segment
+                      style={{ left: '30%', top: '20%', position: 'fixed', zIndex: 1000 }}
                     >
-                      <Segment
-                        style={{ left: '30%', top: '20%', position: 'fixed', zIndex: 1000 }}
-                      >
-                        <p>Portals have tons of great callback functions to hook into.</p>
-                        <p>To close, simply click the close button or click away</p>
-                      </Segment>
-                    </TransitionablePortal>
-                  </div> :
+                      <p>Portals have tons of great callback functions to hook into.</p>
+                      <p>To close, simply click the close button or click away</p>
+                    </Segment>
+                  </TransitionablePortal> :
                   <div>
                     <Button onClick={(e) => this.addToFavorites(e)} className="button-custom-heart-active pt-0 my-auto"/>
                     Add to favorites
