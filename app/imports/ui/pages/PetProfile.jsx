@@ -115,9 +115,10 @@ class PetProfile extends React.Component {
 
     return (
       <div className="profile-wrapper">
-        <div className="container-fluid px-5 py-lg-5 my-lg-5">
-          <div className="row px-lg-5 mx-lg-5">
-            <div className="col-md-4 col-10 pb-5 mx-auto text-center">
+      <div className="container-fluid px-3 mt-5 py-lg-5 my-lg-5 pb-5">
+        <div className="row px-lg-5 mx-lg-5 justify-content-center">
+            <div className="col-md-4 col-10 pb-2 mx-auto text-center">
+              <div className="col-md-8 col-7 mx-auto pb-3 text-center">
               <PetProfileCard petprofile={
                 {
                   photoUrl: photoUrl,
@@ -128,6 +129,7 @@ class PetProfile extends React.Component {
                   _id: _id,
                 }
               }/>
+              </div>
               {
                 owner === this.props.username ?
 
@@ -135,7 +137,7 @@ class PetProfile extends React.Component {
                     onClose={() => (this.state.openEdit ? this.setState({ openEdit: !this.state.openEdit }) : this.setState({ openEdit: this.state.openEdit }))}
                     open={this.state.openEdit}
                     trigger={
-                      <Button onClick={this.handleOpenEdit}>Edit pet profile</Button>
+                      <a className="underline-text" onClick={this.handleOpenEdit}>Edit pet profile</a>
                     }
                   >
                     <Segment
@@ -159,7 +161,7 @@ class PetProfile extends React.Component {
                               />
                             </div>
                           </div>
-                          <div className="row pt-3 justify-content-center mx-auto">
+                          <div className="row pt-3 justify-content-center mx-auto pb-0">
                             <div className="col-6 text-left pl-2">
                               <Form.Input name="breed" label="Breed" placeholder={breed} onChange={this.handleChange}/>
                             </div>
@@ -177,16 +179,9 @@ class PetProfile extends React.Component {
                               <Form.Input name="photoUrl" label="Photo URL" placeholder={photoUrl} onChange={this.handleChange}/>
                             </div>
                           </div>
-                          <div className="row pt-3 justify-content-start mx-auto">
-                            <div className="col-lg-6 col-12 text-left pl-2">
-                              <Form.Select
-                                fluid
-                                name="status"
-                                label='Status'
-                                options={statusOptions}
-                                placeholder={status ? 'Available' : 'Adopted'}
-                                onChange={this.handleChange}
-                              />
+                          <div className="row pt-3 mb-0 justify-content-start">
+                            <div className="col-lg-6 col-12 text-left pl-2 pb-0 mb-0">
+                              <Checkbox name="status" label="Available" value={status} defaultChecked={status} onClick={this.handleChange}/>
                             </div>
                           </div>
                           <div className="row pt-3 justify-content-center mx-auto">
@@ -198,9 +193,13 @@ class PetProfile extends React.Component {
                       </Form>
                     </Segment>
                   </TransitionablePortal> :
-                  <div>
-                    <Button onClick={(e) => this.addToFavorites(e)} className="button-custom-heart-active pt-0 my-auto"/>
-                    Add to favorites
+                  <div className="row justify-content-center">
+                  <div class="col-auto px-0 mx-0 text-right">
+                    <Button onClick={(e) => this.addToFavorites(e)} className="button-custom-heart-active pt-0 my-auto stretched-link"/>
+                    </div>
+                    <div className="col-auto pt-2">
+                    <p className="d-inline-block position-relative underline-text">Add to favorites</p>
+                    </div>
                   </div>
               }
             </div>
@@ -211,7 +210,7 @@ class PetProfile extends React.Component {
               {description || 'No description'} <br/> <br/>
               Photos and Videos<hr />
               <div className="row">
-                <div className="col">
+                <div className="col-lg-3 col-md-3 col-4 px-0">
                   <PetProfilePhotoCard photoUrl={photoUrl}/>
                 </div>
               </div>

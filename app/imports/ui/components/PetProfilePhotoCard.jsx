@@ -7,13 +7,13 @@ import { withRouter } from 'react-router-dom';
 class PetProfilePhotoCard extends React.Component {
   render() {
     return (
-      <Card className="pet-card">
-        <Card.Content>
-          <div className="pet-image">
-            <Image fluid src={this.props.photoUrl}/>
+      <div className="container-fluid">
+        <div class="row justify-content-center">
+          <div className="pet-image col-12 px-0">
+            <img src={this.props.photoUrl}/>
           </div>
-        </Card.Content>
-      </Card>
+        </div>
+      </div>
     );
   }
 }
