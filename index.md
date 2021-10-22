@@ -20,7 +20,7 @@ While the current method of adopting or rehoming a pet can involve bringing your
 
 #### Landing Page
 Users are given a quick introduction to the application.
-<img class="image" src="https://github.com/team404-Meteor/PetPal/blob/master/app/public/images/landing.PNG">
+<img class="image" src="https://raw.githubusercontent.com/team404-Meteor/PetPal/master/app/public/images/landing.PNG">
 
 #### Home Screen
 Users can choose to view a list of pets available for adoption, list a pet, or learn more about the cause.
