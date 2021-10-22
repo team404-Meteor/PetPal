@@ -24,31 +24,31 @@ Users are given a quick introduction to the application.
 
 #### Home Screen
 Users can choose to view a list of pets available for adoption, list a pet, or learn more about the cause.
-<img class="image" src="https://github.com/team404-Meteor/PetPal/blob/master/app/public/images/home.PNG">
+<img class="image" src="https://raw.githubusercontent.com/team404-Meteor/PetPal/master/app/public/images/home.PNG">
 
 #### Pet Listings Page
 View a list of pets in your area, filter through pet type (Dog, Cat, Bunny, etc.)
-<img class="image" src="https://github.com/team404-Meteor/PetPal/blob/master/app/public/images/petlisting.PNG">
+<img class="image" src="https://raw.githubusercontent.com/team404-Meteor/PetPal/master/app/public/images/petlisting.PNG">
 
 #### Pet Profile Page
 By clicking on a pet's image in the View Pets Page, users can learn more about that pet including: Name, age, breed, status, description, contact, and more photos and videos.
-<img class="image" src="https://github.com/team404-Meteor/PetPal/blob/master/app/public/images/petprofile.PNG">
+<img class="image" src="https://raw.githubusercontent.com/team404-Meteor/PetPal/master/app/public/images/petprofile.PNG">
 
 #### List a Pet Page
 Users can list a pet to be rehomed using the form on the List a Pet page.
-<img class="image" src="https://github.com/team404-Meteor/PetPal/blob/master/app/public/images/listpet.PNG">
+<img class="image" src="https://raw.githubusercontent.com/team404-Meteor/PetPal/master/app/public/images/listpet.PNG">
 
 #### Learn More Page
 Users can learn more about the issue surrounding pet homelessness, overpopulation, breed discrimination, and how to contribute to the solution.
-<img class="image" src="https://github.com/team404-Meteor/PetPal/blob/master/app/public/images/learnmore.PNG">
+<img class="image" src="https://raw.githubusercontent.com/team404-Meteor/PetPal/master/app/public/images/learnmore.PNG">
 
 #### User Profile Page
 Users can view what pets they have listed for adoption and/or what pets they are interested in adopting. This page can be accessed anywhere throughout the application. They can also edit listings from their profile or from the Pet Profile.
-<img class="image" src="https://github.com/team404-Meteor/PetPal/blob/master/app/public/images/userprofile.PNG">
+<img class="image" src="https://raw.githubusercontent.com/team404-Meteor/PetPal/master/app/public/images/userprofile.PNG">
 
 #### Real-time Notification Feature
 For any pet that is on a User Profiles Favorites list, they will be notified if that pets listing is updated from "Available" to "Adopted." See email notification below.
-<img class="image" src="https://github.com/team404-Meteor/PetPal/blob/master/app/public/images/email.PNG">
+<img class="image" src="https://raw.githubusercontent.com/team404-Meteor/PetPal/master/app/public/images/email.PNG">
 
 ### Application Pitch
 [Pitch in Google Drive](https://docs.google.com/document/d/158GZS15s6B8U2RVoyrqqyO8hdJs4xQaRxVJB8deCJVk/edit?usp=sharing).
